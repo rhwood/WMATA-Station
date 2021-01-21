@@ -8,10 +8,11 @@
 import SwiftUI
 
 @main
-struct WMATA_StationApp: App {
+struct WMATAStationApp: App {
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LinesView(lines: LinesStore())
         }
     }
 }

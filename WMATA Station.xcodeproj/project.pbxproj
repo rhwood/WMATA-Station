@@ -3,16 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48FA4C6325A2ACF70050C027 /* WMATA_StationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C6225A2ACF70050C027 /* WMATA_StationApp.swift */; };
-		48FA4C6525A2ACF70050C027 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C6425A2ACF70050C027 /* ContentView.swift */; };
+		4810E02025A5D671004B8866 /* LinesUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4810E01F25A5D671004B8866 /* LinesUI.swift */; };
+		4810E02625A5D7A3004B8866 /* WMATA in Frameworks */ = {isa = PBXBuildFile; productRef = 4810E02525A5D7A3004B8866 /* WMATA */; };
+		482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D96EA25AB2BA4001BACFE /* LinesStore.swift */; };
+		482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EE71D25ACB06200C351A4 /* View+Extension.swift */; };
+		483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483235B125A60A8900B30945 /* UIFont+Extension.swift */; };
+		4834947025A722BB00333EB1 /* WMATAUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4834946F25A722BB00333EB1 /* WMATAUI.swift */; };
+		48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7614725AFBF8700756E52 /* ApiKeys.swift */; };
+		48FA4C6325A2ACF70050C027 /* WMATAStationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C6225A2ACF70050C027 /* WMATAStationApp.swift */; };
+		48FA4C6525A2ACF70050C027 /* LinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C6425A2ACF70050C027 /* LinesView.swift */; };
 		48FA4C6725A2ACFB0050C027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FA4C6625A2ACFB0050C027 /* Assets.xcassets */; };
 		48FA4C6A25A2ACFB0050C027 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FA4C6925A2ACFB0050C027 /* Preview Assets.xcassets */; };
-		48FA4C7525A2ACFB0050C027 /* WMATA_StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C7425A2ACFB0050C027 /* WMATA_StationTests.swift */; };
-		48FA4C8025A2ACFB0050C027 /* WMATA_StationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C7F25A2ACFB0050C027 /* WMATA_StationUITests.swift */; };
+		48FA4C7525A2ACFB0050C027 /* WMATAStationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C7425A2ACFB0050C027 /* WMATAStationTests.swift */; };
+		48FA4C8025A2ACFB0050C027 /* WMATAStationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C7F25A2ACFB0050C027 /* WMATAStationUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,17 +40,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4810E01F25A5D671004B8866 /* LinesUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesUI.swift; sourceTree = "<group>"; };
+		482D96EA25AB2BA4001BACFE /* LinesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesStore.swift; sourceTree = "<group>"; };
+		482EE71D25ACB06200C351A4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		483235B125A60A8900B30945 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		4834946F25A722BB00333EB1 /* WMATAUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAUI.swift; sourceTree = "<group>"; };
+		48D7614725AFBF8700756E52 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		48FA4C5F25A2ACF70050C027 /* WMATA Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WMATA Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48FA4C6225A2ACF70050C027 /* WMATA_StationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATA_StationApp.swift; sourceTree = "<group>"; };
-		48FA4C6425A2ACF70050C027 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		48FA4C6225A2ACF70050C027 /* WMATAStationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAStationApp.swift; sourceTree = "<group>"; };
+		48FA4C6425A2ACF70050C027 /* LinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesView.swift; sourceTree = "<group>"; };
 		48FA4C6625A2ACFB0050C027 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48FA4C6925A2ACFB0050C027 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		48FA4C6B25A2ACFB0050C027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48FA4C7025A2ACFB0050C027 /* WMATA StationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WMATA StationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48FA4C7425A2ACFB0050C027 /* WMATA_StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATA_StationTests.swift; sourceTree = "<group>"; };
+		48FA4C7425A2ACFB0050C027 /* WMATAStationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAStationTests.swift; sourceTree = "<group>"; };
 		48FA4C7625A2ACFB0050C027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48FA4C7B25A2ACFB0050C027 /* WMATA StationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WMATA StationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		48FA4C7F25A2ACFB0050C027 /* WMATA_StationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATA_StationUITests.swift; sourceTree = "<group>"; };
+		48FA4C7F25A2ACFB0050C027 /* WMATAStationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAStationUITests.swift; sourceTree = "<group>"; };
 		48FA4C8125A2ACFB0050C027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4810E02625A5D7A3004B8866 /* WMATA in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +86,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48D7613525AFBC1A00756E52 /* WMATAUI */ = {
+			isa = PBXGroup;
+			children = (
+				4810E01F25A5D671004B8866 /* LinesUI.swift */,
+				4834946F25A722BB00333EB1 /* WMATAUI.swift */,
+			);
+			path = WMATAUI;
+			sourceTree = "<group>";
+		};
+		48D7613625AFBC5500756E52 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48FA4C6425A2ACF70050C027 /* LinesView.swift */,
+				483235B125A60A8900B30945 /* UIFont+Extension.swift */,
+				482EE71D25ACB06200C351A4 /* View+Extension.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		48D7613725AFBC9B00756E52 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				482D96EA25AB2BA4001BACFE /* LinesStore.swift */,
+				48D7614725AFBF8700756E52 /* ApiKeys.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
 		48FA4C5625A2ACF70050C027 = {
 			isa = PBXGroup;
 			children = (
@@ -95,8 +137,10 @@
 		48FA4C6125A2ACF70050C027 /* WMATA Station */ = {
 			isa = PBXGroup;
 			children = (
-				48FA4C6225A2ACF70050C027 /* WMATA_StationApp.swift */,
-				48FA4C6425A2ACF70050C027 /* ContentView.swift */,
+				48D7613725AFBC9B00756E52 /* Stores */,
+				48D7613625AFBC5500756E52 /* Views */,
+				48D7613525AFBC1A00756E52 /* WMATAUI */,
+				48FA4C6225A2ACF70050C027 /* WMATAStationApp.swift */,
 				48FA4C6625A2ACFB0050C027 /* Assets.xcassets */,
 				48FA4C6B25A2ACFB0050C027 /* Info.plist */,
 				48FA4C6825A2ACFB0050C027 /* Preview Content */,
@@ -115,7 +159,7 @@
 		48FA4C7325A2ACFB0050C027 /* WMATA StationTests */ = {
 			isa = PBXGroup;
 			children = (
-				48FA4C7425A2ACFB0050C027 /* WMATA_StationTests.swift */,
+				48FA4C7425A2ACFB0050C027 /* WMATAStationTests.swift */,
 				48FA4C7625A2ACFB0050C027 /* Info.plist */,
 			);
 			path = "WMATA StationTests";
@@ -124,7 +168,7 @@
 		48FA4C7E25A2ACFB0050C027 /* WMATA StationUITests */ = {
 			isa = PBXGroup;
 			children = (
-				48FA4C7F25A2ACFB0050C027 /* WMATA_StationUITests.swift */,
+				48FA4C7F25A2ACFB0050C027 /* WMATAStationUITests.swift */,
 				48FA4C8125A2ACFB0050C027 /* Info.plist */,
 			);
 			path = "WMATA StationUITests";
@@ -146,6 +190,9 @@
 			dependencies = (
 			);
 			name = "WMATA Station";
+			packageProductDependencies = (
+				4810E02525A5D7A3004B8866 /* WMATA */,
+			);
 			productName = "WMATA Station";
 			productReference = 48FA4C5F25A2ACF70050C027 /* WMATA Station.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +264,9 @@
 				Base,
 			);
 			mainGroup = 48FA4C5625A2ACF70050C027;
+			packageReferences = (
+				4810E02425A5D7A3004B8866 /* XCRemoteSwiftPackageReference "WMATA" */,
+			);
 			productRefGroup = 48FA4C6025A2ACF70050C027 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,8 +309,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48FA4C6525A2ACF70050C027 /* ContentView.swift in Sources */,
-				48FA4C6325A2ACF70050C027 /* WMATA_StationApp.swift in Sources */,
+				482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */,
+				4810E02025A5D671004B8866 /* LinesUI.swift in Sources */,
+				482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */,
+				48FA4C6525A2ACF70050C027 /* LinesView.swift in Sources */,
+				483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */,
+				4834947025A722BB00333EB1 /* WMATAUI.swift in Sources */,
+				48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */,
+				48FA4C6325A2ACF70050C027 /* WMATAStationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48FA4C7525A2ACFB0050C027 /* WMATA_StationTests.swift in Sources */,
+				48FA4C7525A2ACFB0050C027 /* WMATAStationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48FA4C8025A2ACFB0050C027 /* WMATA_StationUITests.swift in Sources */,
+				48FA4C8025A2ACFB0050C027 /* WMATAStationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +636,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4810E02425A5D7A3004B8866 /* XCRemoteSwiftPackageReference "WMATA" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/emma-k-alexandra/WMATA.swift";
+			requirement = {
+				kind = exactVersion;
+				version = 8.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4810E02525A5D7A3004B8866 /* WMATA */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4810E02425A5D7A3004B8866 /* XCRemoteSwiftPackageReference "WMATA" */;
+			productName = WMATA;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 48FA4C5725A2ACF70050C027 /* Project object */;
 }
