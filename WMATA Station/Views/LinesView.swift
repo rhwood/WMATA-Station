@@ -16,42 +16,40 @@ struct LinesView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             LazyVStack(alignment: .leading) {
-                HStack(alignment: .center) {
-                    Image(systemName: "location")
-                        .roundel(backgroundColor: WMATAUI.lightBrown,
-                                 foregroundColor: .white,
-                                 balanceWidth: $roundelWidth)
-                    ScrollView(.horizontal, showsIndicators: true) {
-                        stationSigns([.A01, .A02, .A03])
-                    }
-                }
+                LineView(line: AnyView(Image(systemName: "location")
+                            .roundel(backgroundColor: WMATAUI.lightBrown,
+                                     foregroundColor: .white,
+                                     balanceWidth: $roundelWidth)),
+                         stations: [.A01, .A02, .A03])
                 ForEach(WMATAUI.lines, id: \.rawValue) {
                     let line = $0
-                    HStack(alignment: .center) {
-                        Text(line.rawValue)
-                            .roundel(backgroundColor: line.backgroundColor,
-                                     foregroundColor: line.textColor,
-                                     balanceWidth: $roundelWidth)
-                        ScrollView(.horizontal, showsIndicators: true) {
-                            stationSigns(lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
-                        }
-                    }
+                    LineView(line: AnyView(Text(line.rawValue)
+                                .roundel(backgroundColor: line.backgroundColor,
+                                         foregroundColor: line.textColor,
+                                         balanceWidth: $roundelWidth)),
+                             stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
                 }
             }
         }
-    }
-
-    func stationSigns(_ stations: [Station]) -> some View {
-        LazyHStack {
-            ForEach(stations, id: \.rawValue) {
-                StationSign(name: "\($0.name)")
-            }
-        }
-        .padding()
     }
 
     func showStation(_ station: Any) {
         // eventually show a stationView
+    }
+}
+
+struct LineView: View {
+
+    var line: AnyView
+    var stations: [Station]
+
+    var body: some View {
+        HStack(alignment: .center) {
+            line
+            ScrollView(.horizontal, showsIndicators: true) {
+                StationSigns(stations: stations)
+            }
+        }
     }
 }
 
@@ -68,6 +66,20 @@ struct Roundel: ViewModifier {
             .padding()
             .background(Circle().foregroundColor(backgroundColor))
             .balanceWidth(store: $balanceWidth)
+    }
+}
+
+struct StationSigns: View {
+
+    var stations: [Station]
+
+    var body: some View {
+        LazyHStack {
+            ForEach(stations, id: \.rawValue) {
+                StationSign(name: "\($0.name)")
+            }
+        }
+        .padding()
     }
 }
 
