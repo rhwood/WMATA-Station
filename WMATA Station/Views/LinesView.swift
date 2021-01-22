@@ -22,12 +22,7 @@ struct LinesView: View {
                                  foregroundColor: .white,
                                  balanceWidth: $roundelWidth)
                     ScrollView(.horizontal, showsIndicators: true) {
-                        LazyHStack {
-                            ForEach(1...5, id: \.self) {
-                                StationSign(name: "Item \($0)")
-                            }
-                        }
-                        .padding()
+                        stationSigns([.A01, .A02, .A03])
                     }
                 }
                 ForEach(WMATAUI.lines, id: \.rawValue) {
@@ -38,17 +33,21 @@ struct LinesView: View {
                                      foregroundColor: line.textColor,
                                      balanceWidth: $roundelWidth)
                         ScrollView(.horizontal, showsIndicators: true) {
-                            LazyHStack {
-                                ForEach(lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [], id: \.rawValue) {
-                                    StationSign(name: "\($0.name)")
-                                }
-                            }
-                            .padding()
+                            stationSigns(lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
                         }
                     }
                 }
             }
         }
+    }
+
+    func stationSigns(_ stations: [Station]) -> some View {
+        LazyHStack {
+            ForEach(stations, id: \.rawValue) {
+                StationSign(name: "\($0.name)")
+            }
+        }
+        .padding()
     }
 
     func showStation(_ station: Any) {
@@ -77,8 +76,10 @@ struct StationSign: View {
     var name: String
 
     var body: some View {
-        Button(name, action: {})
-            .font(WMATAUI.font(.title3).weight(.medium))
+        Button(name, action: {
+            // need to trigger StationView, but until that is built, there is nothing to do
+        })
+        .font(WMATAUI.font(.title3).weight(.medium))
     }
 }
 
