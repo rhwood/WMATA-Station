@@ -15,7 +15,7 @@ class LinesStore: ObservableObject {
     init(preview: Bool = false) {
         for line in WMATAUI.lines {
             if !preview {
-                stations(line: line, withApiKey: ApiKeys.WMATA)
+                stations(line: line, withApiKey: ApiKeys.wmata)
             } else {
                 stations[line] = [Station.A01, Station.B01, Station.C01, Station.D01, Station.E01, Station.F01]
             }

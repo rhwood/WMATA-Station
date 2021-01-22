@@ -8,5 +8,5 @@
 public struct ApiKeys {
 
     /// WMATA API key
-    static let WMATA = "e13626d03d8e4c03ac07f95541b3091b"
+    static let wmata = "e13626d03d8e4c03ac07f95541b3091b"
 }
