@@ -22,7 +22,9 @@ struct WMATAUI {
 
     /// The WMATA standard font with the given style
     static func font(_ style: Font.TextStyle) -> Font {
-        Font.custom("Helvetica Neue", size: UIFont.preferredFont(forTextStyle:  UIFont.TextStyle.with(textStyle: style)).pointSize, relativeTo: style)
+        Font.custom("Helvetica Neue",
+                    size: UIFont.preferredFont(forTextStyle: UIFont.TextStyle.with(textStyle: style)).pointSize,
+                    relativeTo: style)
     }
 
 }

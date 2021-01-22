@@ -8,10 +8,13 @@
 import SwiftUI
 
 extension UIFont.TextStyle {
-    
+
+    // rule triggered by tvOS macro, so disabling
+    // swiftlint:disable cyclomatic_complexity
+    /// Convert a Font.TextStyle to a UIFont.TextStyle
     static func with(textStyle: Font.TextStyle) -> UIFont.TextStyle {
         let uiFont: UIFont.TextStyle
-        
+
         switch textStyle {
         case .body:
             uiFont = .body

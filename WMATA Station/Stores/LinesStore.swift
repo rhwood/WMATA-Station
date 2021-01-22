@@ -17,12 +17,12 @@ class LinesStore: ObservableObject {
             if !preview {
                 stations(line: line, withApiKey: ApiKeys.WMATA)
             } else {
-                stations[line] = [Station.A01, Station.B01, Station.C01, Station.D01, Station.E01, Station.F01, Station.G01]
+                stations[line] = [Station.A01, Station.B01, Station.C01, Station.D01, Station.E01, Station.F01]
             }
         }
     }
 
-    func stations(line : Line, withApiKey apiKey: String) {
+    func stations(line: Line, withApiKey apiKey: String) {
         if stations[line] == nil {
             stations[line] = []
         }

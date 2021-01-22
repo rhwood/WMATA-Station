@@ -39,6 +39,8 @@ struct BalancedWidthGetter: ViewModifier {
                         }
                 }
             )
-            .if(width != .zero) { $0.frame(width: width, alignment: Alignment(horizontal: alignment, vertical: .center)) }
+            .if(width != .zero) {
+                $0.frame(width: width, alignment: Alignment(horizontal: alignment, vertical: .center))
+            }
     }
 }

@@ -10,7 +10,8 @@ import WMATA
 
 extension Line {
 
-    /// colors from https://www.wmata.com/business/procurement/solicitations/documents/Metro_Brand_and_Style_Guidelines.pdf
+    /// colors from
+    /// https://www.wmata.com/business/procurement/solicitations/documents/Metro_Brand_and_Style_Guidelines.pdf
     var backgroundColor: Color {
         switch self {
         case .RD:
