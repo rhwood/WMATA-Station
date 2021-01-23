@@ -1,0 +1,5 @@
+# use defaults other than those listed below
+
+# ignore URLs in line length rules:
+line_length:
+  ignores_urls: true
