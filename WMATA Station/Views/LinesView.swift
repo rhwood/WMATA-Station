@@ -14,20 +14,23 @@ struct LinesView: View {
     @ObservedObject var lines: LinesStore
 
     var body: some View {
-        ScrollView(.vertical, showsIndicators: true) {
-            LazyVStack(alignment: .leading) {
-                LineView(line: AnyView(Image(systemName: "location")
-                            .roundel(backgroundColor: WMATAUI.lightBrown,
-                                     foregroundColor: .white,
-                                     balanceWidth: $roundelWidth)),
-                         stations: [.A01, .A02, .A03])
-                ForEach(WMATAUI.lines, id: \.rawValue) {
-                    let line = $0
-                    LineView(line: AnyView(Text(line.rawValue)
-                                .roundel(backgroundColor: line.backgroundColor,
-                                         foregroundColor: line.textColor,
-                                         balanceWidth: $roundelWidth)),
-                             stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: true) {
+                LazyVStack(alignment: .leading) {
+                    LineView(line: nil,
+                             view: AnyView(Image(systemName: "location")
+                                            .roundel(backgroundColor: WMATAUI.lightBrown,
+                                                     foregroundColor: .white,
+                                                     balanceWidth: $roundelWidth)),
+                             stations: [.A01, .A02, .A03])
+                    ForEach(WMATAUI.lines, id: \.rawValue) { line in
+                        LineView(line: line,
+                                 view: AnyView(Text(line.rawValue)
+                                                .roundel(backgroundColor: line.color,
+                                                         foregroundColor: line.textColor,
+                                                         balanceWidth: $roundelWidth)),
+                                 stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
+                    }
                 }
             }
         }
@@ -40,14 +43,15 @@ struct LinesView: View {
 
 struct LineView: View {
 
-    var line: AnyView
+    var line: Line?
+    var view: AnyView
     var stations: [Station]
 
     var body: some View {
         HStack(alignment: .center) {
-            line
+            view
             ScrollView(.horizontal, showsIndicators: true) {
-                StationSigns(stations: stations)
+                StationSigns(line: line, stations: stations)
             }
         }
     }
@@ -71,12 +75,13 @@ struct Roundel: ViewModifier {
 
 struct StationSigns: View {
 
+    var line: Line?
     var stations: [Station]
 
     var body: some View {
         LazyHStack {
             ForEach(stations, id: \.rawValue) {
-                StationSign(name: "\($0.name)")
+                StationSign(line: line, station: $0)
             }
         }
         .padding()
@@ -85,13 +90,27 @@ struct StationSigns: View {
 
 struct StationSign: View {
 
-    var name: String
+    var line: Line?
+    var station: Station
 
     var body: some View {
-        Button(name, action: {
-            // need to trigger StationView, but until that is built, there is nothing to do
-        })
-        .font(WMATAUI.font(.title3).weight(.medium))
+        NavigationLink(
+            destination: StationView(station: station),
+            label: {
+                let footnoteSize = UIFont.preferredFont(forTextStyle: .footnote).pointSize
+                VStack(alignment: .leading, spacing: footnoteSize * 0.25) {
+                    Text(station.name)
+                        .font(WMATAUI.font(.title3).weight(.medium))
+                    HStack(spacing: footnoteSize * 0.25) {
+                        ForEach(station.lines.sorted(by: WMATAUI.order(_:_:)), id: \.rawValue) {
+                            $0.dot(style: .footnote)
+                        }
+                        Spacer()
+                        Image(systemName: "figure.walk")
+                        Text("Time")
+                    }
+                }
+            })
     }
 }
 

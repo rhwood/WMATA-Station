@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4810E02025A5D671004B8866 /* LinesUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4810E01F25A5D671004B8866 /* LinesUI.swift */; };
 		4810E02625A5D7A3004B8866 /* WMATA in Frameworks */ = {isa = PBXBuildFile; productRef = 4810E02525A5D7A3004B8866 /* WMATA */; };
+		4828818825BC5902005B7994 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828818725BC5902005B7994 /* StationView.swift */; };
+		4828819025BC8D4E005B7994 /* StationsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828818F25BC8D4E005B7994 /* StationsUI.swift */; };
 		482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D96EA25AB2BA4001BACFE /* LinesStore.swift */; };
 		482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EE71D25ACB06200C351A4 /* View+Extension.swift */; };
 		483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483235B125A60A8900B30945 /* UIFont+Extension.swift */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		4810E01F25A5D671004B8866 /* LinesUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesUI.swift; sourceTree = "<group>"; };
+		4828818725BC5902005B7994 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
+		4828818F25BC8D4E005B7994 /* StationsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsUI.swift; sourceTree = "<group>"; };
 		482D96EA25AB2BA4001BACFE /* LinesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesStore.swift; sourceTree = "<group>"; };
 		482EE71D25ACB06200C351A4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		483235B125A60A8900B30945 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			children = (
 				4810E01F25A5D671004B8866 /* LinesUI.swift */,
 				4834946F25A722BB00333EB1 /* WMATAUI.swift */,
+				4828818F25BC8D4E005B7994 /* StationsUI.swift */,
 			);
 			path = WMATAUI;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 				48FA4C6425A2ACF70050C027 /* LinesView.swift */,
 				483235B125A60A8900B30945 /* UIFont+Extension.swift */,
 				482EE71D25ACB06200C351A4 /* View+Extension.swift */,
+				4828818725BC5902005B7994 /* StationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,8 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */,
+				4828818825BC5902005B7994 /* StationView.swift in Sources */,
 				4810E02025A5D671004B8866 /* LinesUI.swift in Sources */,
 				482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */,
+				4828819025BC8D4E005B7994 /* StationsUI.swift in Sources */,
 				48FA4C6525A2ACF70050C027 /* LinesView.swift in Sources */,
 				483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */,
 				4834947025A722BB00333EB1 /* WMATAUI.swift in Sources */,

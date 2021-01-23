@@ -10,9 +10,9 @@ import WMATA
 
 extension Line {
 
-    /// colors from
-    /// https://www.wmata.com/business/procurement/solicitations/documents/Metro_Brand_and_Style_Guidelines.pdf
-    var backgroundColor: Color {
+    /// The line color. These colors are taken from the
+    /// [Metro Brand and Style Guidelines](https://www.wmata.com/business/procurement/solicitations/documents/Metro_Brand_and_Style_Guidelines.pdf)
+    var color: Color {
         switch self {
         case .RD:
             return Color(.sRGB, red: 191 / 256, green: 13 / 256, blue: 62 / 256)
@@ -29,6 +29,7 @@ extension Line {
         }
     }
 
+    /// The text color (white or black) that contrasts with the line color. These colors match the colors used by WMATA.
     var textColor: Color {
         switch self {
         case .RD, .BL, .GR:
@@ -37,4 +38,18 @@ extension Line {
             return Color.black
         }
     }
+
+    /// Get a line dot sized for the given text style.
+    ///
+    /// - Parameter style: The style to match.
+    /// - Parameter factor: Optional factor to multiply the point size of the style by, defaults to 0.9.
+    ///
+    /// - Returns: A circle in in the color of this line sized to match the text style.
+    func dot(style: UIFont.TextStyle, factor: CGFloat = 0.9) -> some View {
+        let size = UIFont.preferredFont(forTextStyle: style).pointSize * factor
+        return Circle()
+            .foregroundColor(self.color)
+            .frame(width: size, height: size, alignment: .center)
+    }
+
 }

@@ -17,7 +17,7 @@ class LinesStore: ObservableObject {
             if !preview {
                 stations(line: line)
             } else {
-                stations[line] = [Station.A01, Station.B01, Station.C01, Station.D01, Station.E01, Station.F01]
+                stations[line] = [Station.A01, Station.B02, Station.C03, Station.D04, Station.E05, Station.F06]
             }
         }
     }
