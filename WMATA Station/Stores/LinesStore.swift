@@ -30,8 +30,10 @@ class LinesStore: ObservableObject {
             switch result {
             case .success(let lineStations):
                 print("\(lineStations)")
-                for station in lineStations.stations {
-                    self.stations[line]?.append(station.station)
+                DispatchQueue.main.async {
+                    for station in lineStations.stations {
+                        self.stations[line]?.append(station.station)
+                    }
                 }
             case .failure(let error):
                 print("\(error)")
