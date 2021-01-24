@@ -38,10 +38,6 @@ struct LinesView: View {
             }
         }
     }
-
-    func showStation(_ station: Any) {
-        // eventually show a stationView
-    }
 }
 
 struct LineView: View {
