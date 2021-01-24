@@ -111,7 +111,7 @@ struct MetroStationColor {
 extension RailPrediction: Identifiable {
 
     public var id: String {
-        return line.rawValue + destination + minutes
+        return line.rawValue + group + destination + minutes
     }
 
 }
