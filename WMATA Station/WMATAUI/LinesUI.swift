@@ -10,26 +10,26 @@ import WMATA
 
 extension Line {
 
-    /// The line color. These colors are taken from the
-    /// [Metro Brand and Style Guidelines](https://www.wmata.com/business/procurement/solicitations/documents/Metro_Brand_and_Style_Guidelines.pdf)
+    /// The line color.
     var color: Color {
         switch self {
         case .RD:
-            return Color(.sRGB, red: 191 / 256, green: 13 / 256, blue: 62 / 256)
+            return MetroRailColor.red
         case .OR:
-            return Color(.sRGB, red: 237 / 256, green: 139 / 256, blue: 0)
+            return MetroRailColor.orange
         case .BL:
-            return Color(.sRGB, red: 0, green: 156 / 256, blue: 222 / 256)
+            return MetroRailColor.blue
         case .GR:
-            return Color(.sRGB, red: 0, green: 177 / 256, blue: 64 / 256)
+            return MetroRailColor.green
         case .YL, .YLRP:
-            return Color(.sRGB, red: 255 / 256, green: 209 / 256, blue: 0)
+            return MetroRailColor.yellow
         case .SV:
-            return Color(.sRGB, red: 145 / 256, green: 157 / 256, blue: 157 / 256)
+            return MetroRailColor.silver
         }
     }
 
-    /// The text color (white or black) that contrasts with the line color. These colors match the colors used by WMATA.
+    /// The text color (white or black) that contrasts with the line color.
+    /// These colors match the colors used by WMATA on their public maps.
     var textColor: Color {
         switch self {
         case .RD, .BL, .GR:
