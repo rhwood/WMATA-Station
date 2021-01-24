@@ -9,12 +9,12 @@ import Foundation
 import WMATA
 
 class NextTrainsModel: ObservableObject {
-    
+
     @Published var trains: [RailPrediction] = []
     let stations: [Station]
     private let interval: TimeInterval
     private var timer: Timer = Timer()
-    
+
     init(stations: [Station], preview: [RailPrediction]? = nil) {
         self.stations = stations
         if preview == nil {
@@ -50,7 +50,7 @@ class NextTrainsModel: ObservableObject {
             }
         }
     }
-    
+
     func stop() {
         timer.invalidate()
     }

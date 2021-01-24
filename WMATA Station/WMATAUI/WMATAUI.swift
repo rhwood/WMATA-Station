@@ -108,9 +108,9 @@ struct MetroStationColor {
     static let lightBrown = Color(.sRGB, red: 121 / 256, green: 110 / 256, blue: 101 / 256, opacity: 1)
 }
 
-extension RailPrediction {
+extension RailPrediction: Identifiable {
 
-    var id: String {
+    public var id: String {
         return line.rawValue + destination + minutes
     }
 
