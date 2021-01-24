@@ -5,10 +5,13 @@
   },
   "layers" : [
     {
-      "filename" : "Front.imagestacklayer"
+      "filename" : "Station.imagestacklayer"
     },
     {
-      "filename" : "Middle.imagestacklayer"
+      "filename" : "RD.imagestacklayer"
+    },
+    {
+      "filename" : "GR YL.imagestacklayer"
     },
     {
       "filename" : "Back.imagestacklayer"
