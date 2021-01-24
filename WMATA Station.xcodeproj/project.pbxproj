@@ -651,7 +651,7 @@
 			repositoryURL = "https://github.com/emma-k-alexandra/WMATA.swift";
 			requirement = {
 				kind = exactVersion;
-				version = 8.3.2;
+				version = 8.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
