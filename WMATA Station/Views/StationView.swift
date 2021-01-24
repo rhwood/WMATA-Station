@@ -14,16 +14,18 @@ struct StationView: View {
     let trains: NextTrainsModel
 
     var body: some View {
-        VStack(alignment: .leading) {
-            let spacingUnit = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 1 / 3
-            HStack(spacing: spacingUnit) {
-                Text(station.name)
-                    .padding(.trailing, spacingUnit * 2)
-                Dots(lines: station.lines.sorted(by: WMATAUI.order(_:_:)))
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                let spacingUnit = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 1 / 3
+                HStack(spacing: spacingUnit) {
+                    Text(station.name)
+                        .padding(.trailing, spacingUnit * 2)
+                    Dots(lines: station.lines.sorted(by: WMATAUI.order(_:_:)))
+                }
+                .font(WMATAUI.font(.largeTitle).weight(.medium))
+                .padding()
+                NextTrainsView(station: station, trains: trains)
             }
-            .font(WMATAUI.font(.largeTitle).weight(.medium))
-            .padding()
-            NextTrainsView(station: station, trains: trains)
         }
     }
 }
