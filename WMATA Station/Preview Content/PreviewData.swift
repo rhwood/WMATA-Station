@@ -39,7 +39,7 @@ struct PreviewData {
                                                  location: .A01,
                                                  locationName: Station.A01.name,
                                                  minutes: "BRD"),
-                                  RailPrediction(car: "8",
+                                  RailPrediction(car: "6",
                                                  destination: "Wiehle",
                                                  destinationCode: .N06,
                                                  destinationName: Station.N06.name,

@@ -35,7 +35,12 @@ struct NextTrainsView: View {
             Text("Minutes")
             ForEach(trains.trains, id: \.id) { train in
                 Text(train.line.rawValue).roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
-                Text(train.car ?? "-")
+                let cars = Text(train.car ?? "-")
+                if train.car == "8" {
+                    cars
+                } else {
+                    cars.foregroundColor(.red)
+                }
                 Text(train.destinationName).frame(alignment: .leading)
                 Text(train.minutes).frame(alignment: .trailing)
             }
