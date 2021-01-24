@@ -82,7 +82,7 @@ struct StationSign: View {
 
     var body: some View {
         NavigationLink(
-            destination: StationView(station: station),
+            destination: StationView(station: station, trains: NextTrainsModel(stations: [station])),
             label: {
                 let footnoteSize = UIFont.preferredFont(forTextStyle: .footnote).pointSize
                 VStack(alignment: .leading, spacing: footnoteSize * 0.25) {

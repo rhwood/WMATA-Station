@@ -107,3 +107,11 @@ struct MetroStationColor {
     /// Metro Station Light Brown (Pantone Warm Gray 10 C)
     static let lightBrown = Color(.sRGB, red: 121 / 256, green: 110 / 256, blue: 101 / 256, opacity: 1)
 }
+
+extension RailPrediction {
+
+    var id: String {
+        return line.rawValue + destination + minutes
+    }
+
+}

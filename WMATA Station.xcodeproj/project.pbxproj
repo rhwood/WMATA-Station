@@ -11,12 +11,14 @@
 		4810E02625A5D7A3004B8866 /* WMATA in Frameworks */ = {isa = PBXBuildFile; productRef = 4810E02525A5D7A3004B8866 /* WMATA */; };
 		4828818825BC5902005B7994 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828818725BC5902005B7994 /* StationView.swift */; };
 		4828819025BC8D4E005B7994 /* StationsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828818F25BC8D4E005B7994 /* StationsUI.swift */; };
+		4828819B25BCBE2E005B7994 /* NextTrainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828819A25BCBE2E005B7994 /* NextTrainsView.swift */; };
 		482881A025BCBEF3005B7994 /* Roundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828819F25BCBEF3005B7994 /* Roundel.swift */; };
 		482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D96EA25AB2BA4001BACFE /* LinesStore.swift */; };
 		482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EE71D25ACB06200C351A4 /* View+Extension.swift */; };
 		483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483235B125A60A8900B30945 /* UIFont+Extension.swift */; };
 		4834947025A722BB00333EB1 /* WMATAUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4834946F25A722BB00333EB1 /* WMATAUI.swift */; };
 		48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7614725AFBF8700756E52 /* ApiKeys.swift */; };
+		48DA8BCD25BCFE5A00C9DE95 /* NextTrainsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8BCC25BCFE5A00C9DE95 /* NextTrainsModel.swift */; };
 		48FA4C6325A2ACF70050C027 /* WMATAStationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C6225A2ACF70050C027 /* WMATAStationApp.swift */; };
 		48FA4C6525A2ACF70050C027 /* LinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C6425A2ACF70050C027 /* LinesView.swift */; };
 		48FA4C6725A2ACFB0050C027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48FA4C6625A2ACFB0050C027 /* Assets.xcassets */; };
@@ -46,12 +48,14 @@
 		4810E01F25A5D671004B8866 /* LinesUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesUI.swift; sourceTree = "<group>"; };
 		4828818725BC5902005B7994 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		4828818F25BC8D4E005B7994 /* StationsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsUI.swift; sourceTree = "<group>"; };
+		4828819A25BCBE2E005B7994 /* NextTrainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTrainsView.swift; sourceTree = "<group>"; };
 		4828819F25BCBEF3005B7994 /* Roundel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundel.swift; sourceTree = "<group>"; };
 		482D96EA25AB2BA4001BACFE /* LinesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesStore.swift; sourceTree = "<group>"; };
 		482EE71D25ACB06200C351A4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		483235B125A60A8900B30945 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		4834946F25A722BB00333EB1 /* WMATAUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAUI.swift; sourceTree = "<group>"; };
 		48D7614725AFBF8700756E52 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
+		48DA8BCC25BCFE5A00C9DE95 /* NextTrainsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTrainsModel.swift; sourceTree = "<group>"; };
 		48FA4C5F25A2ACF70050C027 /* WMATA Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WMATA Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48FA4C6225A2ACF70050C027 /* WMATAStationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAStationApp.swift; sourceTree = "<group>"; };
 		48FA4C6425A2ACF70050C027 /* LinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesView.swift; sourceTree = "<group>"; };
@@ -106,10 +110,11 @@
 			isa = PBXGroup;
 			children = (
 				48FA4C6425A2ACF70050C027 /* LinesView.swift */,
+				4828818725BC5902005B7994 /* StationView.swift */,
+				4828819A25BCBE2E005B7994 /* NextTrainsView.swift */,
 				4828819F25BCBEF3005B7994 /* Roundel.swift */,
 				483235B125A60A8900B30945 /* UIFont+Extension.swift */,
 				482EE71D25ACB06200C351A4 /* View+Extension.swift */,
-				4828818725BC5902005B7994 /* StationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			children = (
 				482D96EA25AB2BA4001BACFE /* LinesStore.swift */,
 				48D7614725AFBF8700756E52 /* ApiKeys.swift */,
+				48DA8BCC25BCFE5A00C9DE95 /* NextTrainsModel.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -318,16 +324,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */,
-				4828818825BC5902005B7994 /* StationView.swift in Sources */,
 				4810E02025A5D671004B8866 /* LinesUI.swift in Sources */,
-				482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */,
 				4828819025BC8D4E005B7994 /* StationsUI.swift in Sources */,
-				48FA4C6525A2ACF70050C027 /* LinesView.swift in Sources */,
-				483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */,
 				4834947025A722BB00333EB1 /* WMATAUI.swift in Sources */,
+				483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */,
+				482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */,
 				48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */,
+				482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */,
 				482881A025BCBEF3005B7994 /* Roundel.swift in Sources */,
+				4828819B25BCBE2E005B7994 /* NextTrainsView.swift in Sources */,
+				4828818825BC5902005B7994 /* StationView.swift in Sources */,
+				48DA8BCD25BCFE5A00C9DE95 /* NextTrainsModel.swift in Sources */,
+				48FA4C6525A2ACF70050C027 /* LinesView.swift in Sources */,
 				48FA4C6325A2ACF70050C027 /* WMATAStationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
