@@ -47,8 +47,8 @@ struct Dots: View {
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            StationView(station: .A01, trains: NextTrainsModel(stations: [.A01], preview: PreviewData.railPredictions))
-            StationView(station: .E03, trains: NextTrainsModel(stations: [.E03], preview: PreviewData.railPredictions))
+            StationView(station: .A01, trains: NextTrainsModel(station: .A01, preview: PreviewData.railPredictions))
+            StationView(station: .E03, trains: NextTrainsModel(station: .E03, preview: PreviewData.railPredictions))
         }
     }
 }

@@ -11,12 +11,13 @@ import WMATA
 class NextTrainsModel: ObservableObject {
 
     @Published var trains: [RailPrediction] = []
-    let stations: [Station]
+    let station: Station
     private let interval: TimeInterval
     private var timer: Timer = Timer()
+    private let metroRail = MetroRail(key: ApiKeys.wmata)
 
-    init(stations: [Station], preview: [RailPrediction]? = nil) {
-        self.stations = stations
+    init(station: Station, preview: [RailPrediction]? = nil) {
+        self.station = station
         if preview == nil {
             interval = 15
         } else {
@@ -26,8 +27,8 @@ class NextTrainsModel: ObservableObject {
     }
 
     private func nextTrains() {
-        self.stations.first?.nextTrains(withApiKey: ApiKeys.wmata) { result in
-            print("requested nextTrains for \(String(describing: self.stations.first))")
+        metroRail.nextTrains(at: station.allTogether) { result in
+            print("requested nextTrains for \(String(describing: self.station.allTogether))")
             switch result {
             case .success(let railPreditions):
                 print("\(railPreditions)")
@@ -42,7 +43,7 @@ class NextTrainsModel: ObservableObject {
 
     func start() {
         if interval > 0 {
-            print("Starting nexttrain polling for \(String(describing: stations.first))")
+            print("Starting nexttrain polling for \(String(describing: station.allTogether))")
             nextTrains()
             timer.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
