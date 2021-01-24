@@ -22,11 +22,12 @@ struct NextTrainsView: View {
     }
 
     var body: some View {
+        let spacing = UIFont.preferredFont(forTextStyle: .headline).pointSize
         let columns = [
-            GridItem(.flexible(), alignment: .leading),
-            GridItem(.flexible(), alignment: .center),
-            GridItem(.flexible(), alignment: .leading),
-            GridItem(.flexible(), alignment: .trailing)
+            GridItem(spacing: spacing),
+            GridItem(spacing: spacing),
+            GridItem(spacing: spacing, alignment: .leading),
+            GridItem(alignment: .trailing)
         ]
         LazyVGrid(columns: columns) {
             Text("Line")
