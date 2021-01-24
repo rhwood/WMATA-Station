@@ -15,12 +15,6 @@ struct NextTrainsView: View {
     @State var roundelWidth: CGFloat = 0
     @State var roundelHeight: CGFloat = 0
 
-    init(station: Station, trains: NextTrainsModel) {
-        self.station = station
-        self.trains = trains
-        self.trains.start()
-    }
-
     var body: some View {
         let spacing = UIFont.preferredFont(forTextStyle: .headline).pointSize
         let columns = [
@@ -47,7 +41,14 @@ struct NextTrainsView: View {
                 Text(train.destinationName).frame(alignment: .leading)
                 Text(train.minutes).frame(alignment: .trailing)
             }
-        }.font(WMATAUI.font(.headline).bold())
+        }
+        .font(WMATAUI.font(.headline).bold())
+        .onAppear() {
+            trains.start()
+        }
+        .onDisappear() {
+            trains.stop()
+        }
     }
 }
 
