@@ -33,6 +33,15 @@ struct PreviewData {
     static var railPredictions: [RailPrediction] {
         var predictions: [RailPrediction] = []
         for idx in 0...9 {
+            var minutes = "\(idx)"
+            switch idx {
+            case 0:
+                minutes = "BRD"
+            case 1:
+                minutes = "ARR"
+            default:
+                break
+            }
             predictions[idx] = RailPrediction(car: idx == 3 ? "6" : "8",
                                               destination: "Wiehle",
                                               destinationCode: .N06,
@@ -41,7 +50,7 @@ struct PreviewData {
                                               line: .SV,
                                               location: .A01,
                                               locationName: Station.A01.name,
-                                              minutes: idx == 0 ? "BRD" : idx == 1 ? "ARR" : "\(idx)")
+                                              minutes: minutes)
         }
         return predictions
     }
