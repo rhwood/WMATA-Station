@@ -11,6 +11,7 @@ import WMATA
 struct LinesView: View {
 
     @State var roundelWidth: CGFloat = 0
+    @State var roundelHeight: CGFloat = 0
     @ObservedObject var lines: LinesStore
 
     var body: some View {
@@ -19,19 +20,21 @@ struct LinesView: View {
                 LazyVStack(alignment: .leading) {
                     LineView(line: nil,
                              view: AnyView(Image(systemName: "location")
-                                            .roundel(backgroundColor: WMATAUI.lightBrown,
-                                                     foregroundColor: .white,
-                                                     balanceWidth: $roundelWidth)),
+                                            .roundel(color: MetroStationColor.lightBrown,
+                                                     textColor: .white,
+                                                     width: $roundelWidth,
+                                                     height: $roundelHeight)),
                              stations: [.A01, .A02, .A03])
                     ForEach(WMATAUI.lines, id: \.rawValue) { line in
                         LineView(line: line,
                                  view: AnyView(Text(line.rawValue)
-                                                .roundel(backgroundColor: line.color,
-                                                         foregroundColor: line.textColor,
-                                                         balanceWidth: $roundelWidth)),
+                                                .roundel(line: line,
+                                                         width: $roundelWidth,
+                                                         height: $roundelHeight)),
                                  stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
                     }
                 }
+                .font(WMATAUI.font(.largeTitle).weight(.medium))
             }
         }
     }
@@ -54,22 +57,6 @@ struct LineView: View {
                 StationSigns(line: line, stations: stations)
             }
         }
-    }
-}
-
-struct Roundel: ViewModifier {
-
-    let backgroundColor: Color
-    let foregroundColor: Color
-    @Binding var balanceWidth: CGFloat
-
-    func body(content: Content) -> some View {
-        content
-            .font(WMATAUI.font(.title).weight(.medium))
-            .foregroundColor(foregroundColor)
-            .padding()
-            .background(Circle().foregroundColor(backgroundColor))
-            .balanceWidth(store: $balanceWidth)
     }
 }
 
@@ -106,20 +93,11 @@ struct StationSign: View {
                             $0.dot(style: .footnote)
                         }
                         Spacer()
-                        Image(systemName: "figure.walk")
+                        Image(systemName: "figure.walk").imageScale(.small)
                         Text("Time")
-                    }
+                    }.font(WMATAUI.font(.body))
                 }
             })
-    }
-}
-
-extension View {
-
-    func roundel(backgroundColor: Color, foregroundColor: Color, balanceWidth: Binding<CGFloat>) -> some View {
-        modifier(Roundel(backgroundColor: backgroundColor,
-                         foregroundColor: foregroundColor,
-                         balanceWidth: balanceWidth))
     }
 }
 

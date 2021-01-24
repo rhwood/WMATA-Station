@@ -9,6 +9,14 @@ import SwiftUI
 
 extension View {
 
+    func balance(width: Binding<CGFloat>, height: Binding<CGFloat>, alignment: Alignment = .center) -> some View {
+        modifier(BalancedGetter(width: width, height: height, alignment: alignment))
+    }
+
+    func balanceHeight(store height: Binding<CGFloat>, alignment: VerticalAlignment = .center) -> some View {
+        modifier(BalancedHeightGetter(height: height, alignment: alignment))
+    }
+
     func balanceWidth(store width: Binding<CGFloat>, alignment: HorizontalAlignment = .center) -> some View {
         modifier(BalancedWidthGetter(width: width, alignment: alignment))
     }
@@ -19,6 +27,56 @@ extension View {
         } else {
             self
         }
+    }
+}
+
+struct BalancedGetter: ViewModifier {
+    @Binding var width: CGFloat
+    @Binding var height: CGFloat
+    var alignment: Alignment
+    func body(content: Content) -> some View {
+        content
+            .background(
+                GeometryReader { geo in
+                    Color
+                        .clear
+                        .frame(maxHeight: .infinity)
+                        .onAppear {
+                            if geo.size.height > height {
+                                height = geo.size.height
+                            }
+                            if geo.size.width > width {
+                                width = geo.size.width
+                            }
+                        }
+                }
+            )
+            .if(height != .zero || width != .zero) {
+                $0.frame(width: width, height: height, alignment: alignment)
+            }
+    }
+}
+
+struct BalancedHeightGetter: ViewModifier {
+    @Binding var height: CGFloat
+    var alignment: VerticalAlignment
+    func body(content: Content) -> some View {
+        content
+            .background(
+                GeometryReader { geo in
+                    Color
+                        .clear
+                        .frame(maxHeight: .infinity)
+                        .onAppear {
+                            if geo.size.height > height {
+                                height = geo.size.height
+                            }
+                        }
+                }
+            )
+            .if(height != .zero) {
+                $0.frame(height: height, alignment: Alignment(horizontal: .center, vertical: alignment))
+            }
     }
 }
 
