@@ -45,37 +45,10 @@ struct Dots: View {
 }
 
 struct StationView_Previews: PreviewProvider {
-    static let data = [RailPrediction(car: "8",
-                                      destination: "Wiehle",
-                                      destinationCode: .N06,
-                                      destinationName: Station.N06.name,
-                                      group: "2",
-                                      line: .SV,
-                                      location: .A01,
-                                      locationName: Station.A01.name,
-                                      minutes: "BRD"),
-                       RailPrediction(car: "8",
-                                      destination: "Wiehle",
-                                      destinationCode: .N06,
-                                      destinationName: Station.N06.name,
-                                      group: "2",
-                                      line: .SV,
-                                      location: .A01,
-                                      locationName: Station.A01.name,
-                                      minutes: ""),
-                       RailPrediction(car: "8",
-                                      destination: "Wiehle",
-                                      destinationCode: .N06,
-                                      destinationName: Station.N06.name,
-                                      group: "2",
-                                      line: .SV,
-                                      location: .A01,
-                                      locationName: Station.A01.name,
-                                      minutes: "12")]
     static var previews: some View {
         Group {
-            StationView(station: .A01, trains: NextTrainsModel(stations: [.A01], preview: data))
-            StationView(station: .E03, trains: NextTrainsModel(stations: [.E03], preview: data))
+            StationView(station: .A01, trains: NextTrainsModel(stations: [.A01], preview: PreviewData.railPredictions))
+            StationView(station: .E03, trains: NextTrainsModel(stations: [.E03], preview: PreviewData.railPredictions))
         }
     }
 }

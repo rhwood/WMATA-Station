@@ -44,34 +44,7 @@ struct NextTrainsView: View {
 }
 
 struct NextTrains_Previews: PreviewProvider {
-    static let data = [RailPrediction(car: "8",
-                                      destination: "Wiehle",
-                                      destinationCode: .N06,
-                                      destinationName: Station.N06.name,
-                                      group: "2",
-                                      line: .SV,
-                                      location: .A01,
-                                      locationName: Station.A01.name,
-                                      minutes: "BRD"),
-                       RailPrediction(car: "8",
-                                      destination: "Wiehle",
-                                      destinationCode: .N06,
-                                      destinationName: Station.N06.name,
-                                      group: "2",
-                                      line: .SV,
-                                      location: .A01,
-                                      locationName: Station.A01.name,
-                                      minutes: ""),
-                       RailPrediction(car: "8",
-                                      destination: "Wiehle",
-                                      destinationCode: .N06,
-                                      destinationName: Station.N06.name,
-                                      group: "2",
-                                      line: .SV,
-                                      location: .A01,
-                                      locationName: Station.A01.name,
-                                      minutes: "12")]
     static var previews: some View {
-        NextTrainsView(station: .A01, trains: NextTrainsModel(stations: [.A01], preview: data))
+        NextTrainsView(station: .A01, trains: NextTrainsModel(stations: [.A01], preview: PreviewData.railPredictions))
     }
 }
