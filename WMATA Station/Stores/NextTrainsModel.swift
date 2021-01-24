@@ -28,15 +28,14 @@ class NextTrainsModel: ObservableObject {
 
     private func nextTrains() {
         metroRail.nextTrains(at: station.allTogether) { result in
-            print("requested nextTrains for \(String(describing: self.station.allTogether))")
             switch result {
             case .success(let railPreditions):
-                print("\(railPreditions)")
+                print("nextTrains for \(String(describing: self.station.allTogether)) are \(railPreditions)")
                 DispatchQueue.main.async {
                     self.trains = railPreditions.trains
                 }
             case .failure(let error):
-                print("\(error)")
+                print("\(error) requesting nextTrains for \(String(describing: self.station.allTogether))")
             }
         }
     }
