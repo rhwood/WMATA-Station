@@ -19,7 +19,8 @@ class NextTrainsModel: ObservableObject {
     init(station: Station, preview: [RailPrediction]? = nil) {
         self.station = station
         if preview == nil {
-            interval = 15
+            // 10 is smallest update interval from WMATA
+            interval = 10
         } else {
             interval = -1
             trains = preview!
