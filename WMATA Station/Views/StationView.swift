@@ -20,7 +20,7 @@ struct StationView: View {
                 TitleView(station: station, spacing: spacing)
                 .font(WMATAUI.font(.largeTitle).weight(.medium))
                 .padding()
-                PredictionsView(station: station, trains: trains)
+                MetroRailPredictionsView(station: station, trains: trains)
             }
         }
     }
@@ -40,7 +40,7 @@ struct TitleView: View {
     }
 }
 
-struct PredictionsView: View {
+struct MetroRailPredictionsView: View {
 
     var station: Station
     var trains: NextTrainsModel
