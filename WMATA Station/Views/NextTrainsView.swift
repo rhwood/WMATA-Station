@@ -14,21 +14,33 @@ struct NextTrainsView: View {
     @ObservedObject var trains: NextTrainsModel
     @State var roundelWidth: CGFloat = 0
     @State var roundelHeight: CGFloat = 0
-    @State var lineWidth: CGFloat = 0
-    @State var carsWidth: CGFloat = 0
-    @State var destWidth: CGFloat = 0
-    @State var minsWidth: CGFloat = 0
 
     var body: some View {
-        LazyVStack {
-            HStack {
-                Text("Line").balance(width: $lineWidth)
-                Text("Cars").balance(width: $carsWidth)
-                Text("Destination").balance(width: $destWidth, alignment: .leading)
-                Text("Minutes").balance(width: $minsWidth, alignment: .trailing)
-            }
+        let spacing = UIFont.preferredFont(forTextStyle: .headline).pointSize
+        let columns = [
+            GridItem(spacing: spacing),
+            GridItem(spacing: spacing),
+            GridItem(spacing: spacing, alignment: .leading),
+            GridItem(alignment: .trailing)
+        ]
+        LazyVGrid(columns: columns) {
+            Text("Line")
+            Text("Cars")
+            Text("Destination")
+            Text("Minutes")
             ForEach(trains.trains) { train in
-                trainView(train: train)
+                Text(train.line.rawValue)
+                    .font(WMATAUI.font(.subheadline).bold())
+                    .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
+                    .padding()
+                let cars = Text(train.car ?? "")
+                if train.car == "8" {
+                    cars
+                } else {
+                    cars.foregroundColor(.red)
+                }
+                Text(train.destinationName).frame(alignment: .leading)
+                Text(train.minutes).frame(alignment: .trailing)
             }
         }.font(WMATAUI.font(.headline).bold())
         .onAppear {
@@ -36,24 +48,6 @@ struct NextTrainsView: View {
         }
         .onDisappear {
             trains.stop()
-        }
-    }
-
-    func trainView(train: RailPrediction) -> some View {
-        HStack {
-            Text(train.line.rawValue)
-                .font(WMATAUI.font(.subheadline).bold())
-                .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
-                .padding()
-                .balance(width: $lineWidth)
-            let cars = Text(train.car ?? "").balance(width: $carsWidth)
-            if train.car == "8" {
-                cars
-            } else {
-                cars.foregroundColor(.red)
-            }
-            Text(train.destinationName).frame(alignment: .leading).balance(width: $destWidth, alignment: .leading)
-            Text(train.minutes).frame(alignment: .trailing).balance(width: $minsWidth, alignment: .trailing)
         }
     }
 }
