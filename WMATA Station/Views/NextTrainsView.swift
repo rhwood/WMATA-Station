@@ -14,35 +14,37 @@ struct NextTrainsView: View {
     @ObservedObject var trains: NextTrainsModel
     @State var roundelWidth: CGFloat = 0
     @State var roundelHeight: CGFloat = 0
+    @State var lineWidth: CGFloat = 0
+    @State var carsWidth: CGFloat = 0
+    @State var destWidth: CGFloat = 0
+    @State var minsWidth: CGFloat = 0
 
     var body: some View {
-        let spacing = UIFont.preferredFont(forTextStyle: .headline).pointSize
-        let columns = [
-            GridItem(spacing: spacing),
-            GridItem(spacing: spacing),
-            GridItem(spacing: spacing, alignment: .leading),
-            GridItem(alignment: .trailing)
-        ]
-        LazyVGrid(columns: columns) {
-            Text("Line")
-            Text("Cars")
-            Text("Destination")
-            Text("Minutes")
-            ForEach(trains.trains, id: \.id) { train in
-                Text(train.line.rawValue)
-                    .font(WMATAUI.font(.subheadline).bold())
-                    .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
-                let cars = Text(train.car ?? "")
-                if train.car == "8" {
-                    cars
-                } else {
-                    cars.foregroundColor(.red)
-                }
-                Text(train.destinationName).frame(alignment: .leading)
-                Text(train.minutes).frame(alignment: .trailing)
+        LazyVStack {
+            HStack {
+                Text("Line").balanceWidth(store: $lineWidth)
+                Text("Cars").balanceWidth(store: $carsWidth)
+                Text("Destination").balanceWidth(store: $destWidth, alignment: .leading)
+                Text("Minutes").balanceWidth(store: $minsWidth, alignment: .trailing)
             }
-        }
-        .font(WMATAUI.font(.headline).bold())
+            ForEach(trains.trains) { train in
+                HStack {
+                    Text(train.line.rawValue)
+                        .font(WMATAUI.font(.subheadline).bold())
+                        .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
+                        .padding()
+                        .balanceWidth(store: $lineWidth)
+                    let cars = Text(train.car ?? "").balanceWidth(store: $carsWidth)
+                    if train.car == "8" {
+                        cars
+                    } else {
+                        cars.foregroundColor(.red)
+                    }
+                    Text(train.destinationName).frame(alignment: .leading).balanceWidth(store: $destWidth, alignment: .leading)
+                    Text(train.minutes).frame(alignment: .trailing).balanceWidth(store: $minsWidth, alignment: .trailing)
+                }
+            }
+        }.font(WMATAUI.font(.headline).bold())
         .onAppear() {
             trains.start()
         }
