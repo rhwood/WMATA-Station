@@ -80,20 +80,23 @@ struct StationSign: View {
         NavigationLink(
             destination: StationView(station: station, trains: NextTrainsModel(station: station)),
             label: {
-                let footnoteSize = UIFont.preferredFont(forTextStyle: .footnote).pointSize
-                VStack(alignment: .leading, spacing: footnoteSize * 0.25) {
+                let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
+                VStack(alignment: .leading, spacing: spacing) {
                     Text(station.name)
                         .font(WMATAUI.font(.title3).weight(.medium))
-                    HStack(spacing: footnoteSize * 0.25) {
-                        ForEach(station.lines.sorted(by: WMATAUI.order(_:_:)), id: \.rawValue) {
-                            $0.dot(style: .footnote)
-                        }
-                        Spacer()
-                        Image(systemName: "figure.walk").imageScale(.small)
-                        Text("Time")
-                    }.font(WMATAUI.font(.body))
                 }
             })
+    }
+
+    func footer(spacing: CGFloat) -> some View {
+        HStack(spacing: spacing) {
+            ForEach(station.lines.sorted(by: WMATAUI.order(_:_:)), id: \.rawValue) {
+                $0.dot(style: .footnote)
+            }
+            Spacer()
+            Image(systemName: "figure.walk").imageScale(.small)
+            Text("Time")
+        }.font(WMATAUI.font(.body))
     }
 }
 
