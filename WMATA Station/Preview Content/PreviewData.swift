@@ -42,7 +42,7 @@ struct PreviewData {
             default:
                 break
             }
-            predictions[idx] = RailPrediction(car: idx == 3 ? "6" : "8",
+            predictions.append(RailPrediction(car: idx == 3 ? "6" : "8",
                                               destination: "Wiehle",
                                               destinationCode: .N06,
                                               destinationName: Station.N06.name,
@@ -50,7 +50,7 @@ struct PreviewData {
                                               line: .SV,
                                               location: .A01,
                                               locationName: Station.A01.name,
-                                              minutes: minutes)
+                                              minutes: minutes))
         }
         return predictions
     }
