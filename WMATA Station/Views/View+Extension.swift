@@ -13,11 +13,11 @@ extension View {
         modifier(BalancedGetter(width: width, height: height, alignment: alignment))
     }
 
-    func balanceHeight(store height: Binding<CGFloat>, alignment: VerticalAlignment = .center) -> some View {
+    func balance(height: Binding<CGFloat>, alignment: VerticalAlignment = .center) -> some View {
         modifier(BalancedHeightGetter(height: height, alignment: alignment))
     }
 
-    func balanceWidth(store width: Binding<CGFloat>, alignment: HorizontalAlignment = .center) -> some View {
+    func balance(width: Binding<CGFloat>, alignment: HorizontalAlignment = .center) -> some View {
         modifier(BalancedWidthGetter(width: width, alignment: alignment))
     }
 

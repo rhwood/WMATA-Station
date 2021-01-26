@@ -22,10 +22,10 @@ struct NextTrainsView: View {
     var body: some View {
         LazyVStack {
             HStack {
-                Text("Line").balanceWidth(store: $lineWidth)
-                Text("Cars").balanceWidth(store: $carsWidth)
-                Text("Destination").balanceWidth(store: $destWidth, alignment: .leading)
-                Text("Minutes").balanceWidth(store: $minsWidth, alignment: .trailing)
+                Text("Line").balance(width: $lineWidth)
+                Text("Cars").balance(width: $carsWidth)
+                Text("Destination").balance(width: $destWidth, alignment: .leading)
+                Text("Minutes").balance(width: $minsWidth, alignment: .trailing)
             }
             ForEach(trains.trains) { train in
                 HStack {
@@ -33,15 +33,15 @@ struct NextTrainsView: View {
                         .font(WMATAUI.font(.subheadline).bold())
                         .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
                         .padding()
-                        .balanceWidth(store: $lineWidth)
-                    let cars = Text(train.car ?? "").balanceWidth(store: $carsWidth)
+                        .balance(width: $lineWidth)
+                    let cars = Text(train.car ?? "").balance(width: $carsWidth)
                     if train.car == "8" {
                         cars
                     } else {
                         cars.foregroundColor(.red)
                     }
-                    Text(train.destinationName).frame(alignment: .leading).balanceWidth(store: $destWidth, alignment: .leading)
-                    Text(train.minutes).frame(alignment: .trailing).balanceWidth(store: $minsWidth, alignment: .trailing)
+                    Text(train.destinationName).frame(alignment: .leading).balance(width: $destWidth, alignment: .leading)
+                    Text(train.minutes).frame(alignment: .trailing).balance(width: $minsWidth, alignment: .trailing)
                 }
             }
         }.font(WMATAUI.font(.headline).bold())
