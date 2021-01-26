@@ -28,28 +28,32 @@ struct NextTrainsView: View {
                 Text("Minutes").balance(width: $minsWidth, alignment: .trailing)
             }
             ForEach(trains.trains) { train in
-                HStack {
-                    Text(train.line.rawValue)
-                        .font(WMATAUI.font(.subheadline).bold())
-                        .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
-                        .padding()
-                        .balance(width: $lineWidth)
-                    let cars = Text(train.car ?? "").balance(width: $carsWidth)
-                    if train.car == "8" {
-                        cars
-                    } else {
-                        cars.foregroundColor(.red)
-                    }
-                    Text(train.destinationName).frame(alignment: .leading).balance(width: $destWidth, alignment: .leading)
-                    Text(train.minutes).frame(alignment: .trailing).balance(width: $minsWidth, alignment: .trailing)
-                }
+                trainView(train: train)
             }
         }.font(WMATAUI.font(.headline).bold())
-        .onAppear() {
+        .onAppear {
             trains.start()
         }
-        .onDisappear() {
+        .onDisappear {
             trains.stop()
+        }
+    }
+
+    func trainView(train: RailPrediction) -> some View {
+        HStack {
+            Text(train.line.rawValue)
+                .font(WMATAUI.font(.subheadline).bold())
+                .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
+                .padding()
+                .balance(width: $lineWidth)
+            let cars = Text(train.car ?? "").balance(width: $carsWidth)
+            if train.car == "8" {
+                cars
+            } else {
+                cars.foregroundColor(.red)
+            }
+            Text(train.destinationName).frame(alignment: .leading).balance(width: $destWidth, alignment: .leading)
+            Text(train.minutes).frame(alignment: .trailing).balance(width: $minsWidth, alignment: .trailing)
         }
     }
 }
