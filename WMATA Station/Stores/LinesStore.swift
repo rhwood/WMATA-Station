@@ -7,6 +7,7 @@
 
 import Foundation
 import WMATA
+import WMATAUI
 
 class LinesStore: ObservableObject {
 

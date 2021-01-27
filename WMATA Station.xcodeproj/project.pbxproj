@@ -7,16 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4810E02025A5D671004B8866 /* LinesUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4810E01F25A5D671004B8866 /* LinesUI.swift */; };
 		4810E02625A5D7A3004B8866 /* WMATA in Frameworks */ = {isa = PBXBuildFile; productRef = 4810E02525A5D7A3004B8866 /* WMATA */; };
 		4828818825BC5902005B7994 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828818725BC5902005B7994 /* StationView.swift */; };
-		4828819025BC8D4E005B7994 /* StationsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828818F25BC8D4E005B7994 /* StationsUI.swift */; };
 		4828819B25BCBE2E005B7994 /* NextTrainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828819A25BCBE2E005B7994 /* NextTrainsView.swift */; };
 		482881A025BCBEF3005B7994 /* Roundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828819F25BCBEF3005B7994 /* Roundel.swift */; };
 		482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D96EA25AB2BA4001BACFE /* LinesStore.swift */; };
 		482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EE71D25ACB06200C351A4 /* View+Extension.swift */; };
-		483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483235B125A60A8900B30945 /* UIFont+Extension.swift */; };
-		4834947025A722BB00333EB1 /* WMATAUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4834946F25A722BB00333EB1 /* WMATAUI.swift */; };
+		484417E225C1829600A7752D /* WMATAUI in Frameworks */ = {isa = PBXBuildFile; productRef = 484417E125C1829600A7752D /* WMATAUI */; };
 		4871567925BDEB30006ACCD6 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4871567825BDEB30006ACCD6 /* PreviewData.swift */; };
 		48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7614725AFBF8700756E52 /* ApiKeys.swift */; };
 		48DA8BCD25BCFE5A00C9DE95 /* NextTrainsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8BCC25BCFE5A00C9DE95 /* NextTrainsModel.swift */; };
@@ -46,16 +43,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4810E01F25A5D671004B8866 /* LinesUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesUI.swift; sourceTree = "<group>"; };
 		4828818725BC5902005B7994 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
-		4828818F25BC8D4E005B7994 /* StationsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsUI.swift; sourceTree = "<group>"; };
 		4828819A25BCBE2E005B7994 /* NextTrainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTrainsView.swift; sourceTree = "<group>"; };
 		4828819F25BCBEF3005B7994 /* Roundel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundel.swift; sourceTree = "<group>"; };
 		482D96EA25AB2BA4001BACFE /* LinesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesStore.swift; sourceTree = "<group>"; };
 		482EE71D25ACB06200C351A4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
-		483235B125A60A8900B30945 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		4834946F25A722BB00333EB1 /* WMATAUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAUI.swift; sourceTree = "<group>"; };
 		4871567825BDEB30006ACCD6 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		48C1ACE825C1807B008F4464 /* WMATAUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WMATAUI; sourceTree = SOURCE_ROOT; };
 		48D7614725AFBF8700756E52 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		48DA8BCC25BCFE5A00C9DE95 /* NextTrainsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTrainsModel.swift; sourceTree = "<group>"; };
 		48FA4C5F25A2ACF70050C027 /* WMATA Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WMATA Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4810E02625A5D7A3004B8866 /* WMATA in Frameworks */,
+				484417E225C1829600A7752D /* WMATAUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,14 +93,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		484417E025C1829600A7752D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		48D7613525AFBC1A00756E52 /* WMATAUI */ = {
 			isa = PBXGroup;
 			children = (
-				4810E01F25A5D671004B8866 /* LinesUI.swift */,
-				4834946F25A722BB00333EB1 /* WMATAUI.swift */,
-				4828818F25BC8D4E005B7994 /* StationsUI.swift */,
+				48C1ACE825C1807B008F4464 /* WMATAUI */,
 			);
-			path = WMATAUI;
+			name = WMATAUI;
+			path = "WMATA Station/WMATAUI";
 			sourceTree = "<group>";
 		};
 		48D7613625AFBC5500756E52 /* Views */ = {
@@ -115,7 +116,6 @@
 				4828818725BC5902005B7994 /* StationView.swift */,
 				4828819A25BCBE2E005B7994 /* NextTrainsView.swift */,
 				4828819F25BCBEF3005B7994 /* Roundel.swift */,
-				483235B125A60A8900B30945 /* UIFont+Extension.swift */,
 				482EE71D25ACB06200C351A4 /* View+Extension.swift */,
 			);
 			path = Views;
@@ -135,9 +135,11 @@
 			isa = PBXGroup;
 			children = (
 				48FA4C6125A2ACF70050C027 /* WMATA Station */,
+				48D7613525AFBC1A00756E52 /* WMATAUI */,
 				48FA4C7325A2ACFB0050C027 /* WMATA StationTests */,
 				48FA4C7E25A2ACFB0050C027 /* WMATA StationUITests */,
 				48FA4C6025A2ACF70050C027 /* Products */,
+				484417E025C1829600A7752D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,7 +158,6 @@
 			children = (
 				48D7613725AFBC9B00756E52 /* Stores */,
 				48D7613625AFBC5500756E52 /* Views */,
-				48D7613525AFBC1A00756E52 /* WMATAUI */,
 				48FA4C6225A2ACF70050C027 /* WMATAStationApp.swift */,
 				48FA4C6625A2ACFB0050C027 /* Assets.xcassets */,
 				48FA4C6B25A2ACFB0050C027 /* Info.plist */,
@@ -210,6 +211,7 @@
 			name = "WMATA Station";
 			packageProductDependencies = (
 				4810E02525A5D7A3004B8866 /* WMATA */,
+				484417E125C1829600A7752D /* WMATAUI */,
 			);
 			productName = "WMATA Station";
 			productReference = 48FA4C5F25A2ACF70050C027 /* WMATA Station.app */;
@@ -327,10 +329,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4810E02025A5D671004B8866 /* LinesUI.swift in Sources */,
-				4828819025BC8D4E005B7994 /* StationsUI.swift in Sources */,
-				4834947025A722BB00333EB1 /* WMATAUI.swift in Sources */,
-				483235B225A60A8900B30945 /* UIFont+Extension.swift in Sources */,
 				4871567925BDEB30006ACCD6 /* PreviewData.swift in Sources */,
 				482EE71E25ACB06200C351A4 /* View+Extension.swift in Sources */,
 				48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */,
@@ -677,6 +675,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4810E02425A5D7A3004B8866 /* XCRemoteSwiftPackageReference "WMATA" */;
 			productName = WMATA;
+		};
+		484417E125C1829600A7752D /* WMATAUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WMATAUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
