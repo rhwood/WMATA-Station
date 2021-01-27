@@ -84,6 +84,7 @@ struct StationSign: View {
                 VStack(alignment: .leading, spacing: spacing) {
                     Text(station.name)
                         .font(WMATAUI.font(.title3).weight(.medium))
+                    footer(spacing: spacing)
                 }
             })
     }
