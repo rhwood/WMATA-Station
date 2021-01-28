@@ -107,8 +107,7 @@
 			children = (
 				48C1ACE825C1807B008F4464 /* WMATAUI */,
 			);
-			name = WMATAUI;
-			path = "WMATA Station/WMATAUI";
+			path = WMATAUI;
 			sourceTree = "<group>";
 		};
 		48D7613625AFBC5500756E52 /* Views */ = {
