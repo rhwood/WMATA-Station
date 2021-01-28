@@ -11,6 +11,7 @@ import WMATA
 public extension Line {
 
     /// The line color.
+    @available(OSX 10.15, *)
     var color: Color {
         switch self {
         case .RD:
@@ -30,6 +31,7 @@ public extension Line {
 
     /// The text color (white or black) that contrasts with the line color.
     /// These colors match the colors used by WMATA on their public maps.
+    @available(OSX 10.15, *)
     var textColor: Color {
         switch self {
         case .RD, .BL, .GR:
@@ -45,6 +47,7 @@ public extension Line {
     /// - Parameter factor: Optional factor to multiply the point size of the style by, defaults to 0.9.
     ///
     /// - Returns: A circle in in the color of this line sized to match the text style.
+    @available(OSX 10.15.0, *)
     func dot(style: UIFont.TextStyle, factor: CGFloat = 0.9) -> some View {
         let size = UIFont.preferredFont(forTextStyle: style).pointSize * factor
         return Circle()
