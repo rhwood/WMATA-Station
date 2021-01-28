@@ -14,7 +14,7 @@ let package = Package(
     products: [
         .library(
             name: "WMATAUI",
-            targets: ["WMATAUI"]),
+            targets: ["WMATAUI"])
     ],
     dependencies: [
         .package(name: "WMATA", url: "https://github.com/emma-k-alexandra/WMATA.swift", from: "8.4.0")
@@ -25,6 +25,6 @@ let package = Package(
             dependencies: ["WMATA"]),
         .testTarget(
             name: "WMATAUITests",
-            dependencies: ["WMATAUI"]),
+            dependencies: ["WMATAUI"])
     ]
 )
