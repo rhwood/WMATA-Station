@@ -36,7 +36,7 @@ struct TitleView: View {
         HStack(spacing: spacing) {
             Text(station.name)
                 .padding(.trailing, spacing * 2)
-            Dots(lines: station.lines.sorted(by: WMATAUI.order(_:_:)))
+            Dots(lines: station.lines.sorted(by: WMATAUI.mapOrder(_:_:)))
         }
     }
 }

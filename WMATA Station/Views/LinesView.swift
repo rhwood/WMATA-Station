@@ -73,7 +73,7 @@ struct LinesView: View {
 
     func footer(station: Station, spacing: CGFloat) -> some View {
         HStack(spacing: spacing) {
-            ForEach(station.lines.sorted(by: WMATAUI.order(_:_:)), id: \.rawValue) {
+            ForEach(station.lines.sorted(by: WMATAUI.mapOrder(_:_:)), id: \.rawValue) {
                 $0.dot(style: .footnote)
             }
             Spacer()
