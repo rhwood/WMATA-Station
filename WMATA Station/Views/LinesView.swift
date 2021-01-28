@@ -19,7 +19,7 @@ struct LinesView: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: true) {
                 LazyVStack(alignment: .leading) {
-                    LineView(line: nil,
+                    lineView(line: nil,
                              view: AnyView(Image(systemName: "location")
                                             .roundel(color: MetroStationColor.lightBrown,
                                                      textColor: .white,
@@ -27,7 +27,7 @@ struct LinesView: View {
                                                      height: $roundelHeight)),
                              stations: [.A01, .A02, .A03])
                     ForEach(WMATAUI.lines, id: \.rawValue) { line in
-                        LineView(line: line,
+                        lineView(line: line,
                                  view: AnyView(Text(line.rawValue)
                                                 .roundel(line: line,
                                                          width: $roundelWidth,
@@ -39,45 +39,26 @@ struct LinesView: View {
             }
         }
     }
-}
 
-struct LineView: View {
-
-    var line: Line?
-    var view: AnyView
-    var stations: [Station]
-
-    var body: some View {
+    func lineView(line: Line?, view: AnyView, stations: [Station]) -> some View {
         HStack(alignment: .center) {
             view
             ScrollView(.horizontal, showsIndicators: true) {
-                StationSigns(line: line, stations: stations)
+                stationSigns(line: line, stations: stations)
             }
         }
     }
-}
 
-struct StationSigns: View {
-
-    var line: Line?
-    var stations: [Station]
-
-    var body: some View {
+    func stationSigns(line: Line?, stations: [Station]) -> some View {
         LazyHStack {
             ForEach(stations, id: \.rawValue) {
-                StationSign(line: line, station: $0)
+                stationSign(line: line, station: $0)
             }
         }
         .padding()
     }
-}
 
-struct StationSign: View {
-
-    var line: Line?
-    var station: Station
-
-    var body: some View {
+    func stationSign(line: Line?, station: Station) -> some View {
         NavigationLink(
             destination: StationView(station: station, trains: NextTrainsModel(station: station)),
             label: {
@@ -85,12 +66,12 @@ struct StationSign: View {
                 VStack(alignment: .leading, spacing: spacing) {
                     Text(station.name)
                         .font(WMATAUI.font(.title3).weight(.medium))
-                    footer(spacing: spacing)
+                    footer(station: station, spacing: spacing)
                 }
             })
     }
 
-    func footer(spacing: CGFloat) -> some View {
+    func footer(station: Station, spacing: CGFloat) -> some View {
         HStack(spacing: spacing) {
             ForEach(station.lines.sorted(by: WMATAUI.order(_:_:)), id: \.rawValue) {
                 $0.dot(style: .footnote)
