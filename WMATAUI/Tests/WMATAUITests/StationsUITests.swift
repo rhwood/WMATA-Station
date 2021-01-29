@@ -15,4 +15,3 @@ final class StationsUITests: XCTestCase {
         ("testConnections", testConnections)
     ]
 }
-

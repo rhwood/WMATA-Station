@@ -30,4 +30,3 @@ final class LinesUITests: XCTestCase {
         ("testTextColor", testTextColor)
     ]
 }
-
