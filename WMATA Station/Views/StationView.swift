@@ -11,17 +11,17 @@ import WMATAUI
 
 struct StationView: View {
 
-    let station: Station
+    let station: StationInformation
     let trains: MetroNextTrainsModel
 
     var body: some View {
         GeometryReader { _ in
             VStack(alignment: .leading) {
                 let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 1 / 3
-                TitleView(station: station, spacing: spacing)
+                TitleView(station: station.station, spacing: spacing)
                 .font(WMATAUI.font(.largeTitle).weight(.medium))
                 .padding()
-                MetroRailPredictionsView(station: station, trains: trains)
+                MetroRailPredictionsView(station: station.station, trains: trains)
             }
         }
     }
@@ -72,10 +72,12 @@ struct Dots: View {
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            StationView(station: .A01,
-                        trains: MetroNextTrainsModel(station: .A01, preview: PreviewData.preview.railPredictions))
-            StationView(station: .E03,
-                        trains: MetroNextTrainsModel(station: .E03, preview: PreviewData.preview.railPredictions))
+            StationView(station: PreviewData.preview.stationInformations[.A01]!,
+                        trains: MetroNextTrainsModel(station: PreviewData.preview.stationInformations[.A01]!,
+                                                     preview: PreviewData.preview.railPredictions))
+            StationView(station: PreviewData.preview.stationInformations[.E03]!,
+                        trains: MetroNextTrainsModel(station: PreviewData.preview.stationInformations[.E03]!,
+                                                     preview: PreviewData.preview.railPredictions))
         }
     }
 }

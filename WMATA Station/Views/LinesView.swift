@@ -50,7 +50,7 @@ struct LinesView: View {
     }
 
     func stationSigns(line: Line?, stations: [Station]) -> some View {
-        LazyHStack {
+        LazyHStack(alignment: .top) {
             ForEach(stations, id: \.rawValue) {
                 stationSign(line: line, station: $0)
             }
@@ -62,20 +62,19 @@ struct LinesView: View {
         let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
         if let info = lines.stationInformations[station] {
             return AnyView(NavigationLink(
-                destination: StationView(station: station, trains: MetroNextTrainsModel(station: station)),
-                label: {
-                    VStack(alignment: .leading, spacing: spacing) {
-                        Text(station.name)
-                            .font(WMATAUI.font(.title3).weight(.medium))
-                        footer(station: station, spacing: spacing)
-                    }
-                }))
+                            destination: StationView(station: info, trains: MetroNextTrainsModel(station: info)),
+                            label: {
+                                VStack(alignment: .leading, spacing: spacing) {
+                                    Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
+                                    footer(station: station, spacing: spacing)
+                                }
+                            }))
         } else {
-            return AnyView(VStack(alignment: .leading, spacing: spacing) {
-                Text(station.name)
-                    .font(WMATAUI.font(.title3).weight(.medium))
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
-            })
+            return AnyView(Button(
+                            action: {},
+                            label: {
+                                Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
+                            }))
         }
     }
 

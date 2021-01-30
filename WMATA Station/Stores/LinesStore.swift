@@ -13,6 +13,7 @@ class LinesStore: ObservableObject {
 
     @Published var stations: [Line: [Station]] = [:]
     @Published var stationInformations: [Station: StationInformation] = [:]
+    @Published var walkingTimes: [Station: Float] = [:]
 
     init(preview: Bool = false) {
         for line in WMATAUI.lines {

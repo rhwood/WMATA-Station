@@ -56,6 +56,7 @@ struct NextTrainsView: View {
 struct NextTrains_Previews: PreviewProvider {
     static var previews: some View {
         NextTrainsView(station: .A01,
-                       trains: MetroNextTrainsModel(station: .A01, preview: PreviewData.preview.railPredictions))
+                       trains: MetroNextTrainsModel(station: PreviewData.preview.stationInformations[.A01]!,
+                                                    preview: PreviewData.preview.railPredictions))
     }
 }
