@@ -31,22 +31,7 @@ class MetroNextBusesModel: ObservableObject {
 
     private func nextBuses() {
         if stops.isEmpty {
-            let radius = RadiusAtCoordinates(radius: 500, latitude: station.latitude, longitude: station.longitude)
-            metroBus.searchStops(at: radius) { [self] result in
-                switch result {
-                case .success(let stopsResult):
-                    print("searchStops for \(station.latitude):\(station.longitude) are \(stopsResult)")
-                    DispatchQueue.main.async {
-                        for stop in stopsResult.stops {
-                            if let stop = stop.stop {
-                                stops.append(stop)
-                            }
-                        }
-                    }
-                case .failure(let error):
-                    print("\(error) requesting searchStops for \(station.latitude):\(station.longitude)")
-                }
-            }
+            getStops()
         } else {
             for stop in stops {
                 metroBus.nextBuses(for: stop) { [self] result in
@@ -61,6 +46,25 @@ class MetroNextBusesModel: ObservableObject {
                         print("\(error) requesting predictions for \(stop.id)")
                     }
                 }
+            }
+        }
+    }
+
+    private func getStops() {
+        let radius = RadiusAtCoordinates(radius: 500, latitude: station.latitude, longitude: station.longitude)
+        metroBus.searchStops(at: radius) { [self] result in
+            switch result {
+            case .success(let stopsResult):
+                print("searchStops for \(station.latitude):\(station.longitude) are \(stopsResult)")
+                DispatchQueue.main.async {
+                    for stop in stopsResult.stops {
+                        if let stop = stop.stop {
+                            stops.append(stop)
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("\(error) requesting searchStops for \(station.latitude):\(station.longitude)")
             }
         }
     }
