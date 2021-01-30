@@ -119,5 +119,11 @@ extension RailPrediction: Identifiable {
     public var id: String {
         return line.rawValue + group + destination + minutes
     }
+}
 
+extension BusPrediction: Identifiable {
+
+    public var id: String {
+        return route.rawValue + tripId + vehicleId + minutes.description
+    }
 }

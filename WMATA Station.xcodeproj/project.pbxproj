@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		480E32CC25C42CB50009F827 /* MetroNextBusesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480E32CB25C42CB50009F827 /* MetroNextBusesModel.swift */; };
 		480E32E825C58B4F0009F827 /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480E32E725C58B4F0009F827 /* StationModel.swift */; };
-		4810E02625A5D7A3004B8866 /* WMATA in Frameworks */ = {isa = PBXBuildFile; productRef = 4810E02525A5D7A3004B8866 /* WMATA */; };
 		4828818825BC5902005B7994 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828818725BC5902005B7994 /* StationView.swift */; };
 		4828819B25BCBE2E005B7994 /* NextTrainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828819A25BCBE2E005B7994 /* NextTrainsView.swift */; };
 		482881A025BCBEF3005B7994 /* Roundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828819F25BCBEF3005B7994 /* Roundel.swift */; };
@@ -17,6 +16,8 @@
 		482EE71E25ACB06200C351A4 /* View+Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EE71D25ACB06200C351A4 /* View+Balance.swift */; };
 		484417E225C1829600A7752D /* WMATAUI in Frameworks */ = {isa = PBXBuildFile; productRef = 484417E125C1829600A7752D /* WMATAUI */; };
 		4871567925BDEB30006ACCD6 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4871567825BDEB30006ACCD6 /* PreviewData.swift */; };
+		487CE5A625C5DCC10013C2B6 /* NextBusesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487CE5A525C5DCC10013C2B6 /* NextBusesView.swift */; };
+		487CE5B225C5FC410013C2B6 /* WMATA in Frameworks */ = {isa = PBXBuildFile; productRef = 487CE5B125C5FC410013C2B6 /* WMATA */; };
 		48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7614725AFBF8700756E52 /* ApiKeys.swift */; };
 		48DA8BCD25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */; };
 		48FA4C6325A2ACF70050C027 /* WMATAStationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FA4C6225A2ACF70050C027 /* WMATAStationApp.swift */; };
@@ -53,6 +54,7 @@
 		482D96EA25AB2BA4001BACFE /* LinesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesStore.swift; sourceTree = "<group>"; };
 		482EE71D25ACB06200C351A4 /* View+Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Balance.swift"; sourceTree = "<group>"; };
 		4871567825BDEB30006ACCD6 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		487CE5A525C5DCC10013C2B6 /* NextBusesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextBusesView.swift; sourceTree = "<group>"; };
 		48C1ACE825C1807B008F4464 /* WMATAUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WMATAUI; sourceTree = SOURCE_ROOT; };
 		48D7614725AFBF8700756E52 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroNextTrainsModel.swift; sourceTree = "<group>"; };
@@ -75,8 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4810E02625A5D7A3004B8866 /* WMATA in Frameworks */,
 				484417E225C1829600A7752D /* WMATAUI in Frameworks */,
+				487CE5B225C5FC410013C2B6 /* WMATA in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +117,7 @@
 		48D7613625AFBC5500756E52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				487CE5A525C5DCC10013C2B6 /* NextBusesView.swift */,
 				48FA4C6425A2ACF70050C027 /* LinesView.swift */,
 				4828818725BC5902005B7994 /* StationView.swift */,
 				4828819A25BCBE2E005B7994 /* NextTrainsView.swift */,
@@ -215,8 +218,8 @@
 			);
 			name = "WMATA Station";
 			packageProductDependencies = (
-				4810E02525A5D7A3004B8866 /* WMATA */,
 				484417E125C1829600A7752D /* WMATAUI */,
+				487CE5B125C5FC410013C2B6 /* WMATA */,
 			);
 			productName = "WMATA Station";
 			productReference = 48FA4C5F25A2ACF70050C027 /* WMATA Station.app */;
@@ -290,7 +293,7 @@
 			);
 			mainGroup = 48FA4C5625A2ACF70050C027;
 			packageReferences = (
-				4810E02425A5D7A3004B8866 /* XCRemoteSwiftPackageReference "WMATA" */,
+				487CE5B025C5FC410013C2B6 /* XCRemoteSwiftPackageReference "WMATA" */,
 			);
 			productRefGroup = 48FA4C6025A2ACF70050C027 /* Products */;
 			projectDirPath = "";
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487CE5A625C5DCC10013C2B6 /* NextBusesView.swift in Sources */,
 				4871567925BDEB30006ACCD6 /* PreviewData.swift in Sources */,
 				482EE71E25ACB06200C351A4 /* View+Balance.swift in Sources */,
 				48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */,
@@ -667,25 +671,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4810E02425A5D7A3004B8866 /* XCRemoteSwiftPackageReference "WMATA" */ = {
+		487CE5B025C5FC410013C2B6 /* XCRemoteSwiftPackageReference "WMATA" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/emma-k-alexandra/WMATA.swift";
 			requirement = {
-				kind = exactVersion;
-				version = 8.4.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.4.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4810E02525A5D7A3004B8866 /* WMATA */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4810E02425A5D7A3004B8866 /* XCRemoteSwiftPackageReference "WMATA" */;
-			productName = WMATA;
-		};
 		484417E125C1829600A7752D /* WMATAUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WMATAUI;
+		};
+		487CE5B125C5FC410013C2B6 /* WMATA */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 487CE5B025C5FC410013C2B6 /* XCRemoteSwiftPackageReference "WMATA" */;
+			productName = WMATA;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -62,7 +62,7 @@ struct LinesView: View {
         let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
         if let info = lines.stationInformations[station] {
             return AnyView(NavigationLink(
-                            destination: StationView(station: info, trains: MetroNextTrainsModel(station: info)),
+                            destination: StationView(station: StationModel(info)),
                             label: {
                                 VStack(alignment: .leading, spacing: spacing) {
                                     Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
@@ -71,7 +71,7 @@ struct LinesView: View {
                             }))
         } else {
             return AnyView(Button(
-                            action: {},
+                            action: { /* only shown when navigation link cannot be created, so no action */ },
                             label: {
                                 Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
                             }))

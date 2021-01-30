@@ -33,6 +33,15 @@ struct PreviewData {
                                  name: "Farragut West",
                                  firstStationTogether: nil, secondStationTogether: nil)
     ]
+    let stationModels: [Station: StationModel]
+
+    init() {
+        stationModels = [
+            .A01: StationModel(stationInformations[.A01]!),
+            .B02: StationModel(stationInformations[.B02]!),
+            .C03: StationModel(stationInformations[.C03]!)
+        ]
+    }
 
     var railPredictions: [RailPrediction] {
         var predictions: [RailPrediction] = []

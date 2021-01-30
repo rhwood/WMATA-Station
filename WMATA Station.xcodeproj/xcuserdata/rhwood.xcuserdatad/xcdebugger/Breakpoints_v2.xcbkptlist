@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B2BD806C-C926-41AB-AA30-C2E1A7EA5A2A"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F2E97B3-05AD-4E7C-A2C8-9F494CA0976F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WMATA Station/Stores/MetroNextBusesModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "nextBuses()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1F2E97B3-05AD-4E7C-A2C8-9F494CA0976F - 1a01b4ab7d882ff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WMATA_Station.MetroNextBusesModel.(nextBuses in _597495D45220527C0839A7F717C7502C)() -&gt; ()"
+                  moduleName = "WMATA Station"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rhwood/Developer/GitHub/WMATA%20Station/WMATA%20Station/Stores/MetroNextBusesModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "518">
+               </Location>
+               <Location
+                  uuid = "1F2E97B3-05AD-4E7C-A2C8-9F494CA0976F - 1a01b4ab7d882ff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WMATA_Station.MetroNextBusesModel.(nextBuses in _597495D45220527C0839A7F717C7502C)() -&gt; ()"
+                  moduleName = "WMATA Station"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rhwood/Developer/GitHub/WMATA%20Station/WMATA%20Station/Stores/MetroNextBusesModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "606">
+               </Location>
+               <Location
+                  uuid = "1F2E97B3-05AD-4E7C-A2C8-9F494CA0976F - 989f5cf99beaf7d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;WMATA.StopsSearchResponse, WMATA.WMATAError&gt;) -&gt; () in WMATA_Station.MetroNextBusesModel.(nextBuses in _597495D45220527C0839A7F717C7502C)() -&gt; ()"
+                  moduleName = "WMATA Station"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rhwood/Developer/GitHub/WMATA%20Station/WMATA%20Station/Stores/MetroNextBusesModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "362">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "873E550B-6AC1-460B-B80A-779BA9C67945"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/WMATA_Station-hfofaafjtmkwprauyralrtjlrrjs/SourcePackages/checkouts/WMATA.swift/Sources/WMATA/Requests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "request(with:andSession:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B68B9453-8009-4938-9EC5-2B776A6CDBEC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/WMATA_Station-hfofaafjtmkwprauyralrtjlrrjs/SourcePackages/checkouts/WMATA.swift/Sources/WMATA/Requests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "fetch(with:andSession:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B68B9453-8009-4938-9EC5-2B776A6CDBEC - 5b50fe1796e6430e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, WMATA.WMATAError&gt;) -&gt; () in (extension in WMATA):WMATA.Fetcher.fetch&lt;A where A1: Swift.Decodable, A1: Swift.Encodable&gt;(with: Foundation.URLRequest, andSession: __C.NSURLSession, completion: (Swift.Result&lt;A1, WMATA.WMATAError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "WMATA Station"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rhwood/Library/Developer/Xcode/DerivedData/WMATA_Station-hfofaafjtmkwprauyralrtjlrrjs/SourcePackages/checkouts/WMATA.swift/Sources/WMATA/Requests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "374">
+               </Location>
+               <Location
+                  uuid = "B68B9453-8009-4938-9EC5-2B776A6CDBEC - 5b50fe1796e6430e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, WMATA.WMATAError&gt;) -&gt; () in (extension in WMATA):WMATA.Fetcher.fetch&lt;A where A1: Swift.Decodable, A1: Swift.Encodable&gt;(with: Foundation.URLRequest, andSession: __C.NSURLSession, completion: (Swift.Result&lt;A1, WMATA.WMATAError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "WMATA Station"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rhwood/Library/Developer/Xcode/DerivedData/WMATA_Station-hfofaafjtmkwprauyralrtjlrrjs/SourcePackages/checkouts/WMATA.swift/Sources/WMATA/Requests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "437">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

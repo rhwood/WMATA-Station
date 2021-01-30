@@ -16,14 +16,18 @@ class StationModel: ObservableObject {
     let metroNextTrains: MetroNextTrainsModel
     let metroNextBuses: MetroNextBusesModel
 
-    public init(_ information: StationInformation) {
+    init(_ information: StationInformation) {
         self.information = information
         metroNextTrains = MetroNextTrainsModel(station: information)
         metroNextBuses = MetroNextBusesModel(station: information)
     }
 
-    public var lines: [Line] {
+    var lines: [Line] {
         information.station.lines
+    }
+
+    var station: Station {
+        information.station
     }
 }
 

@@ -10,13 +10,15 @@ import WMATA
 
 class MetroNextBusesModel: ObservableObject {
 
-    @Published var buses: [BusPrediction] = []
+    @Published var stops: [Stop] = []
+    @Published var buses: [Stop: [BusPrediction]] = [:]
+    @Published var allBuses: [BusPrediction] = []
     var station: StationInformation
     private let interval: TimeInterval
     private var timer: Timer = Timer()
     private let metroBus = MetroBus(key: ApiKeys.wmata)
 
-    init(station: StationInformation, preview: [BusPrediction]? = nil) {
+    init(station: StationInformation, preview: [Stop: [BusPrediction]]? = nil) {
         self.station = station
         if preview == nil {
             // 10 is smallest update interval from WMATA
@@ -28,17 +30,46 @@ class MetroNextBusesModel: ObservableObject {
     }
 
     private func nextBuses() {
-//        metroRail.nextTrains(at: station.allTogether) { result in
-//            switch result {
-//            case .success(let railPreditions):
-//                print("nextTrains for \(String(describing: self.station.allTogether)) are \(railPreditions)")
-//                DispatchQueue.main.async {
-//                    self.trains = railPreditions.trains
-//                }
-//            case .failure(let error):
-//                print("\(error) requesting nextTrains for \(String(describing: self.station.allTogether))")
-//            }
-//        }
+        if stops.isEmpty {
+            let radius = RadiusAtCoordinates(radius: 500, latitude: station.latitude, longitude: station.longitude)
+            metroBus.searchStops(at: radius) { [self] result in
+                switch result {
+                case .success(let stopsResult):
+                    print("searchStops for \(station.latitude):\(station.longitude) are \(stopsResult)")
+                    DispatchQueue.main.async {
+                        for stop in stopsResult.stops {
+                            if let stop = stop.stop {
+                                stops.append(stop)
+                            }
+                        }
+                    }
+                case .failure(let error):
+                    print("\(error) requesting searchStops for \(station.latitude):\(station.longitude)")
+                }
+            }
+        } else {
+            for stop in stops {
+                metroBus.nextBuses(for: stop) { [self] result in
+                    switch result {
+                    case .success(let predictions):
+                        print("predictions for \(stop.id) are \(predictions)")
+                        DispatchQueue.main.async {
+                            buses[stop] = predictions.predictions
+                        }
+                        rePredict()
+                    case .failure(let error):
+                        print("\(error) requesting predictions for \(stop.id)")
+                    }
+                }
+            }
+        }
+    }
+
+    private func rePredict() {
+        allBuses = []
+        for stop in buses {
+            allBuses.append(contentsOf: stop.value)
+        }
     }
 
     func start() {
