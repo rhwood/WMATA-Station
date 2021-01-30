@@ -12,7 +12,7 @@ import WMATAUI
 struct NextTrainsView: View {
 
     var station: Station
-    @ObservedObject var trains: NextTrainsModel
+    @ObservedObject var trains: MetroNextTrainsModel
     @State var roundelWidth: CGFloat = 0
     @State var roundelHeight: CGFloat = 0
 
@@ -55,6 +55,7 @@ struct NextTrainsView: View {
 
 struct NextTrains_Previews: PreviewProvider {
     static var previews: some View {
-        NextTrainsView(station: .A01, trains: NextTrainsModel(station: .A01, preview: PreviewData.railPredictions))
+        NextTrainsView(station: .A01,
+                       trains: MetroNextTrainsModel(station: .A01, preview: PreviewData.preview.railPredictions))
     }
 }

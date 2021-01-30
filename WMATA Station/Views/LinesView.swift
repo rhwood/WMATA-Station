@@ -59,16 +59,24 @@ struct LinesView: View {
     }
 
     func stationSign(line: Line?, station: Station) -> some View {
-        NavigationLink(
-            destination: StationView(station: station, trains: NextTrainsModel(station: station)),
-            label: {
-                let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
-                VStack(alignment: .leading, spacing: spacing) {
-                    Text(station.name)
-                        .font(WMATAUI.font(.title3).weight(.medium))
-                    footer(station: station, spacing: spacing)
-                }
+        let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
+        if let info = lines.stationInformations[station] {
+            return AnyView(NavigationLink(
+                destination: StationView(station: station, trains: MetroNextTrainsModel(station: station)),
+                label: {
+                    VStack(alignment: .leading, spacing: spacing) {
+                        Text(station.name)
+                            .font(WMATAUI.font(.title3).weight(.medium))
+                        footer(station: station, spacing: spacing)
+                    }
+                }))
+        } else {
+            return AnyView(VStack(alignment: .leading, spacing: spacing) {
+                Text(station.name)
+                    .font(WMATAUI.font(.title3).weight(.medium))
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
             })
+        }
     }
 
     func footer(station: Station, spacing: CGFloat) -> some View {

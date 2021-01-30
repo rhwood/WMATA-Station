@@ -12,7 +12,7 @@ import WMATAUI
 class LinesStore: ObservableObject {
 
     @Published var stations: [Line: [Station]] = [:]
-    @Published var stationModels: [Station: StationModel] = [:]
+    @Published var stationInformations: [Station: StationInformation] = [:]
 
     init(preview: Bool = false) {
         for line in WMATAUI.lines {
@@ -20,8 +20,8 @@ class LinesStore: ObservableObject {
                 stations[line] = []
                 stations(for: line)
             } else {
-                stations[line] = PreviewData.stations
-                stationModels = PreviewData.stationModels
+                stations[line] = PreviewData.preview.stations
+                stationInformations = PreviewData.preview.stationInformations
             }
         }
     }
@@ -34,7 +34,7 @@ class LinesStore: ObservableObject {
                 DispatchQueue.main.async {
                     for station in lineStations.stations {
                         self.stations[line]?.append(station.station)
-                        self.stationModels[station.station] = StationModel(station)
+                        self.stationInformations[station.station] = station
                     }
                 }
             case .failure(let error):

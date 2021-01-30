@@ -12,7 +12,7 @@ import WMATAUI
 struct StationView: View {
 
     let station: Station
-    let trains: NextTrainsModel
+    let trains: MetroNextTrainsModel
 
     var body: some View {
         GeometryReader { _ in
@@ -44,7 +44,7 @@ struct TitleView: View {
 struct MetroRailPredictionsView: View {
 
     var station: Station
-    var trains: NextTrainsModel
+    var trains: MetroNextTrainsModel
 
     var body: some View {
         HStack {
@@ -72,8 +72,10 @@ struct Dots: View {
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            StationView(station: .A01, trains: NextTrainsModel(station: .A01, preview: PreviewData.railPredictions))
-            StationView(station: .E03, trains: NextTrainsModel(station: .E03, preview: PreviewData.railPredictions))
+            StationView(station: .A01,
+                        trains: MetroNextTrainsModel(station: .A01, preview: PreviewData.preview.railPredictions))
+            StationView(station: .E03,
+                        trains: MetroNextTrainsModel(station: .E03, preview: PreviewData.preview.railPredictions))
         }
     }
 }

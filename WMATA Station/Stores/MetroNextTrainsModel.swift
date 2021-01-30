@@ -8,7 +8,7 @@
 import Foundation
 import WMATA
 
-class NextTrainsModel: ObservableObject {
+class MetroNextTrainsModel: ObservableObject {
 
     @Published var trains: [RailPrediction] = []
     let station: Station
