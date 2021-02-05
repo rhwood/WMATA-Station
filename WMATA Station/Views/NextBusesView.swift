@@ -30,7 +30,7 @@ struct NextBusesView: View {
             ForEach(buses.allBuses) { bus in
                 Text(bus.route.description)
                     .font(WMATAUI.font(.subheadline).bold())
-                Text(bus.route.description).frame(alignment: .leading)
+                Text(bus.directionText).frame(alignment: .leading)
                 Text(bus.minutes.description).frame(alignment: .trailing)
             }
         }.font(WMATAUI.font(.headline).bold())
