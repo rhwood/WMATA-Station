@@ -70,9 +70,11 @@ class MetroNextBusesModel: ObservableObject {
     }
 
     private func rePredict() {
-        allBuses = []
-        for stop in buses {
-            allBuses.append(contentsOf: stop.value)
+        DispatchQueue.main.async { [self] in
+            allBuses = []
+            for stop in buses {
+                allBuses.append(contentsOf: stop.value)
+            }
         }
     }
 
