@@ -28,7 +28,7 @@ class LinesStore: ObservableObject {
     }
 
     private func stations(for line: Line) {
-        line.stations(withApiKey: ApiKeys.wmata) { result in
+        line.stations(key: ApiKeys.wmata) { result in
             switch result {
             case .success(let lineStations):
                 print("Got stations for \(line)")

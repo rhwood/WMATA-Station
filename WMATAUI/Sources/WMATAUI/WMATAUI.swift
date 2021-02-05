@@ -124,6 +124,6 @@ extension RailPrediction: Identifiable {
 extension BusPrediction: Identifiable {
 
     public var id: String {
-        return route.rawValue + tripId + vehicleId + minutes.description
+        return route.id + tripId + vehicleId + minutes.description
     }
 }
