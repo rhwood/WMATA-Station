@@ -49,17 +49,17 @@ public struct WMATAUI {
 public struct MetroRailColor {
 
     /// Red Line Pantone 193c from Brand and Style Guidelines 3/2018
-    public static let red = Color(.sRGB, red: 191 / 256, green: 13 / 256, blue: 62 / 256)
+    public static let red = Color(.sRGB, red: 191 / 255, green: 13 / 255, blue: 62 / 255)
     /// Orange Line Pantone 144c from Brand and Style Guidelines 3/2018
-    public static let orange = Color(.sRGB, red: 237 / 256, green: 139 / 256, blue: 0)
+    public static let orange = Color(.sRGB, red: 237 / 255, green: 139 / 255, blue: 0)
     /// Blue Line Pantone 2925c from Brand and Style Guidelines 3/2018
-    public static let blue = Color(.sRGB, red: 0, green: 156 / 256, blue: 222 / 256)
+    public static let blue = Color(.sRGB, red: 0, green: 156 / 255, blue: 222 / 255)
     /// Green Line Pantone 354c from Brand and Style Guidelines 3/2018
-    public static let green = Color(.sRGB, red: 0, green: 177 / 256, blue: 64 / 256)
+    public static let green = Color(.sRGB, red: 0, green: 177 / 255, blue: 64 / 255)
     /// Yellow Line Pantone 109c from Brand and Style Guidelines 3/2018
-    public static let yellow = Color(.sRGB, red: 255 / 256, green: 209 / 256, blue: 0)
+    public static let yellow = Color(.sRGB, red: 255 / 255, green: 209 / 255, blue: 0)
     /// Silver Line Pantone 443c from Brand and Style Guidelines 3/2018
-    public static let silver = Color(.sRGB, red: 145 / 256, green: 157 / 256, blue: 157 / 256)
+    public static let silver = Color(.sRGB, red: 145 / 255, green: 157 / 255, blue: 157 / 255)
 }
 
 /// WMATA Bus Colors from
@@ -67,9 +67,9 @@ public struct MetroRailColor {
 @available(OSX 10.15, *)
 public struct MetroBusColor {
     /// Bus Blue Pantone 294c from Brand and Style Guidelines 3/2018
-    public static let blue = Color(.sRGB, red: 0, green: 47 / 256, blue: 108 / 256, opacity: 1)
+    public static let blue = Color(.sRGB, red: 0, green: 47 / 255, blue: 108 / 255, opacity: 1)
     /// Bus Red Pantone 186c from Brand and Style Guidelines 3/2018
-    public static let red = Color(.sRGB, red: 200 / 256, green: 16 / 256, blue: 46 / 256, opacity: 1)
+    public static let red = Color(.sRGB, red: 200 / 255, green: 16 / 255, blue: 46 / 255, opacity: 1)
     /// Bus Silver Pantone 443c from Brand and Style Guidelines 3/2018 happens to be same as MetroRailColor.silver
     public static let silver = MetroRailColor.silver
 }
@@ -79,29 +79,29 @@ public struct MetroBusColor {
 @available(OSX 10.15, *)
 public struct MetroSecondaryColor {
     /// Secondary Red Pantone 485c from Brand and Style Guidelines 3/2018
-    public static let red = Color(.sRGB, red: 218 / 256, green: 41 / 256, blue: 28 / 256, opacity: 1)
+    public static let red = Color(.sRGB, red: 218 / 255, green: 41 / 255, blue: 28 / 255, opacity: 1)
     /// Secondary Orange Pantone 172c from Brand and Style Guidelines 3/2018
-    public static let orange = Color(.sRGB, red: 250 / 256, green: 70 / 256, blue: 22 / 256, opacity: 1)
+    public static let orange = Color(.sRGB, red: 250 / 255, green: 70 / 255, blue: 22 / 255, opacity: 1)
     /// Secondary Yellow Pantone 137c from Brand and Style Guidelines 3/2018
-    public static let yellow = Color(.sRGB, red: 255 / 256, green: 163 / 256, blue: 0 / 256, opacity: 1)
+    public static let yellow = Color(.sRGB, red: 255 / 255, green: 163 / 255, blue: 0 / 255, opacity: 1)
     /// Secondary Light Purple Pantone 265c from Brand and Style Guidelines 3/2018
-    public static let lightPurple = Color(.sRGB, red: 144 / 256, green: 88 / 256, blue: 205 / 256, opacity: 1)
+    public static let lightPurple = Color(.sRGB, red: 144 / 255, green: 88 / 255, blue: 205 / 255, opacity: 1)
     /// Secondary Purple Pantone 2579 from Brand and Style Guidelines 3/2018
-    public static let purple = Color(.sRGB, red: 92 / 256, green: 6 / 256, blue: 140 / 256, opacity: 1)
+    public static let purple = Color(.sRGB, red: 92 / 255, green: 6 / 255, blue: 140 / 255, opacity: 1)
     /// Secondary Magenta Pantone 234 from Brand and Style Guidelines 3/2018
-    public static let magenta = Color(.sRGB, red: 162 / 256, green: 0, blue: 103 / 256, opacity: 1)
+    public static let magenta = Color(.sRGB, red: 162 / 255, green: 0, blue: 103 / 255, opacity: 1)
     /// Secondary (Dark) Blue Pantone 661 from Brand and Style Guidelines 3/2018
-    public static let blue = Color(.sRGB, red: 0, green: 53 / 256, blue: 148 / 256, opacity: 1)
+    public static let blue = Color(.sRGB, red: 0, green: 53 / 255, blue: 148 / 255, opacity: 1)
     /// Secondary Light Blue Pantone 299 from Brand and Style Guidelines 3/2018
-    public static let lightBlue = Color(.sRGB, red: 0, green: 163 / 256, blue: 224 / 256, opacity: 1)
+    public static let lightBlue = Color(.sRGB, red: 0, green: 163 / 255, blue: 224 / 255, opacity: 1)
     /// Secondary Green Pantone 575c from Brand and Style Guidelines 3/2018
-    public static let green = Color(.sRGB, red: 103 / 256, green: 130 / 256, blue: 58 / 256, opacity: 1)
+    public static let green = Color(.sRGB, red: 103 / 255, green: 130 / 255, blue: 58 / 255, opacity: 1)
     /// Secondary Yellow Green Pantone 390 from Brand and Style Guidelines 3/2018
-    public static let yellowGreen = Color(.sRGB, red: 181, green: 189 / 256, blue: 0 / 256, opacity: 1)
+    public static let yellowGreen = Color(.sRGB, red: 181, green: 189 / 255, blue: 0 / 255, opacity: 1)
     /// Secondary Ocean Green Pantone 7712 from Brand and Style Guidelines 3/2018
-    public static let oceanGreen = Color(.sRGB, red: 0, green: 133 / 256, blue: 155 / 256, opacity: 1)
+    public static let oceanGreen = Color(.sRGB, red: 0, green: 133 / 255, blue: 155 / 255, opacity: 1)
     /// Secondary Bright Ocean Green Pantone 3262 from Brand and Style Guidelines 3/2018
-    public static let brightOceanGreen = Color(.sRGB, red: 0, green: 191 / 256, blue: 179 / 256, opacity: 1)
+    public static let brightOceanGreen = Color(.sRGB, red: 0, green: 191 / 255, blue: 179 / 255, opacity: 1)
 }
 
 /// WMATA Station colors from
@@ -109,9 +109,9 @@ public struct MetroSecondaryColor {
 @available(OSX 10.15, *)
 public struct MetroStationColor {
     /// Metro Station Brown (Pantone 448 CVC)
-    public static let brown = Color(.sRGB, red: 74 / 256, green: 65 / 256, blue: 42 / 256, opacity: 1)
+    public static let brown = Color(.sRGB, red: 74 / 255, green: 65 / 255, blue: 42 / 255, opacity: 1)
     /// Metro Station Light Brown (Pantone Warm Gray 10 C)
-    public static let lightBrown = Color(.sRGB, red: 121 / 256, green: 110 / 256, blue: 101 / 256, opacity: 1)
+    public static let lightBrown = Color(.sRGB, red: 121 / 255, green: 110 / 255, blue: 101 / 255, opacity: 1)
 }
 
 extension RailPrediction: Identifiable {
