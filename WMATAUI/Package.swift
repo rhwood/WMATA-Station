@@ -17,7 +17,7 @@ let package = Package(
             targets: ["WMATAUI"])
     ],
     dependencies: [
-        .package(name: "WMATA", url: "https://github.com/emma-k-alexandra/WMATA.swift", from: "9.0.0")
+        .package(name: "WMATA", url: "https://github.com/emma-k-alexandra/WMATA.swift", from: "10.0.0")
     ],
     targets: [
         .target(
