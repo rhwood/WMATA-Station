@@ -57,7 +57,7 @@ public struct MetroRailColor {
     /// Green Line Pantone 354c from Brand and Style Guidelines 3/2018
     public static let green = Color(.sRGB, red: 0, green: 177 / 255, blue: 64 / 255)
     /// Yellow Line Pantone 109c from Brand and Style Guidelines 3/2018
-    public static let yellow = Color(.sRGB, red: 255 / 255, green: 209 / 255, blue: 0)
+    public static let yellow = Color(.sRGB, red: 1, green: 209 / 255, blue: 0)
     /// Silver Line Pantone 443c from Brand and Style Guidelines 3/2018
     public static let silver = Color(.sRGB, red: 145 / 255, green: 157 / 255, blue: 157 / 255)
 }
@@ -83,7 +83,7 @@ public struct MetroSecondaryColor {
     /// Secondary Orange Pantone 172c from Brand and Style Guidelines 3/2018
     public static let orange = Color(.sRGB, red: 250 / 255, green: 70 / 255, blue: 22 / 255, opacity: 1)
     /// Secondary Yellow Pantone 137c from Brand and Style Guidelines 3/2018
-    public static let yellow = Color(.sRGB, red: 255 / 255, green: 163 / 255, blue: 0 / 255, opacity: 1)
+    public static let yellow = Color(.sRGB, red: 1, green: 163 / 255, blue: 0, opacity: 1)
     /// Secondary Light Purple Pantone 265c from Brand and Style Guidelines 3/2018
     public static let lightPurple = Color(.sRGB, red: 144 / 255, green: 88 / 255, blue: 205 / 255, opacity: 1)
     /// Secondary Purple Pantone 2579 from Brand and Style Guidelines 3/2018
@@ -97,7 +97,7 @@ public struct MetroSecondaryColor {
     /// Secondary Green Pantone 575c from Brand and Style Guidelines 3/2018
     public static let green = Color(.sRGB, red: 103 / 255, green: 130 / 255, blue: 58 / 255, opacity: 1)
     /// Secondary Yellow Green Pantone 390 from Brand and Style Guidelines 3/2018
-    public static let yellowGreen = Color(.sRGB, red: 181, green: 189 / 255, blue: 0 / 255, opacity: 1)
+    public static let yellowGreen = Color(.sRGB, red: 181, green: 189 / 255, blue: 0, opacity: 1)
     /// Secondary Ocean Green Pantone 7712 from Brand and Style Guidelines 3/2018
     public static let oceanGreen = Color(.sRGB, red: 0, green: 133 / 255, blue: 155 / 255, opacity: 1)
     /// Secondary Bright Ocean Green Pantone 3262 from Brand and Style Guidelines 3/2018
