@@ -91,7 +91,7 @@ struct StationView_Previews: PreviewProvider {
         Group {
             StationView(station: PreviewData.preview.stationModels[.A01]!)
                 .environmentObject(locationManager)
-            StationView(station: PreviewData.preview.stationModels[.E03]!)
+            StationView(station: PreviewData.preview.stationModels[.C03]!)
                 .environmentObject(locationManager)
         }
     }
