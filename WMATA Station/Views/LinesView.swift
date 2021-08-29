@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 import WMATA
 import WMATAUI
 
@@ -14,24 +15,31 @@ struct LinesView: View {
     @State var roundelWidth: CGFloat = 0
     @State var roundelHeight: CGFloat = 0
     @ObservedObject var lines: LinesStore
+    @StateObject var locationStore = LocationStore()
 
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: true) {
                 LazyVStack(alignment: .leading) {
-                    lineView(line: nil,
-                             view: AnyView(Image(systemName: "location")
-                                            .roundel(color: MetroStationColor.lightBrown,
-                                                     textColor: .white,
-                                                     width: $roundelWidth,
-                                                     height: $roundelHeight)),
-                             stations: [.A01, .A02, .A03])
+                    HStack(alignment: .center) {
+                        if locationStore.authorizationStatus != .denied
+                            && locationStore.authorizationStatus != .restricted {
+                            lineView(line: nil,
+                                     roundel: AnyView(Image(systemName: "location")
+                                                        .roundel(color: MetroStationColor.lightBrown,
+                                                                 textColor: .white,
+                                                                 width: $roundelWidth,
+                                                                 height: $roundelHeight)),
+                                     views: [noLocationView()],
+                                     stations: locationStore.closestStations)
+                        }
                     ForEach(WMATAUI.lines, id: \.rawValue) { line in
                         lineView(line: line,
-                                 view: AnyView(Text(line.rawValue)
-                                                .roundel(line: line,
-                                                         width: $roundelWidth,
-                                                         height: $roundelHeight)),
+                                 roundel: AnyView(Text(line.rawValue)
+                                                    .roundel(line: line,
+                                                             width: $roundelWidth,
+                                                             height: $roundelHeight)),
+                                 views: [],
                                  stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
                     }
                 }
@@ -40,17 +48,50 @@ struct LinesView: View {
         }
     }
 
-    func lineView(line: Line?, view: AnyView, stations: [Station]) -> some View {
+    func noLocationView() -> AnyView {
+        switch locationStore.authorizationStatus {
+        case .notDetermined:
+            return AnyView(Button(action: {
+                locationStore.requestPermission()
+            }, label: {
+                VStack(alignment: .leading, spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
+                    Text("Find Closest Station").font(WMATAUI.font(.title3).weight(.medium))
+                    Text("And show walking time").font(WMATAUI.font(.body))
+                }
+            }))
+        case .authorizedWhenInUse:
+            if locationStore.closestStations.isEmpty {
+                return AnyView(ProgressView())
+            } else {
+                return AnyView(EmptyView())
+            }
+        default:
+            return AnyView(EmptyView())
+        }
+    }
+
+    func locationRoundel() -> AnyView {
+        AnyView(Image(systemName: "location")
+                    .roundel(color: MetroStationColor.lightBrown,
+                             textColor: .white,
+                             width: $roundelWidth,
+                             height: $roundelHeight))
+    }
+
+    func lineView(line: Line?, roundel: AnyView, views: [AnyView], stations: [Station]) -> some View {
         HStack(alignment: .center) {
-            view
+            roundel
             ScrollView(.horizontal, showsIndicators: true) {
-                stationSigns(line: line, stations: stations)
+                stationSigns(line: line, stations: stations, views: views)
             }
         }
     }
 
-    func stationSigns(line: Line?, stations: [Station]) -> some View {
+    func stationSigns(line: Line?, stations: [Station], views: [AnyView]) -> some View {
         LazyHStack(alignment: .top) {
+            ForEach(0..<views.count) { (index) in
+                views[index]
+            }
             ForEach(stations, id: \.rawValue) {
                 stationSign(line: line, station: $0)
             }
@@ -84,8 +125,9 @@ struct LinesView: View {
                 $0.dot(style: .footnote)
             }
             Spacer()
-            Image(systemName: "figure.walk").imageScale(.small)
-            Text("Time")
+            if locationStore.authorizationStatus == .authorizedWhenInUse {
+                WalkingTimeView(station: station, spacing: spacing)
+            }
         }.font(WMATAUI.font(.body))
     }
 }

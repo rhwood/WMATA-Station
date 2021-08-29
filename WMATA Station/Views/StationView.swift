@@ -18,8 +18,7 @@ struct StationView: View {
             VStack(alignment: .leading) {
                 let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 1 / 3
                 TitleView(station: station.station, spacing: spacing)
-                .font(WMATAUI.font(.largeTitle).weight(.medium))
-                .padding()
+                    .padding()
                 HStack {
                     MetroRailPredictionsView(station: station.station, trains: station.metroNextTrains)
                 }
@@ -36,8 +35,12 @@ struct TitleView: View {
     var body: some View {
         HStack(spacing: spacing) {
             Text(station.name)
+                .font(WMATAUI.font(.largeTitle).weight(.medium))
                 .padding(.trailing, spacing * 2)
             Dots(lines: station.lines.sorted(by: WMATAUI.mapOrder(_:_:)))
+            Spacer()
+            WalkingTimeView(station: station, spacing: spacing)
+                .font(WMATAUI.font(.body).weight(.medium))
         }
     }
 }
