@@ -23,12 +23,30 @@ struct LinesView: View {
             ScrollView(.vertical, showsIndicators: true) {
                 LazyVStack(alignment: .leading) {
                     HStack(alignment: .center) {
-                        if locationStore.authorizationStatus != .denied
-                            && locationStore.authorizationStatus != .restricted {
+                        switch locationStore.authorizationStatus {
+                        case .notDetermined:
                             LineView(line: nil,
                                      roundel: nonRouteRoundel(systemName: "location"),
-                                     leading: noLocationView(),
-                                     stations: locationStore.closestStations)
+                                     leading: AnyView(Button(action: {
+                                        locationStore.requestPermission()
+                                     }, label: {
+                                        VStack(alignment: .leading,
+                                               spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
+                                            Text("Find Closest Station").font(WMATAUI.font(.title3).weight(.medium))
+                                            Text("And show walking time").font(WMATAUI.font(.body))
+                                        }
+                                     })),
+                                     stations: [])
+                        case .authorizedWhenInUse:
+                            if locationStore.closestStations.isEmpty {
+                                EmptyView()
+                            } else {
+                                LineView(line: nil,
+                                         roundel: nonRouteRoundel(systemName: "location"),
+                                         stations: locationStore.closestStations)
+                            }
+                        default:
+                            EmptyView()
                         }
                         if recentsStore.lastStation != nil {
                             LineView(line: nil,
@@ -47,28 +65,6 @@ struct LinesView: View {
                 }
                 .font(WMATAUI.font(.largeTitle).weight(.medium))
             }
-        }
-    }
-
-    func noLocationView() -> AnyView {
-        switch locationStore.authorizationStatus {
-        case .notDetermined:
-            return AnyView(Button(action: {
-                locationStore.requestPermission()
-            }, label: {
-                VStack(alignment: .leading, spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
-                    Text("Find Closest Station").font(WMATAUI.font(.title3).weight(.medium))
-                    Text("And show walking time").font(WMATAUI.font(.body))
-                }
-            }))
-        case .authorizedWhenInUse:
-            if locationStore.closestStations.isEmpty {
-                return AnyView(ProgressView())
-            } else {
-                return AnyView(EmptyView())
-            }
-        default:
-            return AnyView(EmptyView())
         }
     }
 
