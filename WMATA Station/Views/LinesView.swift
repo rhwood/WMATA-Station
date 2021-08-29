@@ -14,9 +14,9 @@ struct LinesView: View {
 
     @State var roundelWidth: CGFloat = 0
     @State var roundelHeight: CGFloat = 0
-    @ObservedObject var lines: LinesStore
-    @StateObject var locationStore = LocationStore()
-    @StateObject var recentsStore = RecentsStore()
+    @EnvironmentObject var lines: LinesStore
+    @EnvironmentObject var locationStore: LocationStore
+    @EnvironmentObject var recentsStore: RecentsStore
 
     var body: some View {
         NavigationView {
@@ -25,33 +25,23 @@ struct LinesView: View {
                     HStack(alignment: .center) {
                         if locationStore.authorizationStatus != .denied
                             && locationStore.authorizationStatus != .restricted {
-                            lineView(line: nil,
-                                     roundel: AnyView(Image(systemName: "location")
-                                                        .roundel(color: MetroStationColor.lightBrown,
-                                                                 textColor: .white,
-                                                                 width: $roundelWidth,
-                                                                 height: $roundelHeight)),
-                                     views: [noLocationView()],
+                            LineView(line: nil,
+                                     roundel: nonRouteRoundel(systemName: "location"),
+                                     leading: noLocationView(),
                                      stations: locationStore.closestStations)
                         }
                         if recentsStore.lastStation != nil {
-                            lineView(line: nil,
-                                     roundel: AnyView(Image(systemName: "clock")
-                                                        .roundel(color: MetroStationColor.lightBrown,
-                                                                 textColor: .white,
-                                                                 width: $roundelWidth,
-                                                                 height: $roundelHeight)),
-                                     views: [],
+                            LineView(line: nil,
+                                     roundel: nonRouteRoundel(systemName: "clock"),
                                      stations: recentsStore.recentStations)
                         }
                     }
                     ForEach(WMATAUI.lines, id: \.rawValue) { line in
-                        lineView(line: line,
+                        LineView(line: line,
                                  roundel: AnyView(Text(line.rawValue)
                                                     .roundel(line: line,
                                                              width: $roundelWidth,
                                                              height: $roundelHeight)),
-                                 views: [],
                                  stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
                     }
                 }
@@ -82,76 +72,104 @@ struct LinesView: View {
         }
     }
 
-    func locationRoundel() -> AnyView {
-        AnyView(Image(systemName: "location")
-                    .roundel(color: MetroStationColor.lightBrown,
-                             textColor: .white,
-                             width: $roundelWidth,
-                             height: $roundelHeight))
+    func nonRouteRoundel(systemName: String) -> AnyView {
+        AnyView(Image(systemName: systemName)
+            .roundel(color: MetroStationColor.lightBrown,
+                     textColor: .white,
+                     width: $roundelWidth,
+                     height: $roundelHeight))
     }
+}
 
-    func lineView(line: Line?, roundel: AnyView, views: [AnyView], stations: [Station]) -> some View {
+struct LineView: View {
+
+    var line: Line?
+    var roundel: AnyView
+    var leading: AnyView = AnyView(EmptyView())
+    var stations: [Station]
+
+    var body: some View {
         HStack(alignment: .center) {
             roundel
             ScrollView(.horizontal, showsIndicators: true) {
-                stationSigns(line: line, stations: stations, views: views)
+                StationSigns(line: line, stations: stations, leading: leading)
             }
         }
     }
+}
 
-    func stationSigns(line: Line?, stations: [Station], views: [AnyView]) -> some View {
+struct StationSigns: View {
+
+    var line: Line?
+    var stations: [Station]
+    var leading: AnyView
+
+    var body: some View {
         LazyHStack(alignment: .top) {
-            ForEach(0..<views.count) { (index) in
-                views[index]
-            }
+            leading
             ForEach(stations, id: \.rawValue) {
-                stationSign(line: line, station: $0)
+                StationSign(line: line, station: $0)
             }
         }
         .padding()
     }
+}
 
-    func stationSign(line: Line?, station: Station) -> some View {
+struct StationSign: View {
+
+    var line: Line?
+    var station: Station
+    @EnvironmentObject var linesManager: LinesStore
+    @EnvironmentObject var recentStationsManager: RecentsStore
+
+    var body: some View {
         let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
-        if let info = lines.stationInformations[station] {
-            return AnyView(NavigationLink(
-                            destination: StationView(station: StationModel(info))
-                                .onAppear {
-                                    recentsStore.addStation(station: station)
-                                },
-                            label: {
-                                VStack(alignment: .leading, spacing: spacing) {
-                                    Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
-                                    footer(station: station, spacing: spacing)
-                                }
-                            }))
+        if let info = linesManager.stationInformations[station] {
+            NavigationLink(
+                destination: StationView(station: StationModel(info))
+                    .onAppear {
+                        recentStationsManager.addStation(station: station)
+                    },
+                label: {
+                    VStack(alignment: .leading, spacing: spacing) {
+                        Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
+                        StationSignFooter(station: station, spacing: spacing)
+                    }
+                })
         } else {
-            return AnyView(Button(
-                            action: { /* only shown when navigation link cannot be created, so no action */ },
-                            label: {
-                                VStack(alignment: .leading, spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
-                                    Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
-                                    Text("Unable to retrieve lines").font(WMATAUI.font(.body))
-                                }
-                            }))
+            Button(
+                action: { /* only shown when navigation link cannot be created, so no action */ },
+                label: {
+                    VStack(alignment: .leading, spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
+                        Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
+                        Text("Unable to retrieve lines").font(WMATAUI.font(.body))
+                    }
+                })
         }
     }
+}
 
-    func footer(station: Station, spacing: CGFloat) -> some View {
+struct StationSignFooter: View {
+
+    var station: Station
+    var spacing: CGFloat
+
+    var body: some View {
         HStack(spacing: spacing) {
             ForEach(station.lines.sorted(by: WMATAUI.mapOrder(_:_:)), id: \.rawValue) {
                 $0.dot(style: .footnote)
             }
             Spacer()
-            if locationStore.authorizationStatus == .authorizedWhenInUse {
-                WalkingTimeView(station: station, spacing: spacing)
-            }
+            WalkingTimeView(station: station, spacing: spacing)
         }.font(WMATAUI.font(.body))
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        LinesView(lines: LinesStore(preview: true))
+        LinesView()
+            .environmentObject(LinesStore(preview: true))
+            .environmentObject(RecentsStore())
+            .environmentObject(LocationStore())
     }
 }

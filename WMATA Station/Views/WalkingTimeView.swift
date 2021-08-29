@@ -15,17 +15,28 @@ struct WalkingTimeView: View {
     var station: Station
     var spacing: CGFloat
     let formatter = DateComponentsFormatter()
+    @EnvironmentObject var locationManager: LocationStore
 
     var body: some View {
-        HStack(spacing: spacing) {
-            Image(systemName: "figure.walk").imageScale(.small)
-            Text(formatter.string(from: walkingTime(station: station))!)
+        let walkingTime = walkingTime(station: station)
+        if walkingTime > 0 {
+            HStack(spacing: spacing) {
+                Image(systemName: "figure.walk").imageScale(.small)
+                Text(formatter.string(from: walkingTime)!)
+            }
+        } else {
+            EmptyView()
         }
     }
 
-    public func walkingTime(station: Station) -> TimeInterval {
+    public init(station: Station, spacing: CGFloat) {
+        self.station = station
+        self.spacing = spacing
         formatter.unitsStyle = .short
         formatter.maximumUnitCount = 1
+    }
+
+    func walkingTime(station: Station) -> TimeInterval {
         return 100
     }
 }

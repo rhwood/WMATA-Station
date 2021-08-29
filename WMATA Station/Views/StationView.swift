@@ -87,9 +87,12 @@ struct Dots: View {
 
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
+        let locationManager = LocationStore()
         Group {
             StationView(station: PreviewData.preview.stationModels[.A01]!)
+                .environmentObject(locationManager)
             StationView(station: PreviewData.preview.stationModels[.E03]!)
+                .environmentObject(locationManager)
         }
     }
 }
