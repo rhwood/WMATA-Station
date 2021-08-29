@@ -37,18 +37,21 @@ class RecentsStore: ObservableObject {
     }
 
     /// Add a station to the recents store, if the station already exists in the recents store
-    /// its history gets removed
+    /// it gets moved to the beginning
     func addStation(station: Station) {
-        // 1: remove any matching entries in recents list
-        recentStations.removeAll(where: { station == $0 })
-        // 2: prepend station to recents list
-        recentStations.insert(station, at: 0)
-        // 3: truncate recents list to max items
-        while recentStations.count > max {
-            recentStations.remove(at: max)
+        // copy so there is only one redraw, not (potentially) multiple
+        var recents = recentStations
+        // remove any matching entries in recents list
+        recents.removeAll(where: { station == $0 })
+        // prepend station to recents list
+        recents.insert(station, at: 0)
+        // truncate recents list to max items
+        while recents.count > max {
+            recents.remove(at: max)
         }
-        // 4: save recents list to UserDefaults
-        let recents = recentStations.map { $0.rawValue }
-        UserDefaults.standard.set(recents, forKey: "recentStations")
+        // save recents list to UserDefaults
+        UserDefaults.standard.set(recents.map { $0.rawValue }, forKey: "recentStations")
+        // update recentStations and allow redraws
+        recentStations = recents
     }
 }
