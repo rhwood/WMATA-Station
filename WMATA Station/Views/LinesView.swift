@@ -16,6 +16,7 @@ struct LinesView: View {
     @State var roundelHeight: CGFloat = 0
     @ObservedObject var lines: LinesStore
     @StateObject var locationStore = LocationStore()
+    @StateObject var recentsStore = RecentsStore()
 
     var body: some View {
         NavigationView {
@@ -33,6 +34,17 @@ struct LinesView: View {
                                      views: [noLocationView()],
                                      stations: locationStore.closestStations)
                         }
+                        if recentsStore.lastStation != nil {
+                            lineView(line: nil,
+                                     roundel: AnyView(Image(systemName: "clock")
+                                                        .roundel(color: MetroStationColor.lightBrown,
+                                                                 textColor: .white,
+                                                                 width: $roundelWidth,
+                                                                 height: $roundelHeight)),
+                                     views: [],
+                                     stations: recentsStore.recentStations)
+                        }
+                    }
                     ForEach(WMATAUI.lines, id: \.rawValue) { line in
                         lineView(line: line,
                                  roundel: AnyView(Text(line.rawValue)
@@ -103,7 +115,10 @@ struct LinesView: View {
         let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
         if let info = lines.stationInformations[station] {
             return AnyView(NavigationLink(
-                            destination: StationView(station: StationModel(info)),
+                            destination: StationView(station: StationModel(info))
+                                .onAppear {
+                                    recentsStore.addStation(station: station)
+                                },
                             label: {
                                 VStack(alignment: .leading, spacing: spacing) {
                                     Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
