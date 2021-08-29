@@ -11,16 +11,22 @@ import WMATAUI
 
 struct StationView: View {
 
-    let station: StationModel
+    let station: Station
+    @EnvironmentObject var linesManager: LinesStore
 
     var body: some View {
         GeometryReader { _ in
             VStack(alignment: .leading) {
                 let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 1 / 3
-                TitleView(station: station.station, spacing: spacing)
-                    .padding()
-                HStack {
-                    MetroRailPredictionsView(station: station.station, trains: station.metroNextTrains)
+                if let info = linesManager.stationInformations[station] {
+                    let model = StationModel(info)
+                    TitleView(station: station, spacing: spacing)
+                        .padding()
+                    HStack {
+                        MetroRailPredictionsView(station: station, trains: model.metroNextTrains)
+                    }
+                } else {
+                    Text("Error getting station information.")
                 }
             }
         }
@@ -89,9 +95,9 @@ struct StationView_Previews: PreviewProvider {
     static var previews: some View {
         let locationManager = LocationStore()
         Group {
-            StationView(station: PreviewData.preview.stationModels[.A01]!)
+            StationView(station: .A01)
                 .environmentObject(locationManager)
-            StationView(station: PreviewData.preview.stationModels[.C03]!)
+            StationView(station: .C03)
                 .environmentObject(locationManager)
         }
     }

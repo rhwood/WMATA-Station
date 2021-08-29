@@ -120,29 +120,18 @@ struct StationSign: View {
 
     var body: some View {
         let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
-        if let info = linesManager.stationInformations[station] {
-            NavigationLink(
-                destination: StationView(station: StationModel(info))
-                    .onAppear {
-                        recentStationsManager.addStation(station: station)
-                    },
-                label: {
-                    VStack(alignment: .leading, spacing: spacing) {
-                        Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
-                        StationSignFooter(station: station, spacing: spacing)
-                    }
-                })
-        } else {
-            Button(
-                action: { /* only shown when navigation link cannot be created, so no action */ },
-                label: {
-                    VStack(alignment: .leading,
-                           spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
-                        Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
-                        Text("Unable to retrieve lines").font(WMATAUI.font(.body))
-                    }
-                })
-        }
+        NavigationLink(
+            destination: StationView(station: station)
+                .environmentObject(linesManager)
+                .onAppear {
+                    recentStationsManager.addStation(station: station)
+                },
+            label: {
+                VStack(alignment: .leading, spacing: spacing) {
+                    Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
+                    StationSignFooter(station: station, spacing: spacing)
+                }
+            })
     }
 }
 
