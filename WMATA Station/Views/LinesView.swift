@@ -140,7 +140,8 @@ struct StationSign: View {
             Button(
                 action: { /* only shown when navigation link cannot be created, so no action */ },
                 label: {
-                    VStack(alignment: .leading, spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
+                    VStack(alignment: .leading,
+                           spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
                         Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
                         Text("Unable to retrieve lines").font(WMATAUI.font(.body))
                     }
