@@ -22,7 +22,6 @@ struct LinesView: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: true) {
                 LazyVStack(alignment: .leading) {
-                    HStack(alignment: .center) {
                         switch locationStore.authorizationStatus {
                         case .notDetermined:
                             LineView(line: nil,
@@ -32,7 +31,7 @@ struct LinesView: View {
                                      }, label: {
                                         VStack(alignment: .leading,
                                                spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
-                                            Text("Find Closest Station").font(WMATAUI.font(.title3).weight(.medium))
+                                            Text("Find Closest Stations").font(WMATAUI.font(.title3).weight(.medium))
                                             Text("And show walking time").font(WMATAUI.font(.body))
                                         }
                                      })),
@@ -53,7 +52,6 @@ struct LinesView: View {
                                      roundel: nonRouteRoundel(systemName: "clock"),
                                      stations: recentsStore.recentStations)
                         }
-                    }
                     ForEach(WMATAUI.lines, id: \.rawValue) { line in
                         LineView(line: line,
                                  roundel: AnyView(Text(line.rawValue)
