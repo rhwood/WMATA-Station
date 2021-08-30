@@ -29,8 +29,9 @@ struct LinesView: View {
                                      leading: AnyView(Button(action: {
                                         locationStore.requestPermission()
                                      }, label: {
-                                        VStack(alignment: .leading,
-                                               spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
+                                        VStack(
+                                            alignment: .leading,
+                                            spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
                                             Text("Find Closest Stations").font(WMATAUI.font(.title3).weight(.medium))
                                             Text("And show walking time").font(WMATAUI.font(.body))
                                         }

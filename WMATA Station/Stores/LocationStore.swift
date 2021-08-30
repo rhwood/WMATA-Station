@@ -16,7 +16,7 @@ public class LocationStore: NSObject, ObservableObject, CLLocationManagerDelegat
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var closestStations: [Station]
     @Published var location: CLLocation?
-    
+
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "LocationStore")
     private let locationManager: CLLocationManager
 
