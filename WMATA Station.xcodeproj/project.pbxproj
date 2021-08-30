@@ -18,6 +18,7 @@
 		4871567925BDEB30006ACCD6 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4871567825BDEB30006ACCD6 /* PreviewData.swift */; };
 		487CE5A625C5DCC10013C2B6 /* NextBusesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487CE5A525C5DCC10013C2B6 /* NextBusesView.swift */; };
 		487CE5B225C5FC410013C2B6 /* WMATA in Frameworks */ = {isa = PBXBuildFile; productRef = 487CE5B125C5FC410013C2B6 /* WMATA */; };
+		48CD053C26DC2BBE00FE48A1 /* PreviewLinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */; };
 		48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7614725AFBF8700756E52 /* ApiKeys.swift */; };
 		48DA8BCD25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */; };
 		48F6D70C26DAAAEB003A5C34 /* WalkingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6D70B26DAAAEB003A5C34 /* WalkingTimeView.swift */; };
@@ -59,6 +60,7 @@
 		4871567825BDEB30006ACCD6 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		487CE5A525C5DCC10013C2B6 /* NextBusesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextBusesView.swift; sourceTree = "<group>"; };
 		48C1ACE825C1807B008F4464 /* WMATAUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WMATAUI; sourceTree = SOURCE_ROOT; };
+		48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLinesManager.swift; sourceTree = "<group>"; };
 		48D7614725AFBF8700756E52 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroNextTrainsModel.swift; sourceTree = "<group>"; };
 		48F6D70B26DAAAEB003A5C34 /* WalkingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingTimeView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				48FA4C6925A2ACFB0050C027 /* Preview Assets.xcassets */,
 				4871567825BDEB30006ACCD6 /* PreviewData.swift */,
+				48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				4871567925BDEB30006ACCD6 /* PreviewData.swift in Sources */,
 				482EE71E25ACB06200C351A4 /* View+Balance.swift in Sources */,
 				48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */,
+				48CD053C26DC2BBE00FE48A1 /* PreviewLinesManager.swift in Sources */,
 				482D96EB25AB2BA4001BACFE /* LinesStore.swift in Sources */,
 				48F6D70E26DAC420003A5C34 /* LocationStore.swift in Sources */,
 				480E32E825C58B4F0009F827 /* StationModel.swift in Sources */,

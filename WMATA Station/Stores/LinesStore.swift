@@ -15,19 +15,14 @@ class LinesStore: ObservableObject {
     @Published var stationInformations: [Station: StationInformation] = [:]
     @Published var walkingTimes: [Station: Float] = [:]
 
-    init(preview: Bool = false) {
+    init() {
         for line in WMATAUI.lines {
-            if !preview {
-                stations[line] = []
-                stations(for: line)
-            } else {
-                stations[line] = PreviewData.preview.stations
-                stationInformations = PreviewData.preview.stationInformations
-            }
+            stations[line] = []
+            stations(for: line)
         }
     }
 
-    private func stations(for line: Line) {
+    func stations(for line: Line) {
         line.stations(key: ApiKeys.wmata) { result in
             switch result {
             case .success(let lineStations):

@@ -154,7 +154,7 @@ struct StationSignFooter: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         LinesView()
-            .environmentObject(LinesStore(preview: true))
+            .environmentObject(PreviewLinesManager())
             .environmentObject(RecentsStore())
             .environmentObject(LocationStore())
     }
