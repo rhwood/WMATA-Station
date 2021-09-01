@@ -16,14 +16,14 @@ class MetroNextTrainsModel: ObservableObject {
     private var timer: Timer = Timer()
     private let metroRail = MetroRail(key: ApiKeys.wmata)
 
-    init(station: StationInformation, preview: [RailPrediction]? = nil) {
+    init(station: StationInformation, prediction: [RailPrediction]? = nil) {
         self.station = station.station
-        if preview == nil {
+        if prediction == nil {
             // 10 is smallest update interval from WMATA
             interval = 10
         } else {
             interval = -1
-            trains = preview!
+            trains = prediction!
         }
     }
 
