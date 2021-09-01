@@ -12,14 +12,14 @@ struct WMATAStationApp: App {
 
     let linesManager = LinesStore()
     let locationManager = LocationStore()
-    let recentStationsManager = RecentsStore()
+    let cacheManager = CacheManager()
 
     var body: some Scene {
         WindowGroup {
             LinesView()
                 .environmentObject(linesManager)
                 .environmentObject(locationManager)
-                .environmentObject(recentStationsManager)
+                .environmentObject(cacheManager)
         }
     }
 }

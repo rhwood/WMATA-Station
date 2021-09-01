@@ -16,7 +16,7 @@ struct LinesView: View {
     @State var roundelHeight: CGFloat = 0
     @EnvironmentObject var lines: LinesStore
     @EnvironmentObject var locationStore: LocationStore
-    @EnvironmentObject var recentsStore: RecentsStore
+    @EnvironmentObject var cacheManager: CacheManager
 
     var body: some View {
         NavigationView {
@@ -48,10 +48,10 @@ struct LinesView: View {
                         default:
                             EmptyView()
                         }
-                        if recentsStore.lastStation != nil {
+                        if cacheManager.mostRecentStation != nil {
                             LineView(line: nil,
                                      roundel: nonRouteRoundel(systemName: "clock"),
-                                     stations: recentsStore.recentStations)
+                                     stations: cacheManager.recentStations)
                         }
                     ForEach(WMATAUI.lines, id: \.rawValue) { line in
                         LineView(line: line,
@@ -115,7 +115,7 @@ struct StationSign: View {
     var line: Line?
     var station: Station
     @EnvironmentObject var linesManager: LinesStore
-    @EnvironmentObject var recentStationsManager: RecentsStore
+    @EnvironmentObject var cacheManager: CacheManager
 
     var body: some View {
         let spacing = UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25
@@ -123,7 +123,8 @@ struct StationSign: View {
             destination: StationView(station: station)
                 .environmentObject(linesManager)
                 .onAppear {
-                    recentStationsManager.addStation(station: station)
+                    // should be // cacheManager.mostRecentStation = station // but EnvironmentObjects are immutable
+                    cacheManager.setMostRecentStation(station)
                 },
             label: {
                 VStack(alignment: .leading, spacing: spacing) {
@@ -154,7 +155,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         LinesView()
             .environmentObject(PreviewLinesManager())
-            .environmentObject(RecentsStore())
+            .environmentObject(CacheManager())
             .environmentObject(LocationStore())
     }
 }
