@@ -38,7 +38,7 @@ class LinesStore: ObservableObject {
                 }
             case .failure(let error):
                 print("\(error) requesting stations for \(line)")
-                waitTime = waitTime * 2
+                waitTime *= 2
                 DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(waitTime)) {
                     stations(for: line)
                 }
