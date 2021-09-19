@@ -39,7 +39,10 @@ public struct WMATAUI {
     ///
     /// - Returns: true if line0 is before line1 in the order on the map; false otherwise.
     public static func mapOrder(_ line0: Line, _ line1: Line) -> Bool {
-        return allLines.firstIndex(of: line0) ?? 0 < allLines.firstIndex(of: line1) ?? 0
+        if let index0 = allLines.firstIndex(of: line0), let index1 = allLines.firstIndex(of: line1) {
+            return index0 < index1
+        }
+        return false
     }
 }
 
