@@ -458,7 +458,7 @@
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TVOS_DEPLOYMENT_TARGET = 14.3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
@@ -512,7 +512,7 @@
 				SDKROOT = appletvos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				TVOS_DEPLOYMENT_TARGET = 14.3;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -535,7 +535,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
@@ -557,7 +557,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Release;
 		};
@@ -579,7 +579,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WMATA Station.app/WMATA Station";
-				TVOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
@@ -601,7 +601,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WMATA Station.app/WMATA Station";
-				TVOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Release;
 		};
