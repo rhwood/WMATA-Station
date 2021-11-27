@@ -56,6 +56,8 @@ struct LinesView: View {
                     ForEach(WMATAUI.lines, id: \.rawValue) { line in
                         LineView(line: line,
                                  roundel: AnyView(Text(line.rawValue)
+                                                    .bold()
+                                                    .padding()
                                                     .roundel(line: line,
                                                              width: $roundelWidth,
                                                              height: $roundelHeight)),
@@ -69,10 +71,12 @@ struct LinesView: View {
 
     func nonRouteRoundel(systemName: String) -> AnyView {
         AnyView(Image(systemName: systemName)
-            .roundel(color: MetroStationColor.lightBrown,
-                     textColor: .white,
-                     width: $roundelWidth,
-                     height: $roundelHeight))
+                    .font(WMATAUI.font(.largeTitle).bold())
+                    .padding()
+                    .roundel(color: MetroStationColor.lightBrown,
+                             textColor: .white,
+                             width: $roundelWidth,
+                             height: $roundelHeight))
     }
 }
 

@@ -33,7 +33,6 @@ struct NextTrainsView: View {
                 Text(train.line.rawValue)
                     .font(WMATAUI.font(.subheadline).bold())
                     .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
-                    .padding()
                 let cars = Text(train.car ?? "")
                 if train.car == "8" {
                     cars

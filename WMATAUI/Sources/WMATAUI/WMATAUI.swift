@@ -27,7 +27,7 @@ public struct WMATAUI {
     @available(iOS 14.0, *)
     public static func font(_ style: Font.TextStyle) -> Font {
         Font.custom("Helvetica Neue",
-                    size: UIFont.preferredFont(forTextStyle: UIFont.TextStyle.with(textStyle: style)).pointSize,
+                    size: UIFont.preferredFont(forTextStyle: .with(textStyle: style)).pointSize,
                     relativeTo: style)
     }
 
