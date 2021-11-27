@@ -59,9 +59,11 @@ public class LocationStore: NSObject, ObservableObject, CLLocationManagerDelegat
     func getClosestStations() {
         if let currentLocation = location {
             distances = Dictionary(uniqueKeysWithValues: LinesStore.standard.stationInformations.map { key, value in
-                return (key, currentLocation.distance(from: CLLocation(latitude: value.latitude, longitude: value.longitude)))
+                return (key, currentLocation
+                            .distance(from: CLLocation(latitude: value.latitude, longitude: value.longitude)))
             })
-            for distance in distances.sorted(by: { return $0.value.magnitude < $1.value.magnitude }).prefix(CacheManager.standard.maxStations) {
+            for distance in distances.sorted(by: { return $0.value.magnitude < $1.value.magnitude })
+                    .prefix(CacheManager.standard.maxStations) {
                 closestStations.append(distance.key)
             }
         }

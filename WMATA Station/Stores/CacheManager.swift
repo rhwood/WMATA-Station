@@ -67,7 +67,7 @@ class CacheManager: ObservableObject {
             recents.remove(at: maxStations)
         }
         // save recents list to UserDefaults
-        if (setDefaults) {
+        if setDefaults {
             UserDefaults.standard.set(recents.map { $0.rawValue }, forKey: "recentStations")
         }
         // update recentStations and allow redraws
@@ -77,7 +77,7 @@ class CacheManager: ObservableObject {
     /// Set the maximum number of stations returned in an ordered query (other than stations on a line)
     func setMaxStations(_ max: Int, setDefaults: Bool = true) {
         maxStations = max
-        if (setDefaults) {
+        if setDefaults {
             UserDefaults.standard.set(maxStations, forKey: "maxResults")
         }
     }
@@ -85,7 +85,7 @@ class CacheManager: ObservableObject {
     /// Set the number of seconds to retain cached data before clearing it
     func setCacheDuration(_ duration: Int, setDefaults: Bool = true) {
         cacheDuration = duration
-        if (setDefaults) {
+        if setDefaults {
             UserDefaults.standard.set(cacheDuration, forKey: "cacheDuration")
         }
     }
@@ -96,7 +96,8 @@ class CacheManager: ObservableObject {
     }
 
     func retrieve(name key: String) -> Any? {
-        if let cached = UserDefaults.standard.object(forKey: "\(key)CacheDate") as? Date, cached.addingTimeInterval(TimeInterval(cacheDuration)) > Date() {
+        if let cached = UserDefaults.standard.object(forKey: "\(key)CacheDate") as? Date,
+           cached.addingTimeInterval(TimeInterval(cacheDuration)) > Date() {
             return UserDefaults.standard.object(forKey: key)
         }
         return nil

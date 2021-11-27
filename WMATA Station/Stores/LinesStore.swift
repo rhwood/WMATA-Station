@@ -32,14 +32,15 @@ class LinesStore: ObservableObject {
         if let informations = CacheManager.standard.retrieve(name: "stationInformations") as? [StationInformation] {
             getStations(informations)
         } else {
-            metro.stations() { [self] result in
+            metro.stations(for: nil) { [self] result in
                 switch result {
                 case .success(let values):
                     waitTime = 1
                     DispatchQueue.main.async {
                         getStations(values.stations)
                     }
-                    CacheManager.standard.cache(name: "stationInformations", object: values.stations)
+//                    // need to encode stations before caching
+//                    CacheManager.standard.cache(name: "stationInformations", object: values.stations)
                 case .failure(let error):
                     print("\(error) requesting stations")
                     waitTime *= 2
