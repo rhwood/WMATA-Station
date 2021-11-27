@@ -45,7 +45,7 @@ struct PreviewData {
 
     var railPredictions: [RailPrediction] {
         var predictions: [RailPrediction] = []
-        for idx in 0...9 {
+        for idx in 0...5 {
             var minutes = "\(idx)"
             switch idx {
             case 0:
