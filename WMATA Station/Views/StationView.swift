@@ -94,7 +94,7 @@ struct Dots: View {
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
         let locationManager = LocationStore()
-        let linesManager = PreviewLinesManager()
+        let linesManager = PreviewLinesManager() as LinesStore
         Group {
             StationView(station: .A01)
                 .environmentObject(locationManager)

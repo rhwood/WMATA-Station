@@ -157,5 +157,6 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(PreviewLinesManager())
             .environmentObject(CacheManager())
             .environmentObject(LocationStore())
+            .environmentObject(LinesStore())
     }
 }
