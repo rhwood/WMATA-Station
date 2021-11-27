@@ -8,6 +8,7 @@
 import Foundation
 import WMATA
 import WMATAUI
+import os
 
 class LinesStore: ObservableObject {
 
@@ -16,33 +17,46 @@ class LinesStore: ObservableObject {
     @Published var walkingTimes: [Station: Float] = [:]
     /// seconds to wait on failure before trying again
     private var waitTime = 1
+    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "LinesStore")
+    public static let standard = LinesStore()
 
     init() {
         for line in WMATAUI.lines {
             stations[line] = []
-            stations(for: line)
+        }
+        getStations()
+    }
+
+    func getStations() {
+        let metro = MetroRail.init(key: ApiKeys.wmata)
+        if let informations = CacheManager.standard.retrieve(name: "stationInformations") as? [StationInformation] {
+            getStations(informations)
+        } else {
+            metro.stations() { [self] result in
+                switch result {
+                case .success(let values):
+                    waitTime = 1
+                    DispatchQueue.main.async {
+                        getStations(values.stations)
+                    }
+                    CacheManager.standard.cache(name: "stationInformations", object: values.stations)
+                case .failure(let error):
+                    print("\(error) requesting stations")
+                    waitTime *= 2
+                    DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(waitTime)) {
+                        getStations()
+                    }
+                }
+            }
         }
     }
 
-    func stations(for line: Line) {
-        line.stations(key: ApiKeys.wmata) { [self] result in
-            switch result {
-            case .success(let lineStations):
-                waitTime = 1
-                print("Got stations for \(line)")
-                DispatchQueue.main.async {
-                    for station in lineStations.stations {
-                        stations[line]?.append(station.station)
-                        stationInformations[station.station] = station
-                    }
-                }
-            case .failure(let error):
-                print("\(error) requesting stations for \(line)")
-                waitTime *= 2
-                DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(waitTime)) {
-                    stations(for: line)
-                }
+    func getStations(_ values: [StationInformation]) {
+        for information in values {
+            for line in information.station.lines {
+                stations[line]?.append(information.station)
             }
+            stationInformations[information.station] = information
         }
     }
 }

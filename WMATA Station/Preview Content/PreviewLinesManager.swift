@@ -11,12 +11,7 @@ import WMATAUI
 
 class PreviewLinesManager: LinesStore {
 
-    override init() {
-        super.init()
-        stationInformations = PreviewData.preview.stationInformations
-    }
-
-    override func stations(for line: Line) {
-        stations[line] = PreviewData.preview.stations
+    override func getStations() {
+        getStations(Array(PreviewData.preview.stationInformations.values))
     }
 }

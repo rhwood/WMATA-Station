@@ -16,6 +16,7 @@ public class LocationStore: NSObject, ObservableObject, CLLocationManagerDelegat
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var closestStations: [Station]
     @Published var location: CLLocation?
+    @Published var distances: [Station: CLLocationDistance]
 
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "LocationStore")
     private let locationManager: CLLocationManager
@@ -24,6 +25,7 @@ public class LocationStore: NSObject, ObservableObject, CLLocationManagerDelegat
         locationManager = CLLocationManager()
         authorizationStatus = locationManager.authorizationStatus
         closestStations = []
+        distances = [:]
 
         super.init()
         locationManager.delegate = self
@@ -55,6 +57,13 @@ public class LocationStore: NSObject, ObservableObject, CLLocationManagerDelegat
     }
 
     func getClosestStations() {
-        logger.debug("Getting Closest Stations to \(self.location?.description ?? "[no location]")")
+        if let currentLocation = location {
+            distances = Dictionary(uniqueKeysWithValues: LinesStore.standard.stationInformations.map { key, value in
+                return (key, currentLocation.distance(from: CLLocation(latitude: value.latitude, longitude: value.longitude)))
+            })
+            for distance in distances.sorted(by: { return $0.value.magnitude < $1.value.magnitude }).prefix(CacheManager.standard.maxStations) {
+                closestStations.append(distance.key)
+            }
+        }
     }
 }
