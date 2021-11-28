@@ -127,7 +127,6 @@ struct StationSign: View {
             destination: StationView(station: station)
                 .environmentObject(linesManager)
                 .onAppear {
-                    // should be // cacheManager.mostRecentStation = station // but EnvironmentObjects are immutable
                     cacheManager.setMostRecentStation(station)
                 },
             label: {
@@ -156,11 +155,19 @@ struct StationSignFooter: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static var linesManager = PreviewLinesManager() as LinesStore
     static var previews: some View {
         LinesView()
-            .environmentObject(PreviewLinesManager())
+            .environmentObject(linesManager)
             .environmentObject(CacheManager())
-            .environmentObject(LocationStore())
-            .environmentObject(LinesStore())
+            .environmentObject(PreviewLocationManager(.authorizedWhenInUse) as LocationStore)
+        LinesView()
+            .environmentObject(linesManager)
+            .environmentObject(CacheManager())
+            .environmentObject(PreviewLocationManager(.notDetermined) as LocationStore)
+        LinesView()
+            .environmentObject(linesManager)
+            .environmentObject(CacheManager())
+            .environmentObject(PreviewLocationManager(.denied) as LocationStore)
     }
 }

@@ -21,8 +21,8 @@ public class LocationStore: NSObject, ObservableObject, CLLocationManagerDelegat
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "LocationStore")
     private let locationManager: CLLocationManager
 
-    override public init() {
-        locationManager = CLLocationManager()
+    public init(manager: CLLocationManager = CLLocationManager()) {
+        locationManager = manager
         authorizationStatus = locationManager.authorizationStatus
         closestStations = []
         distances = [:]
