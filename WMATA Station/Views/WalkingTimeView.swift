@@ -37,7 +37,12 @@ struct WalkingTimeView: View {
     }
 
     func walkingTime(station: Station) -> TimeInterval {
-        return 100
+        switch locationManager.authorizationStatus {
+        case .denied, .notDetermined, .restricted:
+            return 0
+        default:
+            return 100
+        }
     }
 }
 
