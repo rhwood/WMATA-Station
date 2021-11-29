@@ -16,7 +16,7 @@ class CacheManager: ObservableObject {
     @Published private(set) var recentStations: [Station] = []
     /// Maximum number of stations returned in an ordered query (other then stations on a line)
     @Published private(set) var maxStations = 5
-    /// Seconds to retain cached (to user defaults) information before forcing a requery
+    /// Seconds to retain cached (to user defaults) information before forcing a requery; default is 1 day
     private var cacheDuration = 86400
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "CacheManager")
 
@@ -103,14 +103,13 @@ class CacheManager: ObservableObject {
 
     func retrieve<T: Decodable>(name key: String) -> T? {
         if let cached = UserDefaults.standard.object(forKey: "\(key)CacheDate") as? Date,
-           cached.addingTimeInterval(TimeInterval(cacheDuration)) > Date() {
-            if let data = UserDefaults.standard.data(forKey: key) {
-                do {
-                    logger.debug("Decoding cached value for \(key)")
-                    return try JSONDecoder().decode(T.self, from: data)
-                } catch {
-                    logger.error("Unable to decode \(key) from JSON due to \(error.localizedDescription)")
-                }
+           cached.addingTimeInterval(TimeInterval(cacheDuration)) > Date(),
+           let data = UserDefaults.standard.data(forKey: key) {
+            do {
+                logger.debug("Decoding cached value for \(key)")
+                return try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                logger.error("Unable to decode \(key) from JSON due to \(error.localizedDescription)")
             }
         }
         return nil
