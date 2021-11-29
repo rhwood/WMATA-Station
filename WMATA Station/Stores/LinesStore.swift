@@ -29,7 +29,7 @@ class LinesStore: ObservableObject {
 
     func getStations() {
         let metro = MetroRail.init(key: ApiKeys.wmata)
-        if let informations = CacheManager.standard.retrieve(name: "stationInformations") as? [StationInformation] {
+        if let informations: [StationInformation] = CacheManager.standard.retrieve(name: "stationInformations") {
             getStations(informations)
         } else {
             metro.stations(for: nil) { [self] result in
@@ -39,8 +39,7 @@ class LinesStore: ObservableObject {
                     DispatchQueue.main.async {
                         getStations(values.stations)
                     }
-//                    // need to encode stations before caching
-//                    CacheManager.standard.cache(name: "stationInformations", object: values.stations)
+                    CacheManager.standard.cache(name: "stationInformations", object: values.stations)
                 case .failure(let error):
                     print("\(error) requesting stations")
                     waitTime *= 2

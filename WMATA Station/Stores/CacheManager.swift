@@ -7,6 +7,7 @@
 
 import Foundation
 import WMATA
+import os
 
 /// Store recently viewed stations without retaining history (like a recent documents list in a word processor).
 class CacheManager: ObservableObject {
@@ -17,6 +18,7 @@ class CacheManager: ObservableObject {
     @Published private(set) var maxStations = 5
     /// Seconds to retain cached (to user defaults) information before forcing a requery
     private var cacheDuration = 86400
+    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "CacheManager")
 
     static public var standard = CacheManager()
 
@@ -90,15 +92,26 @@ class CacheManager: ObservableObject {
         }
     }
 
-    func cache(name key: String, object value: Any) {
-        UserDefaults.standard.set(value, forKey: key)
-        UserDefaults.standard.set(Date(), forKey: "\(key)CacheDate")
+    func cache<T: Encodable>(name key: String, object value: T) {
+        do {
+            UserDefaults.standard.set(try JSONEncoder().encode(value), forKey: key)
+            UserDefaults.standard.set(Date(), forKey: "\(key)CacheDate")
+        } catch {
+            logger.error("Unable to encode \(key) to JSON due to \(error.localizedDescription)")
+        }
     }
 
-    func retrieve(name key: String) -> Any? {
+    func retrieve<T: Decodable>(name key: String) -> T? {
         if let cached = UserDefaults.standard.object(forKey: "\(key)CacheDate") as? Date,
            cached.addingTimeInterval(TimeInterval(cacheDuration)) > Date() {
-            return UserDefaults.standard.object(forKey: key)
+            if let data = UserDefaults.standard.data(forKey: key) {
+                do {
+                    logger.debug("Decoding cached value for \(key)")
+                    return try JSONDecoder().decode(T.self, from: data)
+                } catch {
+                    logger.error("Unable to decode \(key) from JSON due to \(error.localizedDescription)")
+                }
+            }
         }
         return nil
     }
