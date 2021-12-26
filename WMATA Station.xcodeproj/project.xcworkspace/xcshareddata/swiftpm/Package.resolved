@@ -27,6 +27,15 @@
           "revision": "a794b2fc219819e366d225412f80c7cc9586b679",
           "version": "10.0.0"
         }
+      },
+      {
+        "package": "WMATAUI",
+        "repositoryURL": "https://github.com/rhwood/WMATAUI.swift",
+        "state": {
+          "branch": null,
+          "revision": "0c4c00357988d306f48f67929fb3660a775aaf95",
+          "version": "0.1.0"
+        }
       }
     ]
   },
