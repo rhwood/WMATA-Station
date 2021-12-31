@@ -32,8 +32,8 @@ struct LinesView: View {
                                         VStack(
                                             alignment: .leading,
                                             spacing: UIFont.preferredFont(forTextStyle: .footnote).pointSize * 0.25) {
-                                            Text("Find Closest Stations").font(WMATAUI.font(.title3).weight(.medium))
-                                            Text("And show walking time").font(WMATAUI.font(.body))
+                                                Text("Find Closest Stations").font(.metroFont(.title3).weight(.medium))
+                                                Text("And show walking time").font(.metroFont(.body))
                                         }
                                      })),
                                      stations: [])
@@ -53,7 +53,7 @@ struct LinesView: View {
                                      roundel: nonRouteRoundel(systemName: "clock"),
                                      stations: cacheManager.recentStations)
                         }
-                    ForEach(WMATAUI.lines, id: \.rawValue) { line in
+                    ForEach(Line.allCurrent.sorted(), id: \.rawValue) { line in
                         LineView(line: line,
                                  roundel: AnyView(Text(line.rawValue)
                                                     .bold()
@@ -64,16 +64,16 @@ struct LinesView: View {
                                  stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
                     }
                 }
-                .font(WMATAUI.font(.largeTitle).weight(.medium))
+                .font(.metroFont(.largeTitle).weight(.medium))
             }
         }
     }
 
     func nonRouteRoundel(systemName: String) -> AnyView {
         AnyView(Image(systemName: systemName)
-                    .font(WMATAUI.font(.largeTitle).bold())
+                    .font(.metroFont(.largeTitle).bold())
                     .padding()
-                    .roundel(color: MetroStationColor.lightBrown,
+                    .roundel(color: .metroStationLightBrown,
                              textColor: .white,
                              width: $roundelWidth,
                              height: $roundelHeight))
@@ -131,7 +131,7 @@ struct StationSign: View {
                 },
             label: {
                 VStack(alignment: .leading, spacing: spacing) {
-                    Text(station.name).font(WMATAUI.font(.title3).weight(.medium))
+                    Text(station.name).font(.metroFont(.title3).weight(.medium))
                     StationSignFooter(station: station, spacing: spacing)
                 }
             })
@@ -145,12 +145,12 @@ struct StationSignFooter: View {
 
     var body: some View {
         HStack(spacing: spacing) {
-            ForEach(station.lines.sorted(by: WMATAUI.mapOrder(_:_:)), id: \.rawValue) {
+            ForEach(station.allConnections(to: nil).sorted(), id: \.rawValue) {
                 $0.dot(style: .footnote)
             }
             Spacer()
             WalkingTimeView(station: station, spacing: spacing)
-        }.font(WMATAUI.font(.body))
+        }.font(.metroFont(.body))
     }
 }
 

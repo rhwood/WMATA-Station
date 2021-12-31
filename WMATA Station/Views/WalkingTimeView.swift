@@ -48,11 +48,11 @@ struct WalkingTimeView: View {
 
 struct WalkingTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        WalkingTimeView(station: .A01, spacing: 10)
+        WalkingTimeView(station: .metroCenterUpper, spacing: 10)
             .environmentObject(PreviewLocationManager(.authorizedWhenInUse) as LocationStore)
-        WalkingTimeView(station: .A01, spacing: 10)
+        WalkingTimeView(station: .metroCenterUpper, spacing: 10)
             .environmentObject(PreviewLocationManager(.notDetermined) as LocationStore)
-        WalkingTimeView(station: .A01, spacing: 10)
+        WalkingTimeView(station: .metroCenterUpper, spacing: 10)
             .environmentObject(PreviewLocationManager(.denied) as LocationStore)
     }
 }

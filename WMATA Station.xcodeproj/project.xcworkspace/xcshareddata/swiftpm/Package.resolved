@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/emma-k-alexandra/GTFS.git",
         "state": {
           "branch": null,
-          "revision": "c4ead92be39de76ec5a8f6dc591f2b7095f19e08",
-          "version": "1.0.0"
+          "revision": "92197f4c41aba53889a2db1e2e9d6dbe4022a223",
+          "version": "1.0.1"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/apple/swift-protobuf.git",
         "state": {
           "branch": null,
-          "revision": "e1904bf5a5f79cb7e0ff68a427a53a93b652fcd1",
-          "version": "1.15.0"
+          "revision": "7e2c5f3cbbeea68e004915e3a8961e20bd11d824",
+          "version": "1.18.0"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/emma-k-alexandra/WMATA.swift",
         "state": {
           "branch": null,
-          "revision": "a794b2fc219819e366d225412f80c7cc9586b679",
-          "version": "10.0.0"
+          "revision": "8c5588e4d1c5581ec4cc25a2a1cf5b459cef6d8c",
+          "version": "12.0.0"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/rhwood/WMATAUI.swift",
         "state": {
           "branch": null,
-          "revision": "0c4c00357988d306f48f67929fb3660a775aaf95",
-          "version": "0.1.0"
+          "revision": "a92d7fd794856585fcf32f3386ea9eb68aa26982",
+          "version": "0.5.0"
         }
       }
     ]

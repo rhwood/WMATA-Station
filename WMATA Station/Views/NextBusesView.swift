@@ -29,11 +29,11 @@ struct NextBusesView: View {
             Text("Minutes")
             ForEach(buses.allBuses) { bus in
                 Text(bus.route.description)
-                    .font(WMATAUI.font(.subheadline).bold())
+                    .font(.metroFont(.subheadline).bold())
                 Text(bus.directionText).frame(alignment: .leading)
                 Text(bus.minutes.description).frame(alignment: .trailing)
             }
-        }.font(WMATAUI.font(.headline).bold())
+        }.font(.metroFont(.headline).bold())
         .onAppear {
             buses.start()
         }
@@ -45,8 +45,8 @@ struct NextBusesView: View {
 
 struct NextBusesView_Previews: PreviewProvider {
     static var previews: some View {
-        NextBusesView(station: .A01,
-                       buses: MetroNextBusesModel(station: PreviewData.preview.stationInformations[.A01]!,
+        NextBusesView(station: .metroCenterUpper,
+                      buses: MetroNextBusesModel(station: PreviewData.preview.stationInformations[.metroCenterUpper]!,
                                                     preview: nil))
     }
 }

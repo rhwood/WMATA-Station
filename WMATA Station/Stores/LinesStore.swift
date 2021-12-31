@@ -13,7 +13,7 @@ import os
 class LinesStore: ObservableObject {
 
     @Published var stations: [Line: [Station]] = [:]
-    @Published var stationInformations: [Station: StationInformation] = [:]
+    @Published var stationInformations: [Station: Rail.StationInformation.Response] = [:]
     @Published var walkingTimes: [Station: Float] = [:]
     /// seconds to wait on failure before trying again
     private var waitTime = 1
@@ -21,18 +21,17 @@ class LinesStore: ObservableObject {
     public static let standard = LinesStore()
 
     init() {
-        for line in WMATAUI.lines {
+        for line in Line.allInMapOrder {
             stations[line] = []
         }
         getStations()
     }
 
     func getStations() {
-        let metro = MetroRail.init(key: ApiKeys.wmata)
-        if let informations: [StationInformation] = CacheManager.standard.retrieve(name: "stationInformations") {
+        if let informations: [Rail.StationInformation.Response] = CacheManager.standard.retrieve(name: "stationInformations") {
             getStations(informations)
         } else {
-            metro.stations(for: nil) { [self] result in
+            Rail.Stations(key: ApiKeys.wmata, line: nil, delegate: nil).request { [self] result in
                 switch result {
                 case .success(let values):
                     waitTime = 1
@@ -51,7 +50,7 @@ class LinesStore: ObservableObject {
         }
     }
 
-    func getStations(_ values: [StationInformation]) {
+    func getStations(_ values: [Rail.StationInformation.Response]) {
         for information in values {
             for line in information.station.lines {
                 stations[line]?.append(information.station)

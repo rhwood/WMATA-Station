@@ -30,19 +30,21 @@ struct NextTrainsView: View {
             Text("Destination")
             Text("Minutes")
             ForEach(trains.trains) { train in
-                Text(train.line.rawValue)
-                    .font(WMATAUI.font(.subheadline).bold())
-                    .roundel(line: train.line, width: $roundelWidth, height: $roundelHeight)
-                let cars = Text(train.car ?? "")
-                if train.car == "8" {
+                if let line = train.line {
+                Text(line.rawValue)
+                    .font(.metroFont(.subheadline).bold())
+                    .roundel(line: line, width: $roundelWidth, height: $roundelHeight)
+                }
+                let cars = Text("\(train.car?.rawValue ?? "")" )
+                if train.car == .eight {
                     cars
                 } else {
                     cars.foregroundColor(.red)
                 }
                 Text(train.destinationName).frame(alignment: .leading)
-                Text(train.minutes).frame(alignment: .trailing)
+                Text(train.minutes.description).frame(alignment: .trailing)
             }
-        }.font(WMATAUI.font(.headline).bold())
+        }.font(.metroFont(.headline).bold())
         .onAppear {
             trains.start()
         }
@@ -54,8 +56,8 @@ struct NextTrainsView: View {
 
 struct NextTrains_Previews: PreviewProvider {
     static var previews: some View {
-        NextTrainsView(station: .A01,
-                       trains: MetroNextTrainsModel(station: PreviewData.preview.stationInformations[.A01]!,
+        NextTrainsView(station: .metroCenterUpper,
+                       trains: MetroNextTrainsModel(station: PreviewData.preview.stationInformations[.metroCenterUpper]!,
                                                     prediction: PreviewData.preview.railPredictions))
     }
 }

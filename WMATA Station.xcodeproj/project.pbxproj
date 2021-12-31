@@ -19,7 +19,7 @@
 		484A36BF2753B4B000AF8818 /* PreviewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484A36BE2753B4B000AF8818 /* PreviewLocationManager.swift */; };
 		4871567925BDEB30006ACCD6 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4871567825BDEB30006ACCD6 /* PreviewData.swift */; };
 		487CE5A625C5DCC10013C2B6 /* NextBusesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487CE5A525C5DCC10013C2B6 /* NextBusesView.swift */; };
-		487CE5B225C5FC410013C2B6 /* WMATA in Frameworks */ = {isa = PBXBuildFile; productRef = 487CE5B125C5FC410013C2B6 /* WMATA */; };
+		48BCABD6277F9DF900BFE7D7 /* WMATA+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BCABD5277F9DF900BFE7D7 /* WMATA+Extensions.swift */; };
 		48CD053C26DC2BBE00FE48A1 /* PreviewLinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */; };
 		48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7614725AFBF8700756E52 /* ApiKeys.swift */; };
 		48DA8BCD25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */; };
@@ -62,6 +62,7 @@
 		484A36BE2753B4B000AF8818 /* PreviewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationManager.swift; sourceTree = "<group>"; };
 		4871567825BDEB30006ACCD6 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		487CE5A525C5DCC10013C2B6 /* NextBusesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextBusesView.swift; sourceTree = "<group>"; };
+		48BCABD5277F9DF900BFE7D7 /* WMATA+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WMATA+Extensions.swift"; sourceTree = "<group>"; };
 		48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLinesManager.swift; sourceTree = "<group>"; };
 		48D7614725AFBF8700756E52 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroNextTrainsModel.swift; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 			files = (
 				481AA559277918250086498F /* WMATAUI in Frameworks */,
 				484417E225C1829600A7752D /* WMATAUI in Frameworks */,
-				487CE5B225C5FC410013C2B6 /* WMATA in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +175,7 @@
 				48FA4C6625A2ACFB0050C027 /* Assets.xcassets */,
 				48FA4C6B25A2ACFB0050C027 /* Info.plist */,
 				48FA4C6825A2ACFB0050C027 /* Preview Content */,
+				48BCABD5277F9DF900BFE7D7 /* WMATA+Extensions.swift */,
 			);
 			path = "WMATA Station";
 			sourceTree = "<group>";
@@ -226,7 +227,6 @@
 			name = "WMATA Station";
 			packageProductDependencies = (
 				484417E125C1829600A7752D /* WMATAUI */,
-				487CE5B125C5FC410013C2B6 /* WMATA */,
 				481AA558277918250086498F /* WMATAUI */,
 			);
 			productName = "WMATA Station";
@@ -301,7 +301,6 @@
 			);
 			mainGroup = 48FA4C5625A2ACF70050C027;
 			packageReferences = (
-				487CE5B025C5FC410013C2B6 /* XCRemoteSwiftPackageReference "WMATA" */,
 				481AA557277918250086498F /* XCRemoteSwiftPackageReference "WMATAUI" */,
 			);
 			productRefGroup = 48FA4C6025A2ACF70050C027 /* Products */;
@@ -357,6 +356,7 @@
 				480E32E825C58B4F0009F827 /* StationModel.swift in Sources */,
 				480E32CC25C42CB50009F827 /* MetroNextBusesModel.swift in Sources */,
 				48F6D70C26DAAAEB003A5C34 /* WalkingTimeView.swift in Sources */,
+				48BCABD6277F9DF900BFE7D7 /* WMATA+Extensions.swift in Sources */,
 				482881A025BCBEF3005B7994 /* Roundel.swift in Sources */,
 				4828819B25BCBE2E005B7994 /* NextTrainsView.swift in Sources */,
 				4828818825BC5902005B7994 /* StationView.swift in Sources */,
@@ -689,16 +689,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rhwood/WMATAUI.swift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
-		487CE5B025C5FC410013C2B6 /* XCRemoteSwiftPackageReference "WMATA" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/emma-k-alexandra/WMATA.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -712,11 +704,6 @@
 		484417E125C1829600A7752D /* WMATAUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WMATAUI;
-		};
-		487CE5B125C5FC410013C2B6 /* WMATA */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 487CE5B025C5FC410013C2B6 /* XCRemoteSwiftPackageReference "WMATA" */;
-			productName = WMATA;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
