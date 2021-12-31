@@ -10,13 +10,13 @@ import WMATA
 
 class StationModel: ObservableObject {
 
-    let information: StationInformation
+    let information: Rail.StationInformation.Response
     // meters from station location to search for connecting services
     let radius: Float = 500
     let metroNextTrains: MetroNextTrainsModel
     let metroNextBuses: MetroNextBusesModel
 
-    init(_ information: StationInformation) {
+    init(_ information: Rail.StationInformation.Response) {
         self.information = information
         metroNextTrains = MetroNextTrainsModel(station: information)
         metroNextBuses = MetroNextBusesModel(station: information)

@@ -8,27 +8,26 @@
 import Foundation
 import WMATA
 
-class MetroNextTrainsModel: ObservableObject {
+class MetroNextTrainsModel: JSONEndpointDelegate<Rail.NextTrains>, ObservableObject {
 
-    @Published var trains: [RailPrediction] = []
+    @Published var trains: [Rail.NextTrains.Response.Prediction] = []
     let station: Station
     private let interval: TimeInterval
     private var timer: Timer = Timer()
-    private let metroRail = MetroRail(key: ApiKeys.wmata)
 
-    init(station: StationInformation, prediction: [RailPrediction]? = nil) {
+    init(station: Rail.StationInformation.Response, prediction: [Rail.NextTrains.Response.Prediction]? = nil) {
         self.station = station.station
-        if prediction == nil {
+        if let next = prediction {
+            interval = -1
+            trains = next
+        } else {
             // 10 is smallest update interval from WMATA
             interval = 10
-        } else {
-            interval = -1
-            trains = prediction!
         }
     }
 
     private func nextTrains() {
-        metroRail.nextTrains(at: station.allTogether) { result in
+        Rail.NextTrains(key: ApiKeys.wmata, stations: station.allTogether, delegate: nil).request { result in
             switch result {
             case .success(let railPreditions):
                 print("nextTrains for \(String(describing: self.station.allTogether)) are \(railPreditions)")

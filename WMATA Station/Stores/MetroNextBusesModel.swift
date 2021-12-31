@@ -11,14 +11,13 @@ import WMATA
 class MetroNextBusesModel: ObservableObject {
 
     @Published var stops: [Stop] = []
-    @Published var buses: [Stop: [BusPrediction]] = [:]
-    @Published var allBuses: [BusPrediction] = []
-    var station: StationInformation
+    @Published var buses: [Stop: [Bus.NextBuses.Response.Prediction]] = [:]
+    @Published var allBuses: [Bus.NextBuses.Response.Prediction] = []
+    var station: Rail.StationInformation.Response
     private let interval: TimeInterval
     private var timer: Timer = Timer()
-    private let metroBus = MetroBus(key: ApiKeys.wmata)
 
-    init(station: StationInformation, preview: [Stop: [BusPrediction]]? = nil) {
+    init(station: Rail.StationInformation.Response, preview: [Stop: [Bus.NextBuses.Response.Prediction]]? = nil) {
         self.station = station
         if preview == nil {
             // 10 is smallest update interval from WMATA
@@ -34,16 +33,16 @@ class MetroNextBusesModel: ObservableObject {
             getStops()
         } else {
             for stop in stops {
-                metroBus.nextBuses(for: stop) { [self] result in
+                Bus.NextBuses(key: ApiKeys.wmata, stop: stop).request { [self] result in
                     switch result {
                     case .success(let predictions):
-                        print("predictions for \(stop.id) are \(predictions)")
+                        print("predictions for \(stop) are \(predictions)")
                         DispatchQueue.main.async {
                             buses[stop] = predictions.predictions
                         }
                         rePredict()
                     case .failure(let error):
-                        print("\(error) requesting predictions for \(stop.id)")
+                        print("\(error) requesting predictions for \(stop)")
                     }
                 }
             }
@@ -51,8 +50,8 @@ class MetroNextBusesModel: ObservableObject {
     }
 
     private func getStops() {
-        let radius = RadiusAtCoordinates(radius: 500, latitude: station.latitude, longitude: station.longitude)
-        metroBus.searchStops(at: radius) { [self] result in
+        let radius = WMATALocation(radius: 500, latitude: station.latitude, longitude: station.longitude)
+        Bus.StopsSearch(key: ApiKeys.wmata, location: radius).request { [self] result in
             switch result {
             case .success(let stopsResult):
                 print("searchStops for \(station.latitude):\(station.longitude) are \(stopsResult)")

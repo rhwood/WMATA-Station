@@ -41,12 +41,12 @@ struct TitleView: View {
     var body: some View {
         HStack(spacing: spacing) {
             Text(station.name)
-                .font(WMATAUI.font(.largeTitle).weight(.medium))
+                .font(.metroFont(.largeTitle).weight(.medium))
                 .padding(.trailing, spacing * 2)
-            Dots(lines: station.lines.sorted(by: WMATAUI.mapOrder(_:_:)))
+            Dots(lines: station.allConnections(to: nil).sorted())
             Spacer()
             WalkingTimeView(station: station, spacing: spacing)
-                .font(WMATAUI.font(.body).weight(.medium))
+                .font(.metroFont(.body).weight(.medium))
         }
     }
 }
@@ -59,18 +59,6 @@ struct MetroRailPredictionsView: View {
     var body: some View {
         HStack {
             NextTrainsView(station: station, trains: trains)
-        }
-    }
-}
-
-struct MetroBusPredictionsView: View {
-
-    var station: Station
-    var buses: MetroNextBusesModel
-
-    var body: some View {
-        HStack {
-            NextBusesView(station: station, buses: buses)
         }
     }
 }
@@ -96,10 +84,10 @@ struct StationView_Previews: PreviewProvider {
         let locationManager = LocationStore()
         let linesManager = PreviewLinesManager() as LinesStore
         Group {
-            StationView(station: .A01)
+            StationView(station: .metroCenterUpper)
                 .environmentObject(locationManager)
                 .environmentObject(linesManager)
-            StationView(station: .C03)
+            StationView(station: .farragutWest)
                 .environmentObject(locationManager)
                 .environmentObject(linesManager)
         }
