@@ -8,7 +8,7 @@
 import Foundation
 import WMATA
 
-class MetroNextTrainsModel: JSONEndpointDelegate<Rail.NextTrains>, ObservableObject {
+class MetroNextTrainsModel: ObservableObject {
 
     @Published var trains: [Rail.NextTrains.Response.Prediction] = []
     let station: Station
@@ -17,29 +17,27 @@ class MetroNextTrainsModel: JSONEndpointDelegate<Rail.NextTrains>, ObservableObj
 
     init(station: Rail.StationInformation.Response, prediction: [Rail.NextTrains.Response.Prediction]? = nil) {
         self.station = station.station
-        if let next = prediction {
+        if let nextTrains = prediction {
             interval = -1
-            trains = next
+            trains = nextTrains
         } else {
             // 10 is smallest update interval from WMATA
             interval = 10
         }
     }
-
+    
     private func nextTrains() {
-        Rail.NextTrains(key: ApiKeys.wmata, stations: station.allTogether, delegate: nil).request { result in
-            switch result {
-            case .success(let railPreditions):
-                print("nextTrains for \(String(describing: self.station.allTogether)) are \(railPreditions)")
-                DispatchQueue.main.async {
-                    self.trains = railPreditions.trains
+        DispatchQueue.main.async { [self] in
+            Task {
+                do {
+                    self.trains = try await Rail.NextTrains(key: ApiKeys.wmata, stations: station.allTogether).request().get().trains
+                } catch {
+                    print("\(error) requesting next trains for \(station)")
                 }
-            case .failure(let error):
-                print("\(error) requesting nextTrains for \(String(describing: self.station.allTogether))")
             }
         }
     }
-
+    
     func start() {
         if interval > 0 {
             print("Starting nexttrain polling for \(String(describing: station.allTogether))")

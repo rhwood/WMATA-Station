@@ -33,16 +33,13 @@ class MetroNextBusesModel: ObservableObject {
             getStops()
         } else {
             for stop in stops {
-                Bus.NextBuses(key: ApiKeys.wmata, stop: stop).request { [self] result in
-                    switch result {
-                    case .success(let predictions):
-                        print("predictions for \(stop) are \(predictions)")
-                        DispatchQueue.main.async {
-                            buses[stop] = predictions.predictions
+                DispatchQueue.main.async {
+                    Task {
+                        do {
+                            self.buses[stop] = try await Bus.NextBuses(key: ApiKeys.wmata, stop: stop).request().get().predictions
+                        } catch {
+                            print("\(error) getting predictions for \(stop)")
                         }
-                        rePredict()
-                    case .failure(let error):
-                        print("\(error) requesting predictions for \(stop)")
                     }
                 }
             }
@@ -51,19 +48,13 @@ class MetroNextBusesModel: ObservableObject {
 
     private func getStops() {
         let radius = WMATALocation(radius: 500, latitude: station.latitude, longitude: station.longitude)
-        Bus.StopsSearch(key: ApiKeys.wmata, location: radius).request { [self] result in
-            switch result {
-            case .success(let stopsResult):
-                print("searchStops for \(station.latitude):\(station.longitude) are \(stopsResult)")
-                DispatchQueue.main.async {
-                    for stop in stopsResult.stops {
-                        if let stop = stop.stop {
-                            stops.append(stop)
-                        }
-                    }
+        DispatchQueue.main.async {
+            Task {
+                do {
+                    self.stops = try await Bus.StopsSearch(key: ApiKeys.wmata, location: radius).request().get().stops.compactMap({ $0.stop })
+                } catch {
+                    print ("\(error) requesting stops within 500m of \(self.station)")
                 }
-            case .failure(let error):
-                print("\(error) requesting searchStops for \(station.latitude):\(station.longitude)")
             }
         }
     }
