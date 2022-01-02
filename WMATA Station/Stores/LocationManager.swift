@@ -15,8 +15,8 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
 
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var closestStations: [Station]
-    @Published var location: CLLocation?
-    @Published var distances: [Station: CLLocationDistance]
+    @Published var currentLocation: CLLocation?
+    @Published var stationLocations: [Station: CLLocation]
 
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "LocationStore")
     private let locationManager: CLLocationManager
@@ -25,7 +25,7 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
         locationManager = manager
         authorizationStatus = locationManager.authorizationStatus
         closestStations = []
-        distances = [:]
+        stationLocations = [:]
 
         super.init()
         locationManager.delegate = self
@@ -48,7 +48,7 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
     }
 
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last
+        currentLocation = locations.last
         getClosestStations()
     }
 
@@ -57,15 +57,23 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
     }
 
     func getClosestStations() {
-        if let currentLocation = location {
-            distances = Dictionary(uniqueKeysWithValues: LinesManager.standard.stationInformations.map { key, value in
-                return (key, currentLocation
-                            .distance(from: CLLocation(latitude: value.latitude, longitude: value.longitude)))
+        if let location = currentLocation {
+            stationLocations = Dictionary(uniqueKeysWithValues: LinesManager.standard.stationInformations.map {
+                ($0, CLLocation(latitude: $1.latitude, longitude: $1.longitude))
             })
-            for distance in distances.sorted(by: { return $0.value.magnitude < $1.value.magnitude })
-                    .prefix(CacheManager.standard.maxStations) {
-                closestStations.append(distance.key)
-            }
+            stationLocations
+                .map { ($0, location.distance(from: $1)) }
+                .filter {
+                    switch $0.0 {
+                    case .fortTottenLower, .lenfantPlazaLower, .galleryPlaceLower, .metroCenterLower:
+                        return false
+                    default:
+                        return true
+                    }
+                }
+                .sorted(by: { $0.1 < $1.1 })
+                .prefix(CacheManager.standard.maxStations)
+                .forEach { closestStations.append($0.0) }
         }
     }
 }
