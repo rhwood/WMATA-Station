@@ -12,7 +12,7 @@ import WMATAUI
 struct StationView: View {
 
     let station: Station
-    @EnvironmentObject var linesManager: LinesStore
+    @EnvironmentObject var linesManager: LinesManager
 
     var body: some View {
         GeometryReader { _ in
@@ -81,8 +81,8 @@ struct Dots: View {
 
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
-        let locationManager = LocationStore()
-        let linesManager = PreviewLinesManager() as LinesStore
+        let locationManager = LocationManager()
+        let linesManager = PreviewLinesManager() as LinesManager
         Group {
             StationView(station: .metroCenterUpper)
                 .environmentObject(locationManager)

@@ -10,7 +10,7 @@ import WMATA
 import WMATAUI
 import os
 
-class LinesStore: ObservableObject {
+class LinesManager: ObservableObject {
 
     @Published var stations: [Line: [Station]] = [:]
     @Published var stationInformations: [Station: Rail.StationInformation.Response] = [:]
@@ -18,7 +18,7 @@ class LinesStore: ObservableObject {
     /// seconds to wait on failure before trying again
     private var waitTime = 1
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "LinesStore")
-    public static let standard = LinesStore()
+    public static let standard = LinesManager()
 
     init() {
         for line in Line.allInMapOrder {

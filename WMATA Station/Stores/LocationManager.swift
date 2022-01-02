@@ -11,7 +11,7 @@ import WMATA
 import os
 
 /// Store the current location and determine shortest walking distance to any given station
-public class LocationStore: NSObject, ObservableObject, CLLocationManagerDelegate {
+public class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     @Published var authorizationStatus: CLAuthorizationStatus
     @Published var closestStations: [Station]
@@ -58,7 +58,7 @@ public class LocationStore: NSObject, ObservableObject, CLLocationManagerDelegat
 
     func getClosestStations() {
         if let currentLocation = location {
-            distances = Dictionary(uniqueKeysWithValues: LinesStore.standard.stationInformations.map { key, value in
+            distances = Dictionary(uniqueKeysWithValues: LinesManager.standard.stationInformations.map { key, value in
                 return (key, currentLocation
                             .distance(from: CLLocation(latitude: value.latitude, longitude: value.longitude)))
             })

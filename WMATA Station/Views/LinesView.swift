@@ -14,8 +14,8 @@ struct LinesView: View {
 
     @State var roundelWidth: CGFloat = 0
     @State var roundelHeight: CGFloat = 0
-    @EnvironmentObject var lines: LinesStore
-    @EnvironmentObject var locationStore: LocationStore
+    @EnvironmentObject var lines: LinesManager
+    @EnvironmentObject var locationStore: LocationManager
     @EnvironmentObject var cacheManager: CacheManager
 
     var body: some View {
@@ -118,7 +118,7 @@ struct StationSign: View {
 
     var line: Line?
     var station: Station
-    @EnvironmentObject var linesManager: LinesStore
+    @EnvironmentObject var linesManager: LinesManager
     @EnvironmentObject var cacheManager: CacheManager
 
     var body: some View {
@@ -155,19 +155,19 @@ struct StationSignFooter: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var linesManager = PreviewLinesManager() as LinesStore
+    static var linesManager = PreviewLinesManager() as LinesManager
     static var previews: some View {
         LinesView()
             .environmentObject(linesManager)
             .environmentObject(CacheManager())
-            .environmentObject(PreviewLocationManager(.authorizedWhenInUse) as LocationStore)
+            .environmentObject(PreviewLocationManager(.authorizedWhenInUse) as LocationManager)
         LinesView()
             .environmentObject(linesManager)
             .environmentObject(CacheManager())
-            .environmentObject(PreviewLocationManager(.notDetermined) as LocationStore)
+            .environmentObject(PreviewLocationManager(.notDetermined) as LocationManager)
         LinesView()
             .environmentObject(linesManager)
             .environmentObject(CacheManager())
-            .environmentObject(PreviewLocationManager(.denied) as LocationStore)
+            .environmentObject(PreviewLocationManager(.denied) as LocationManager)
     }
 }

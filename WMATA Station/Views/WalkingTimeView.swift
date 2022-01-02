@@ -15,7 +15,7 @@ struct WalkingTimeView: View {
     var station: Station
     var spacing: CGFloat
     let formatter = DateComponentsFormatter()
-    @EnvironmentObject var locationManager: LocationStore
+    @EnvironmentObject var locationManager: LocationManager
 
     var body: some View {
         let walkingTime = walkingTime(station: station)
@@ -49,10 +49,10 @@ struct WalkingTimeView: View {
 struct WalkingTimeView_Previews: PreviewProvider {
     static var previews: some View {
         WalkingTimeView(station: .metroCenterUpper, spacing: 10)
-            .environmentObject(PreviewLocationManager(.authorizedWhenInUse) as LocationStore)
+            .environmentObject(PreviewLocationManager(.authorizedWhenInUse) as LocationManager)
         WalkingTimeView(station: .metroCenterUpper, spacing: 10)
-            .environmentObject(PreviewLocationManager(.notDetermined) as LocationStore)
+            .environmentObject(PreviewLocationManager(.notDetermined) as LocationManager)
         WalkingTimeView(station: .metroCenterUpper, spacing: 10)
-            .environmentObject(PreviewLocationManager(.denied) as LocationStore)
+            .environmentObject(PreviewLocationManager(.denied) as LocationManager)
     }
 }

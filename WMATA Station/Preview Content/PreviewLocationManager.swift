@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class PreviewLocationManager: LocationStore {
+class PreviewLocationManager: LocationManager {
 
     init(_ defaultAuthorizationStatus: CLAuthorizationStatus) {
         super.init(manager: MockCLLocationManager(defaultAuthorizationStatus))

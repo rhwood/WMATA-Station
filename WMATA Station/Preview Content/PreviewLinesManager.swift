@@ -9,7 +9,7 @@ import Foundation
 import WMATA
 import WMATAUI
 
-class PreviewLinesManager: LinesStore {
+class PreviewLinesManager: LinesManager {
 
     override func getStations() {
         getStations(Array(PreviewData.preview.stationInformations.values))

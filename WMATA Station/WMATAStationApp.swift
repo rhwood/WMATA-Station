@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct WMATAStationApp: App {
 
-    let locationManager = LocationStore()
+    let locationManager = LocationManager()
 
     var body: some Scene {
         WindowGroup {
             LinesView()
-                .environmentObject(LinesStore.standard)
+                .environmentObject(LinesManager.standard)
                 .environmentObject(locationManager)
                 .environmentObject(CacheManager.standard)
         }
