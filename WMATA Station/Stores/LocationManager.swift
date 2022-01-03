@@ -9,23 +9,23 @@ import Foundation
 import CoreLocation
 import WMATA
 import os
+import MapKit
 
 /// Store the current location and determine shortest walking distance to any given station
 public class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     @Published var authorizationStatus: CLAuthorizationStatus
-    @Published var closestStations: [Station]
+    @Published var closestStations: [Station] = []
     @Published var currentLocation: CLLocation?
-    @Published var stationLocations: [Station: CLLocation]
+    @Published var stationLocations: [Station: CLLocation] = [:]
+    @Published var walkingTimes: [Station: TimeInterval] = [:]
 
-    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "LocationStore")
+    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "", category: "LocationManager")
     private let locationManager: CLLocationManager
 
     public init(manager: CLLocationManager = CLLocationManager()) {
         locationManager = manager
         authorizationStatus = locationManager.authorizationStatus
-        closestStations = []
-        stationLocations = [:]
 
         super.init()
         locationManager.delegate = self
@@ -49,11 +49,12 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
 
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last
+        walkingTimes = [:]
         getClosestStations()
     }
 
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        logger.info("LocationManager failed: \(error.localizedDescription)")
+        logger.info("Failed handling location: \(error.localizedDescription)")
     }
 
     func getClosestStations() {
@@ -75,5 +76,32 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
                 .prefix(CacheManager.standard.maxStations)
                 .forEach { closestStations.append($0.0) }
         }
+    }
+    
+    func walkingTime(station: Station) -> TimeInterval {
+        switch authorizationStatus {
+        case .denied, .notDetermined, .restricted:
+            return 0
+        default:
+            if let walkingTime = walkingTimes[station] {
+                return walkingTime
+            } else if let stationLocation = stationLocations[station], let currentLocation = currentLocation {
+                let request = MKDirections.Request()
+                request.transportType = .walking
+                request.source = MKMapItem(placemark: MKPlacemark(coordinate: currentLocation.coordinate))
+                request.destination = MKMapItem(placemark: MKPlacemark(coordinate: stationLocation.coordinate))
+                Task { () -> TimeInterval in
+                    do {
+                        let walkingTime = try await MKDirections(request: request).calculate().routes[0].expectedTravelTime
+                        walkingTimes[station] = walkingTime
+                        return walkingTime
+                    } catch {
+                        logger.error("Failed getting walking time to \(station.rawValue): \(error.localizedDescription)")
+                        return 0
+                    }
+                }
+            }
+        }
+        return 0
     }
 }

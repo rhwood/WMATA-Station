@@ -16,16 +16,19 @@ struct WalkingTimeView: View {
     var spacing: CGFloat
     let formatter = DateComponentsFormatter()
     @EnvironmentObject var locationManager: LocationManager
+    @State private var walkingTime: TimeInterval = 0
 
     var body: some View {
-        let walkingTime = walkingTime(station: station)
-        if walkingTime > 0 {
-            HStack(spacing: spacing) {
+        HStack(spacing: spacing) {
+            if walkingTime > 0 {
                 Image(systemName: "figure.walk").imageScale(.small)
                 Text(formatter.string(from: walkingTime)!)
+            } else {
+                EmptyView()
             }
-        } else {
-            EmptyView()
+        }
+        .onAppear {
+            walkingTime(station: station)
         }
     }
 
@@ -36,13 +39,8 @@ struct WalkingTimeView: View {
         formatter.maximumUnitCount = 1
     }
 
-    func walkingTime(station: Station) -> TimeInterval {
-        switch locationManager.authorizationStatus {
-        case .denied, .notDetermined, .restricted:
-            return 0
-        default:
-            return 100
-        }
+    func walkingTime(station: Station) {
+        walkingTime = locationManager.walkingTime(station: station)
     }
 }
 
