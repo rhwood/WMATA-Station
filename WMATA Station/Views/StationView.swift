@@ -69,12 +69,7 @@ struct Dots: View {
 
     var body: some View {
         ForEach(lines, id: \.rawValue) {
-            #if os(tvOS)
-            let style = UIFont.TextStyle.title1
-            #else
-            let style = UIFont.TextStyle.largeTitle
-            #endif
-            $0.dot(style: style)
+            $0.dot(style: .largeTitle)
         }
     }
 }

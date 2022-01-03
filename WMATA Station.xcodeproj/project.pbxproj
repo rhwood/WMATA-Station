@@ -12,7 +12,6 @@
 		481AA559277918250086498F /* WMATAUI in Frameworks */ = {isa = PBXBuildFile; productRef = 481AA558277918250086498F /* WMATAUI */; };
 		4828818825BC5902005B7994 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828818725BC5902005B7994 /* StationView.swift */; };
 		4828819B25BCBE2E005B7994 /* NextTrainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828819A25BCBE2E005B7994 /* NextTrainsView.swift */; };
-		482881A025BCBEF3005B7994 /* Roundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828819F25BCBEF3005B7994 /* Roundel.swift */; };
 		482D96EB25AB2BA4001BACFE /* LinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482D96EA25AB2BA4001BACFE /* LinesManager.swift */; };
 		482EE71E25ACB06200C351A4 /* View+Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482EE71D25ACB06200C351A4 /* View+Balance.swift */; };
 		484417E225C1829600A7752D /* WMATAUI in Frameworks */ = {isa = PBXBuildFile; productRef = 484417E125C1829600A7752D /* WMATAUI */; };
@@ -23,6 +22,7 @@
 		48CD053C26DC2BBE00FE48A1 /* PreviewLinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */; };
 		48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7614725AFBF8700756E52 /* ApiKeys.swift */; };
 		48DA8BCD25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */; };
+		48E017442782144500E603A0 /* Roundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E017432782144500E603A0 /* Roundel.swift */; };
 		48F6D70C26DAAAEB003A5C34 /* WalkingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6D70B26DAAAEB003A5C34 /* WalkingTimeView.swift */; };
 		48F6D70E26DAC420003A5C34 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6D70D26DAC420003A5C34 /* LocationManager.swift */; };
 		48F6D71026DAEC5B003A5C34 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6D70F26DAEC5B003A5C34 /* CacheManager.swift */; };
@@ -56,7 +56,6 @@
 		480E32E725C58B4F0009F827 /* StationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationModel.swift; sourceTree = "<group>"; };
 		4828818725BC5902005B7994 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		4828819A25BCBE2E005B7994 /* NextTrainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextTrainsView.swift; sourceTree = "<group>"; };
-		4828819F25BCBEF3005B7994 /* Roundel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundel.swift; sourceTree = "<group>"; };
 		482D96EA25AB2BA4001BACFE /* LinesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesManager.swift; sourceTree = "<group>"; };
 		482EE71D25ACB06200C351A4 /* View+Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Balance.swift"; sourceTree = "<group>"; };
 		484A36BE2753B4B000AF8818 /* PreviewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationManager.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLinesManager.swift; sourceTree = "<group>"; };
 		48D7614725AFBF8700756E52 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroNextTrainsModel.swift; sourceTree = "<group>"; };
+		48E017432782144500E603A0 /* Roundel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundel.swift; sourceTree = "<group>"; };
 		48F6D70B26DAAAEB003A5C34 /* WalkingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingTimeView.swift; sourceTree = "<group>"; };
 		48F6D70D26DAC420003A5C34 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		48F6D70F26DAEC5B003A5C34 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
@@ -124,9 +124,9 @@
 				48FA4C6425A2ACF70050C027 /* LinesView.swift */,
 				4828818725BC5902005B7994 /* StationView.swift */,
 				4828819A25BCBE2E005B7994 /* NextTrainsView.swift */,
-				4828819F25BCBEF3005B7994 /* Roundel.swift */,
 				482EE71D25ACB06200C351A4 /* View+Balance.swift */,
 				48F6D70B26DAAAEB003A5C34 /* WalkingTimeView.swift */,
+				48E017432782144500E603A0 /* Roundel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,10 +354,10 @@
 				48F6D70E26DAC420003A5C34 /* LocationManager.swift in Sources */,
 				484A36BF2753B4B000AF8818 /* PreviewLocationManager.swift in Sources */,
 				480E32E825C58B4F0009F827 /* StationModel.swift in Sources */,
+				48E017442782144500E603A0 /* Roundel.swift in Sources */,
 				480E32CC25C42CB50009F827 /* MetroNextBusesModel.swift in Sources */,
 				48F6D70C26DAAAEB003A5C34 /* WalkingTimeView.swift in Sources */,
 				48BCABD6277F9DF900BFE7D7 /* WMATA+Extensions.swift in Sources */,
-				482881A025BCBEF3005B7994 /* Roundel.swift in Sources */,
 				4828819B25BCBE2E005B7994 /* NextTrainsView.swift in Sources */,
 				4828818825BC5902005B7994 /* StationView.swift in Sources */,
 				48DA8BCD25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift in Sources */,
@@ -690,7 +690,7 @@
 			repositoryURL = "https://github.com/rhwood/WMATAUI.swift";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.5.0;
+				minimumVersion = 0.6.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

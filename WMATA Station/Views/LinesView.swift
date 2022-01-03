@@ -55,12 +55,7 @@ struct LinesView: View {
                         }
                     ForEach(Line.allCurrent.sorted(), id: \.rawValue) { line in
                         LineView(line: line,
-                                 roundel: AnyView(Text(line.rawValue)
-                                                    .bold()
-                                                    .padding()
-                                                    .roundel(line: line,
-                                                             width: $roundelWidth,
-                                                             height: $roundelHeight)),
+                                 roundel: line.roundel(style: .largeTitle, factor: 2.0) as! AnyView,
                                  stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
                     }
                 }
@@ -70,13 +65,11 @@ struct LinesView: View {
     }
 
     func nonRouteRoundel(systemName: String) -> AnyView {
-        AnyView(Image(systemName: systemName)
+        AnyView(ZStack {
+            WMATAUI.dot(color: .metroStationLightBrown, style: .largeTitle, factor: 2.0)
+            Image(systemName: systemName)
                     .font(.metroFont(.largeTitle).bold())
-                    .padding()
-                    .roundel(color: .metroStationLightBrown,
-                             textColor: .white,
-                             width: $roundelWidth,
-                             height: $roundelHeight))
+        })
     }
 }
 
