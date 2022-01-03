@@ -17,7 +17,8 @@ struct NextTrainsView: View {
     @State var roundelHeight: CGFloat = 0
 
     var body: some View {
-        let spacing = UIFont.preferredFont(forTextStyle: .headline).pointSize
+        let style = Font.TextStyle.title3
+        let spacing = WMATAUIFont.preferredFont(forTextStyle: .with(textStyle: style)).pointSize
         let columns = [
             GridItem(spacing: spacing),
             GridItem(spacing: spacing),
@@ -41,10 +42,10 @@ struct NextTrainsView: View {
                 } else {
                     cars.foregroundColor(.red)
                 }
-                Text(train.destinationName).frame(alignment: .leading)
+                Text(train.destination?.name ?? train.destinationName).frame(alignment: .leading).lineLimit(1)
                 Text(train.minutes.description).frame(alignment: .trailing)
             }
-        }.font(.metroFont(.headline).bold())
+        }.font(.metroFont(style).weight(.bold))
         .onAppear {
             trains.start()
         }
