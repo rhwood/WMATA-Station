@@ -36,12 +36,7 @@ struct NextTrainsView: View {
                     .font(.metroFont(.subheadline).bold())
                     .roundel(line: line, width: $roundelWidth, height: $roundelHeight)
                 }
-                let cars = Text("\(train.car?.rawValue ?? "")" )
-                if train.car == .eight {
-                    cars
-                } else {
-                    cars.foregroundColor(.red)
-                }
+                Text("\(train.car?.rawValue ?? "")" )
                 Text(train.destination?.name ?? train.destinationName).frame(alignment: .leading).lineLimit(1)
                 Text(train.minutes.description).frame(alignment: .trailing)
             }
