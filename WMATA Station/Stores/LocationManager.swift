@@ -93,7 +93,9 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
                 Task { () -> TimeInterval in
                     do {
                         let walkingTime = try await MKDirections(request: request).calculate().routes[0].expectedTravelTime
-                        walkingTimes[station] = walkingTime
+                        DispatchQueue.main.async {
+                            self.walkingTimes[station] = walkingTime
+                        }
                         return walkingTime
                     } catch {
                         logger.error("Failed getting walking time to \(station.rawValue): \(error.localizedDescription)")
