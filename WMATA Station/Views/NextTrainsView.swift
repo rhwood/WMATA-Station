@@ -32,9 +32,7 @@ struct NextTrainsView: View {
             Text("Minutes")
             ForEach(trains.trains) { train in
                 if let line = train.line {
-                Text(line.rawValue)
-                    .font(.metroFont(.subheadline).bold())
-                    .roundel(line: line, width: $roundelWidth, height: $roundelHeight)
+                    line.roundel(style: style)
                 }
                 Text("\(train.car?.rawValue ?? "")" )
                 Text(train.destination?.name ?? train.destinationName).frame(alignment: .leading).lineLimit(1)
