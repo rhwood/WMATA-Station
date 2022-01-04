@@ -27,6 +27,9 @@ struct WalkingTimeView: View {
                 EmptyView()
             }
         }
+        .onReceive(locationManager.$stationLocations) { _ in
+            walkingTime(station: station)
+        }
         .onAppear {
             walkingTime(station: station)
         }

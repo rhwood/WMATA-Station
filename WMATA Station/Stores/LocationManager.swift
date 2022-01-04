@@ -103,7 +103,7 @@ public class LocationManager: NSObject, ObservableObject, CLLocationManagerDeleg
                     }
                 }
             }
+            return 0
         }
-        return 0
     }
 }
