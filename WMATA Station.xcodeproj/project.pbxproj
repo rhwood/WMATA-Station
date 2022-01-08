@@ -22,7 +22,6 @@
 		48CD053C26DC2BBE00FE48A1 /* PreviewLinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */; };
 		48D7614825AFBF8700756E52 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7614725AFBF8700756E52 /* ApiKeys.swift */; };
 		48DA8BCD25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */; };
-		48E017442782144500E603A0 /* Roundel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E017432782144500E603A0 /* Roundel.swift */; };
 		48F6D70C26DAAAEB003A5C34 /* WalkingTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6D70B26DAAAEB003A5C34 /* WalkingTimeView.swift */; };
 		48F6D70E26DAC420003A5C34 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6D70D26DAC420003A5C34 /* LocationManager.swift */; };
 		48F6D71026DAEC5B003A5C34 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F6D70F26DAEC5B003A5C34 /* CacheManager.swift */; };
@@ -65,7 +64,6 @@
 		48CD053B26DC2BBE00FE48A1 /* PreviewLinesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLinesManager.swift; sourceTree = "<group>"; };
 		48D7614725AFBF8700756E52 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		48DA8BCC25BCFE5A00C9DE95 /* MetroNextTrainsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroNextTrainsModel.swift; sourceTree = "<group>"; };
-		48E017432782144500E603A0 /* Roundel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundel.swift; sourceTree = "<group>"; };
 		48F6D70B26DAAAEB003A5C34 /* WalkingTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingTimeView.swift; sourceTree = "<group>"; };
 		48F6D70D26DAC420003A5C34 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		48F6D70F26DAEC5B003A5C34 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 				4828819A25BCBE2E005B7994 /* NextTrainsView.swift */,
 				482EE71D25ACB06200C351A4 /* View+Balance.swift */,
 				48F6D70B26DAAAEB003A5C34 /* WalkingTimeView.swift */,
-				48E017432782144500E603A0 /* Roundel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,7 +351,6 @@
 				48F6D70E26DAC420003A5C34 /* LocationManager.swift in Sources */,
 				484A36BF2753B4B000AF8818 /* PreviewLocationManager.swift in Sources */,
 				480E32E825C58B4F0009F827 /* StationModel.swift in Sources */,
-				48E017442782144500E603A0 /* Roundel.swift in Sources */,
 				480E32CC25C42CB50009F827 /* MetroNextBusesModel.swift in Sources */,
 				48F6D70C26DAAAEB003A5C34 /* WalkingTimeView.swift in Sources */,
 				48BCABD6277F9DF900BFE7D7 /* WMATA+Extensions.swift in Sources */,
@@ -690,7 +686,7 @@
 			repositoryURL = "https://github.com/rhwood/WMATAUI.swift";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.7.0;
+				minimumVersion = 0.7.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

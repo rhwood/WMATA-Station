@@ -65,11 +65,11 @@ struct LinesView: View {
     }
 
     func nonRouteRoundel(systemName: String) -> AnyView {
-        AnyView(ZStack {
-            WMATAUI.dot(color: .metroStationLightBrown, style: .largeTitle, factor: 2.0)
-            Image(systemName: systemName)
-                    .font(.metroFont(.largeTitle).bold())
-        })
+        AnyView(WMATAUI.roundel(image: Image(systemName: systemName),
+                                color: .metroStationLightBrown,
+                                textColor: .white,
+                                style: .largeTitle,
+                                factor: 2.0))
     }
 }
 
