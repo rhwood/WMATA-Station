@@ -53,9 +53,9 @@ struct LinesView: View {
                                      roundel: nonRouteRoundel(systemName: "clock"),
                                      stations: cacheManager.recentStations)
                         }
-                    ForEach(Line.allCurrent.sorted(), id: \.rawValue) { line in
+                    ForEach(Line.allCases.sorted(), id: \.rawValue) { line in
                         LineView(line: line,
-                                 roundel: line.roundel(style: .largeTitle, factor: 2.0) as! AnyView,
+                                 roundel: AnyView(line.roundel(style: .largeTitle, factor: 2.0)),
                                  stations: lines.stations[line]?.sorted(by: {$0.name < $1.name}) ?? [])
                     }
                 }

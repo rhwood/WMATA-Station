@@ -13,7 +13,7 @@ struct Roundel_Preview: PreviewProvider {
     static var previews: some View {
         let style = Font.TextStyle.largeTitle
         VStack {
-            ForEach(Line.allCurrent, id: \.rawValue) { line in
+            ForEach(Line.allCases, id: \.rawValue) { line in
                 HStack {
                     line.roundel(style: style)
                     Text(line.name)
