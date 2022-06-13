@@ -21,7 +21,7 @@ class LinesManager: ObservableObject {
     public static let standard = LinesManager()
 
     init() {
-        for line in Line.allInMapOrder {
+        for line in Line.allCases {
             stations[line] = []
         }
         getStations()
@@ -36,14 +36,14 @@ class LinesManager: ObservableObject {
                 case .success(let values):
                     waitTime = 1
                     DispatchQueue.main.async {
-                        getStations(values.stations)
+                        self.getStations(values.stations)
                     }
                     CacheManager.standard.cache(name: "stationInformations", object: values.stations)
                 case .failure(let error):
                     print("\(error) requesting stations")
                     waitTime *= 2
                     DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(waitTime)) {
-                        getStations()
+                        self.getStations()
                     }
                 }
             }
